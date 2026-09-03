@@ -2,7 +2,8 @@ import { sortConfigSection } from "./fieldDisplay"
 
 // Datei zum Lesen und Ändern der Configuration
 // Konfiguration laden
-export const getConfigValue = (config, field) => {
+export const getConfigValue = (config, fieldOrName) => {
+    const field = typeof fieldOrName === 'string' ? { name: fieldOrName } : fieldOrName
     // wenn das Feld ein Flag-Feld ist
     if (field.flagGroup === 'sessionFlags') {
 
