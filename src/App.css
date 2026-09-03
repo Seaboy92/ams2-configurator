@@ -37,6 +37,10 @@
   font: inherit;
 }
 
+select {
+  max-width: 450px;
+}
+
 .workspace {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(320px, 2fr);

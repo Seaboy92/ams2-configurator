@@ -23,3 +23,14 @@ export async function fetchFieldDefinitions() {
 
   return response.json()
 }
+
+// Funktion zum herunterladen der Streckendaten von der API
+export async function fetchTracks() {
+  const response = await fetch(`${API_URL}/tracks`)
+
+  if (!response.ok) {
+    throw new Error('Streckendaten konnten nicht geladen werden.')
+  }
+
+  return response.json()
+}

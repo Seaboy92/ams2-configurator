@@ -8,8 +8,7 @@ const optionSources = {
   'enums.damage': 'enums/damage',
   'enums.penalties': 'enums/penalties',
   'vehicle_classes': 'vehicle_classes',
-  'vehicles': 'vehicles',
-  'tracks': 'tracks'
+  'vehicles': 'vehicles'
 }
 
 router.get('/', (request, response) => {

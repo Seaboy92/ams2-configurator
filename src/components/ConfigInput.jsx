@@ -16,6 +16,18 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
     })
     const options = getFieldOptions(field, optionsBySource)
 
+    function getOptionLabel(field, option, language) {
+        if (field.name === 'TrackId') {
+            const dlcLabel = option.isDlc
+            ? ` · DLC: ${option.dlc}`
+            : ''
+
+            return `${option.track} – ${option.variant}${dlcLabel}`
+        }
+
+        return translate(`${field.optionsSource}.${option.name}.label`, language)    
+    }
+
     return (
         <label
             style={{
@@ -52,7 +64,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                                 key={option.value ?? option.id}
                                 value={option.value ?? option.id}
                             >
-                                {translate(`${field.optionsSource}.${option.name}.label`, language)}
+                                {getOptionLabel(field, option, language)}
                             </option>
                             ))
                         )}

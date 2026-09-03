@@ -3,7 +3,7 @@ import { ConfigTabs } from './components/ConfigTabs'
 import { Preview } from './components/Preview'
 import { useEffect, useMemo, useState } from 'react'
 import { createServerConfigFromTemplate, defaultSettings } from './services/configTemplateService'
-import { fetchFieldDefinitions, fetchFieldOptions } from './services/apiService'
+import { fetchFieldDefinitions, fetchFieldOptions, fetchTracks } from './services/apiService'
 import { createAllFields } from './services/fieldMapper'
 import './App.css'
 
@@ -25,12 +25,11 @@ function App() {
       'enums.penalties',
       'vehicle_classes',
       'vehicles',
-      'tracks',
     ]
 
     async function loadOptions() {
       try {
-        const [entries, definitions] = await Promise.all([
+        const [entries, definitions, tracks] = await Promise.all([
           Promise.all(
             sources.map(async (source) => {
               const options = await fetchFieldOptions(source)
@@ -38,9 +37,10 @@ function App() {
             })
           ),
           fetchFieldDefinitions(),
+          fetchTracks(),
         ])
 
-        setOptionsBySource(Object.fromEntries(entries))
+        setOptionsBySource({...Object.fromEntries(entries), tracks})
         setFieldDefinitions(definitions)
       } catch (error) {
         setOptionsError(error.message)
