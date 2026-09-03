@@ -1,20 +1,20 @@
-import apiIds from '/src/data/api_ids.json'
 import { getInputProps } from '../services/inputService'
 import { getConfigValue, updateConfigValue } from '../services/configService'
 import { translate } from "../services/translate"
 import { getFieldOptions } from "../services/optionsService"
 import { getValidationValue } from '../services/validationService'
 
-export function ConfigInput({field, config, setConfig, language}) {
+export function ConfigInput({field, config, setConfig, language, optionsBySource, optionsLoading}) {
 
     const value = getConfigValue(config, field)
     const min = getValidationValue(field.validation, 'min', config)
     const max = getValidationValue(field.validation, 'max', config)
     const inputProps = getInputProps(field, value, (newValue) => {
         setConfig(prev =>
-            updateConfigValue(prev, field, newValue)
+            updateConfigValue(prev, field, newValue, optionsBySource)
         )
     })
+    const options = getFieldOptions(field, optionsBySource)
 
     return (
         <label
@@ -42,15 +42,20 @@ export function ConfigInput({field, config, setConfig, language}) {
                         style={{ marginLeft: 'auto' }}
                         {...inputProps}
                         value={value ?? ''}
-                    >
-                        {getFieldOptions(field).map(option => (
+                        disabled={optionsLoading}
+                        >
+                        {optionsLoading ? (
+                            <option>Optionen werden geladen …</option>
+                        ) : (
+                            options.map(option => (
                             <option
                                 key={option.value ?? option.id}
                                 value={option.value ?? option.id}
-                            >   
+                            >
                                 {translate(`${field.optionsSource}.${option.name}.label`, language)}
                             </option>
-                        ))}
+                            ))
+                        )}
                     </select>
                 ) : (
                     // Wenn es alles andere ist

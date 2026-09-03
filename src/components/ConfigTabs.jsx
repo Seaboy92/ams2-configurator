@@ -1,10 +1,9 @@
 import { ConfigInput } from "./ConfigInput"
 import { translate } from "../services/translate"
-import { allFields } from '../services/fieldMapper'
 import { tabs } from '../services/configFields'
 import { getFieldOrder, isFieldVisible } from '../services/fieldDisplay'
 
-export function ConfigTabs({activeTab, setActiveTab, language, config, setConfig}) {
+export function ConfigTabs({activeTab, setActiveTab, language, config, setConfig, optionsBySource, optionsLoading, allFields}) {
     return (
         <section className="settings-panel" aria-label="Einstellungen">
             <div className="preview-header">
@@ -52,6 +51,8 @@ export function ConfigTabs({activeTab, setActiveTab, language, config, setConfig
                                     config={config}
                                     setConfig={setConfig}
                                     language={language}
+                                    optionsBySource={optionsBySource}
+                                    optionsLoading={optionsLoading}
                                 />
                             ))}
                         </div>
