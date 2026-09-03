@@ -1,0 +1,4848 @@
+{
+  "text": {
+      "ui.title": {
+      "de": "AMS 2 Serverkonfigurator",
+      "en": "AMS 2 Server Configurator"
+    },
+    "ui.language": {
+      "de": "Sprache",
+      "en": "Language"
+    },
+    "ui.welcomtext": {
+      "de": "Willkommen beim AMS 2 Serverkonfigurator. Dieser beitet Ihnen die Möglichkeit, die Serverkonfiguration für AMS 2 zu erstellen und zu bearbeiten. Lua-Einstellungen werden hier nicht berücksichtigt. Bitte wählen Sie Ihre gewünschte Sprache aus.",
+      "en": "Welcome to the AMS 2 Server Configurator. This tool allows you to create and edit the server configuration for AMS 2. Lua settings are not considered here. Please select your desired language."
+    },
+    "ui.headingLeft": {
+      "de": "Konfiguration",
+      "en": "Configuration"
+    },
+    "ui.headingRight": {
+      "de": "Vorschau",
+      "en": "Preview"
+    },
+    "ui.downloade": {
+      "de": "Konfiguration herunterladen",
+      "en": "Downloade configuration"
+    },
+    "ui.uploade": {
+      "de": "Konfiguration hochladen",
+      "en": "Uploade configuration"
+    },
+    "ui.tabs.general": {
+      "de": "Allgemein",
+      "en": "General"
+    },
+    "ui.tabs.session": {
+      "de": "Sitzung",
+      "en": "Session"
+    },
+    "ui.tabs.track": {
+      "de": "Strecke & Wetter",
+      "en": "Track and Weather"
+    },
+    "ui.tabs.vehicles": {
+      "de": "Fahrzeuge",
+      "en": "Vehicles"
+    },
+    "ui.tabs.rules": {
+      "de": "Regeln",
+      "en": "Rules"
+    },
+    "cfg.logLevel.label": {
+      "de": "Log-Level",
+      "en": "Logging level"
+    },
+    "cfg.logLevel.description": {
+      "de": "Protokollierungsebene des Servers. Nachrichten dieser Schwere und wichtiger werden protokolliert. Kann eines der folgenden sein: debug/info/warning/error.",
+      "en": "Logging level of the server. Messages of this severity and more important will be logged. Can be any of debug/info/warning/error."
+    },
+    "cfg.eventsLogSize.label": {
+      "de": "Eventlog-Größe",
+      "en": "Eventlog Size"
+    },
+    "cfg.eventsLogSize.description": {
+      "de": "Anzahl der auf dem Server gespeicherten Gameplay-Ereignisse. Die ältesten werden gelöscht, sobald das Spiel weitere protokolliert.",
+      "en": "Number of gameplay events stored on the server. Oldest ones will be discarded once the game logs more."
+    },
+    "cfg.name.label": {
+      "de": "Servername",
+      "en": "Server name"
+    },
+    "cfg.name.description": {
+      "de": "Name des Servers, dieser wird im Serverbrowser angezeigt (wenn implementiert) und ist auch der Standardname von Sitzungen, die auf dem Server gehostet werden.",
+      "en": "The server's name, this will appear in server browser (when implemented) and will be also the default name of sessions hosted on the server."
+    },
+    "cfg.secure.label": {
+      "de": "Steam Authentifizierung",
+      "en": "Steam Authentication"
+    },
+    "cfg.secure.description": {
+      "de": "Wenn diese Option auf „true“ gesetzt ist, werden Benutzer über Steam authentifiziert, um zu prüfen, ob eine VAC-Sperre vorliegt.",
+      "en": "Authenticate users with Steam to check VAC ban when set to true."
+    },
+    "cfg.password.label": {
+      "de": "Serverpasswort",
+      "en": "Server password"
+    },
+    "cfg.password.description": {
+      "de": "Zum Erstellen von Sitzungen auf dem Server sowie zum Beitreten zu diesen Sitzungen ist ein Passwort erforderlich; das in den Erstellungsoptionen festgelegte Passwort wird auf DS ignoriert.",
+      "en": "Password required to create sessions on the server as well as to join the sessions, password set in Create options is ignored on DS."
+    },
+    "cfg.maxPlayerCount.label": {
+      "de": "Max. Sitzungsgröße",
+      "en": "Max. size of session"
+    },
+    "cfg.maxPlayerCount.description": {
+      "de": "Maximale Sitzungsgröße (Anzahl von Fahrzeugen ink. KI), die auf dem Server erstellt werden kann. Dieser Wert wird auch für die Startfeldgröße verwendet. Beachten Sie, dass bei einer Einstellung von über 16 Teilnehmern, 32-Bit-Clients nicht beitreten können. Das Spiel unterstützt derzeit zudem keine Sitzungen mit mehr als 32 Teilnehmern, auch wenn der Server für bis zu 64 Spieler konfiguriert werden kann.",
+      "en": "Maximum size of sessions that can be created on this server. This value is also used to determine the grid size. Note that setting this above 16 will allow sessions unjoinable by 32-bit clients to be created on the server.  The game also currently does not support sessions larger than 32, even if the server can be configured for up to 64 players."
+    },
+     "cfg.bindIP.label": {
+      "de": "Server Socket-IP-Adresse",
+      "en": "Server's socket IP adress"
+    },
+    "cfg.bindIP.description": {
+      "de": "IP-Adresse, an die die Sockets des Servers gebunden werden sollen. Für „alle Schnittstellen“ leer lassen.",
+      "en": "IP address where the server's sockets should be bound. Leave empty for 'all interfaces'."
+    },
+    "cfg.ports.label": {
+      "de": "Server Ports",
+      "en": "Server ports"
+    },
+    "cfg.ports.description": {
+      "de": "Ports, die zur Kommunikation mit Steam und dem Spiel verwendet werden, müssen alle über die öffentliche IP des Servers erreichbar sein.",
+      "en": "ports used to communicate with Steam and game, they must all be accessible on the public IP of the server."
+    },
+    "cfg.steamPort.label": {
+      "de": "Steam Port",
+      "en": "Steam port"
+    },
+    "cfg.steamPort.description": {
+      "de": "Dient der Kommunikation mit dem Master-Server und der Steam-Authentifizierung.",
+      "en": "Handles master server communication and Steam authentication."
+    },
+    "cfg.hostPort.label": {
+      "de": "Server Port",
+      "en": "Server port"
+    },
+    "cfg.hostPort.description": {
+      "de": "Verwaltet den primären Datenverkehr der Spieler im Spiel sowie die Datenübertragung.",
+      "en": "Manages primary in-game player traffic and data transfer."
+    },
+    "cfg.queryPort.label": {
+      "de": "Server-Anfrage Port",
+      "en": "Server-Query port"
+    },
+    "cfg.queryPort.description": {
+      "de": "Reagiert auf Pings und Statusabfragen des Server-Browsers.",
+      "en": "Responds to server browser pings and status requests"
+    },
+    "cfg.delay.label": {
+      "de": "Verzögerung zwischen den Server-Ticks",
+      "en": "Delay between server ticks"
+    },
+    "cfg.delay.description": {
+      "de": "Verzögerung zwischen den Server-Ticks in Millisekunden, jeweils ohne und mit einem laufenden Spiel. Niedrigere Werte sorgen für einen reaktionsschnelleren Server und verringern die Latenz geringfügig, allerdings auf Kosten einer höheren CPU-Auslastung.",
+      "en": "Delay between server ticks in milliseconds, when not hosting and when hosting a game, respectively. Lower values will make the server more responsible and decrease latency by a bit at the expense of higher CPU usage."
+    },
+    "cfg.sportsPlay.label": {
+      "de": "Sports Play",
+      "en": "Sports Play"
+    },
+    "cfg.sportsPlay.description": {
+      "de": "Sports Play verwendet System-Sockets anstelle der Steam-Netzwerk-API. Empfohlen für reine Offline-LAN-Veranstaltungen. Verwenden Sie den Befehlszeilenparameter -sportsplay serverIp:hostPort auf dem Client, um Spiele auf dem SportsPlay-Server zu hosten und daran teilzunehmen.",
+      "en": "Sports Play will use system sockets instead of Steam networking API. Recommended for offline LAN-only events. Use cmdline switch -sportsplay serverIp:hostPort on client to host and join games on sportsPlay server."
+    },
+    "cfg.httpApiInfo.label": {
+      "de": "HTTP-API",
+      "en": "HTTP-based API"
+    },
+    "cfg.httpApiInfo.description": {
+      "de": "Dies stellt eine HTTP-basierte API sowie grundlegende webbasierte Steuerelemente mithilfe eines integrierten HTTP-Servers bereit. HttpApi ist standardmäßig deaktiviert. Wenn Sie es aktivieren und alle anderen Einstellungen auf den Standardwerten belassen, wird nur lokal auf 127.0.0.1:9000 gelauscht.",
+      "en": "This provides http-based API and basic web-based controls using a built-in http server. HttpApi is disabled by default, and if you enable it with everything else left to default it will listen only locally on 127.0.0.1:9000"
+    },
+    "cfg.enableHttpApi.label": {
+      "de": "HTTP API aktivieren",
+      "en": "HTTP api enable"
+    },
+    "cfg.enableHttpApi.description": {
+      "de": "Hauptumschalter zum Aktivieren/Deaktivieren von HttpApi.",
+      "en": "Master enable/disable toggle."
+    },
+    "cfg.httpApiLogLevel.label": {
+      "de": "HTTP-Log-Level",
+      "en": "HTTP log level"
+    },
+    "cfg.httpApiLogLevel.description": {
+      "de": "Ähnlich wie „logLevel“ oben, wird jedoch nur für die Ausgabe von libwebsockets verwendet. Beachten Sie, dass die gesamte Protokollierung weiterhin über den Hauptfilter läuft, sodass Sie hier keine ausführlichere Protokollierung als auf der Hauptebene verwenden können.",
+      "en": "Similar to logLevel above but used only for libwebsockets output. Note that all logging still goes through the main filter, so you won't be able to use more verbose logging here than the main level."
+    },
+    "cfg.httpApiInterface.label": {
+      "de": "HTTP API Interface Adresse",
+      "en": "HTTP api interface adress"
+    },
+    "cfg.httpApiInterface.description": {
+      "de": "Name der Schnittstelle oder IP-Adresse, an die der lokale HTTP-Server, der die API und die webbasierten Steuerelemente bereitstellt, gebunden werden soll. Dabei handelt es sich um den von Ihrem Betriebssystem zugewiesenen Namen der Schnittstelle oder um die IP-Adresse der Schnittstelle. Der Standardwert lautet „127.0.0.1“.",
+      "en": "Interface name or IP where to bind the local http server providing the API and web-based controls. This is the textual name of the interface as assigned by your OS, or IP address of the interface. The default value is \"127.0.0.1\", change it to an empty string to bind the listen socket to all available interfaces."
+    },
+    "cfg.httpApiPort.label": {
+      "de": "HTTP API Port",
+      "en": "HTTP api port"
+    },
+    "cfg.httpApiPort.description": {
+      "de": "Port, an dem der lokale HTTP-Server lauscht.",
+      "en": "Port where the local HTTP server listens."
+    },
+    "cfg.httpApiExtraHeaders.label": {
+      "de": "Zusätzliche HTTP-Header",
+      "en": "extra HTTP headers"
+    },
+    "cfg.httpApiExtraHeaders.description": {
+      "de": "Zuordnung mit zusätzlichen HTTP-Headern, die den HTTP-API-Antworten hinzugefügt werden sollen. Die Schlüssel sind die Bedingungen für das Hinzufügen der Header, die Werte sind die hinzuzufügenden Header. Derzeit werden noch keine Bedingungen unterstützt. Verwenden Sie daher vorerst einfach „*“ als generischen Platzhalter, der auch in Zukunft für alle Fälle gelten wird.",
+      "en": "Map with extra HTTP headers to add to HTTP API responses. The keys are the conditions for adding the headers, the values are the headers to add. There are no conditions supported yet, so just use \"*\" for a generic wildard for now, that will match everything in the future too."
+    },
+    "cfg.httpApiAccessLevels.label": {
+      "de": "HTTP API Zugriffsebenen",
+      "en": "HTTP API access level"
+    },
+    "cfg.httpApiAccessLevels.description": {
+      "de": "Überschreibungen der Zugriffsebenen für die HTTP-API. Jeder HTTP-API-Endpunkt definiert seine Standardzugriffsebene, in der Regel „public“, „private“ oder „admin“. Diese Zuordnung kann diese Ebenen durch beliebige andere überschreiben. Die Schlüssel sind Endpunktpfade mit Platzhaltern, und die Werte sind die zu verwendenden Zugriffsebenen. Es wird der erste Pfad verwendet, der übereinstimmt, wobei die Pfade in der hier angegebenen Reihenfolge verarbeitet werden. Bei den Platzhaltermustern wird die Groß-/Kleinschreibung beachtet; sie können Folgendes enthalten: - „*“: entspricht 0 oder mehr Zeichen – „%“: entspricht 0 oder mehr Zeichen mit Ausnahme des Schrägstrichs – „?“: entspricht 1 Zeichen",
+      "en": "Http API access level overrides. Each HTTP API endpoint defines its default access level, usually one of \"public\", \"private\" or \"admin\". This map can override these levels to anything else. The keys are wildcard endpoint paths, and the values are the access levels to use. The first path that matches will be used, processing them in the order as written here. The wildcard patterns are case-sensitive and can contain: - '*': matches 0 or more characters - '%': matches 0 or more characters except for forward slash - '?': matches 1 character"
+    },
+    "cfg.httpApiAccessFilters.description": {
+      "de": "Filterregeln für die Zugriffsebenen. Die Standard-Zugriffsebenen sind „public“, „private“ und „admin“, aber über die oben genannten httpAccessLevels können beliebige zusätzliche Ebenen definiert werden. Diese Zuordnung teilt dem Server dann mit, wer Zugriff auf welche Ebene hat. Es handelt sich um eine Zuordnung von Ebenennamen zu Filterregeln. Filterregeln werden als Liste von Strukturen angegeben und in der Reihenfolge verarbeitet, in der sie in der Konfiguration stehen. Jede Regelstruktur enthält einen „Typ“ sowie typspezifische Felder. Die unterstützten Typen sind: - „accept“: Diese Anfrage akzeptieren, keine weiteren Prüfungen. - „reject“: Diese Anfrage ablehnen, keine weiteren Prüfungen. - „reject-password“: Diese Anfrage ablehnen und dem Client mitteilen, dass ein Passwort erforderlich ist, keine weiteren Prüfungen. - „ip-accept“: Diese Anfrage akzeptieren, wenn sie mit der „ip“-Maske in CIDR-Notation übereinstimmt (zum Beispiel „192.168.1.0/24“) – „ip-reject“: Diese Anfrage ablehnen, wenn sie mit der „ip“-Maske in CIDR-Notation übereinstimmt (z. B. „192.168.1.0/24“) – „user“: Diese Anfrage wird akzeptiert, wenn die Authentifizierung als der angegebene „Benutzer“ erfolgt. – „Gruppe“: Diese Anfrage wird akzeptiert, wenn die Authentifizierung als die angegebene „Gruppe“ erfolgt. Die Benutzer-/Gruppenauthentifizierung erfolgt über die standardmäßige HTTP-Basic-Zugriffsauthentifizierung (https://en.wikipedia.org/wiki/Basic_access_authentication).",
+      "en": "Filtering rules for the access levels. The default access levels are \"public\", \"private\" and \"admin\", but the httpAccessLevels above can define any additional levels. This map then tells the server who has access to which level. It's a map from level names to filtering rules. Filtering rules are then specified as a list of structures, processed in the order as written in the config. Each rule structure contains a type and then type-specific fields. The supported types are: - \"accept\": Accept this request, no additional checks. - \"reject\": Reject this request, no additional checks. - \"reject-password\": Reject this request and let the client know that a password is required, no additional checks. - \"ip-accept\": Accept this request if it matches the \"ip\" mask in CIDR notation (for example, \"192.168.1.0/24\") - \"ip-reject\": Reject this request if it matches the \"ip\" mask in CIDR notation (for example, \"192.168.1.0/24\") - \"user\": Accept this request if it authenticates as given \"user\". - \"group\" : Accept this request if it authenticates as given \"group\". User/group authentication is done using the standard HTTP basic access authentication (https://en.wikipedia.org/wiki/Basic_access_authentication)."
+    },
+    "cfg.httpApiAccessFilters.public.label": {
+      "de": "Öffentliche Regeln",
+      "en": "Public rules"
+    },
+    "cfg.httpApiAccessFilters.public.description": {
+      "de": "Öffentliche Regeln. Standardmäßig wird alles akzeptiert.",
+      "en": "Public rules. The default is to accept everything."
+    },
+    "cfg.httpApiAccessFilters.private.label": {
+      "de": "Private Regeln",
+      "en": "Private rules"
+    },
+    "cfg.httpApiAccessFilters.private.description": {
+      "de": "Private Regeln. Standardmäßig wird nur von localhost akzeptiert, Anfragen authentifiziert als Benutzer in der Gruppe \"private\" und alles andere abgelehnt.",
+      "en": "Private rules. The default is to accept queries from localhost, queries authenticated as users in the \"private\" group and to reject anything else."
+    },
+    "cfg.httpApiAccessFilters.admin.label": {
+      "de": "Admin-Regeln",
+      "en": "Admin rules"
+    },
+    "cfg.httpApiAccessFilters.admin.description": {
+      "de": "Admin-Regeln. Standardmäßig wird nur von localhost akzeptiert, Anfragen authentifiziert als Benutzer in der Gruppe \"admin\" und alles andere abgelehnt.",
+      "en": "Admin rules. The default is to accept queries from localhost, queries authenticated as users in the \"admin\" group and to reject anything else."
+    },
+    "cfg.httpApiUsers.label": {
+      "de": "HTTP API Benutzerliste",
+      "en": "HTTP api User list"
+    },
+    "cfg.httpApiUsers.description": {
+      "de": "Benutzerliste. Abbildung von Benutzernamen auf Passwörter im Klartext.",
+      "en": "User list. Map from user names to passwords, in plain text."
+    },
+    "cfg.httpApiGroups.label": {
+      "de": "HTTP API Benutzergruppen",
+      "en": "HTTP api User groups"
+    },
+    "cfg.httpApiGroups.description": {
+      "de": "HTTP API Benutzergruppen. Abbildung von Gruppennamen auf Listen von Benutzern in den jeweiligen Gruppen.",
+      "en": "User groups. Map from group names to lists of users in said groups."
+    },
+    "cfg.staticWebFiles.label": {
+      "de": "Webtools Stammverzeichnis",
+      "en": "Web tool root directory"
+    },
+    "cfg.staticWebFiles.description": {
+      "de": "Stammverzeichnis für die statischen Dateien des Webtools. Relativ zum aktuellen Verzeichnis.",
+      "en": "Root directory where the static files for the web tool are located. Relative to current directory."
+    },
+    "cfg.enableLuaApi.label": {
+      "de": "Lua-API aktivieren",
+      "en": "Enable lua-api"
+    },
+    "cfg.enableLuaApi.description": {
+      "de": "Hauptschalter zum Aktivieren/Deaktivieren der Lua-API.",
+      "en": "Master enable/disable toggle."
+    },
+    "cfg.allowEmptyJoin.label": {
+      "de": "Leere Sitzung anzeigen",
+      "en": "Enable empty join"
+    },
+    "cfg.allowEmptyJoin.description": {
+      "de": "Auf true setzen, damit dieser Server im Browser angezeigt wird, auch wenn er leer ist.",
+      "en": "Set to true to make this server show up in the browser even if it's empty."
+    },
+    "cfg.controlGameSetup.label": {
+      "de": "Serverkontrolle erlauben",
+      "en": "Enable server control"
+    },
+    "cfg.controlGameSetup.description": {
+      "de": "Setzen Sie diesen Wert auf „true“, um die API zu aktivieren, mit der der Server die Spielkonfiguration steuern kann. Der Host kann die Konfiguration nicht steuern, wenn dieser Wert gesetzt ist. Dieser Wert muss auf „true“ gesetzt sein, damit die detaillierte Konfiguration anwendung finden kann.",
+      "en": "Set to true to enable API that allows the server to control the game's setup. The host will not be able to control the setup if this is set. This must be set to \"true\" so that the detailed configuration can be implemented."
+    },
+    "cfg.sessionAttributes.label": {
+      "de": "Startwerte",
+      "en": "Initial attribute values"
+    },
+    "cfg.sessionAttributes.description": {
+      "de": "Anfangswerte für Attribute; die vollständige Liste finden Sie unter /api/list/attributes/session. Diese Attribute werden beim Beitritt zu einem leeren Server über den Browser verwendet (sofern „allowEmptyJoin“ auf „true“ gesetzt ist) sowie als Anfangswerte für die APIs „set_attributes“ und „set_next_attributes“ (sofern „controlGameSetup“ auf „true“ gesetzt ist).",
+      "en": "Initial attribute values, see /api/list/attributes/session for the full list. These attributes will be used when joining an empty server via the borwser (if allowEmptyJoin is true) and as the intial attributes for the set_attributes and set_next_attributes APIs (if controlGameSetup is true)."
+    },
+    "cfg.sessionAttributes.ServerControlsTrack.label": {
+      "de": "Server Steuert Strecke",
+      "en": "Server controls Track"
+    },
+    "cfg.sessionAttributes.ServerControlsTrack.description": {
+      "de": "Der Host-Spieler kann die Titelauswahl steuern, wenn der Wert auf 0 gesetzt ist. Setze den Wert auf 1, um die Titelauswahl im Spiel zu deaktivieren.",
+      "en": "The host player can control track selection if set to 0. Set to 1 to disable track selection in the game."
+    },
+    "cfg.sessionAttributes.ServerControlsVehicleClass.label": {
+      "de": "Server steuert Fahrzeugklasse",
+      "en": "Server controls vehicle class"
+    },
+    "cfg.sessionAttributes.ServerControlsVehicleClass.description": {
+      "de": "Der Host-Spieler kann die Fahrzeugklasse über die Garage ändern, wenn der Wert auf 0 gesetzt ist. Setze den Wert auf 1, um den Spielern das Ändern der Klasse zu untersagen. Damit dies Sinn ergibt, sollte zusätzlich das Flag FORCE_SAME_VEHICLE_CLASS (1024) gesetzt werden, da die Spieler andernfalls Fahrzeuge aus beliebigen Klassen auswählen können.",
+      "en": "The host player can change the vehicle class by going through the garage if set to 0. Set to 1 to disallow players changing the class. Flag FORCE_SAME_VEHICLE_CLASS (1024) should be also set for this to make sense, otherwise players are able to choose cars from any class."
+    },
+    "cfg.sessionAttributes.ServerControlsVehicle.label": {
+      "de": "Server steuert Fahrzeug",
+      "en": "server controls vehicle"
+    },
+    "cfg.sessionAttributes.ServerControlsVehicle.description": {
+      "de": "Spieler können ihr Fahrzeug wechseln, wenn dieser Wert auf 0 gesetzt ist. Setzen Sie den Wert auf 1, um den Fahrzeugwechsel zu unterbinden. Damit dies Sinn ergibt, sollte zusätzlich das Flag FORCE_IDENTICAL_VEHICLES (2) gesetzt werden.",
+      "en": "Players can change their vehicle if set to 0. Set to 1 to disallow players changing the vehicle. Flag FORCE_IDENTICAL_VEHICLES (2) should be also set for this to make sense."
+    },
+    "cfg.sessionAttributes.GridSize.label": {
+      "de": "Startfeldgröße",
+      "en": "Grid size"
+    },
+    "cfg.sessionAttributes.GridSize.description": {
+      "de": "Startfeldgröße bis zu 32, alle Plätze sind für Spieler reserviert, also keine KI. Beachte, dass 32-Bit-Clients nicht am Spiel teilnehmen können, wenn dieser Wert größer als 16 ist.",
+      "en": "Grid size up to 32, all reserved to players, so no AI. Note that 32-bit clients will not be able to join the game if this is larger than 16."
+    },
+    "cfg.sessionAttributes.Flags.label": {
+      "de": "Renneinstellungen",
+      "en": "Race flags"
+    },
+    "cfg.sessionAttributes.Flags.description": {
+      "de": "Renneinstellungen – Bitfeld, das aus vielen Flaggen besteht; die Standardeinstellung lautet wie folgt: ALLOW_CUSTOM_VEHICLE_SETUP (8) + ABS_ALLOWED (32) + SC_ALLOWED (64) + TCS_ALLOWED (128) + „FORCE_SAME_VEHICLE_CLASS“ (512) + FILL_SESSION_WITH_AI (131072) + AUTO_START_ENGINE (524288) = 656106“ Die vollständige Liste findest du unter /api/list/flags/session in der HTTP-API oder in den globalen Variablen „lists.flags.session“ bzw. „SessionFlags“ in der Lua-API.",
+      "en": "Race flags - bitfield consisting of many flags, the default is set like this: ALLOW_CUSTOM_VEHICLE_SETUP (8) + ABS_ALLOWED (32) + SC_ALLOWED (64) + TCS_ALLOWED (128) + \"FORCE_SAME_VEHICLE_CLASS (512) + FILL_SESSION_WITH_AI (131072) + AUTO_START_ENGINE (524288) = 656106\" See /api/list/flags/session in HTTP API, or globals \"lists.flags.session\" or \"SessionFlags\" in Lua API for the full list."
+    },
+    "cfg.sessionAttributes.OpponentDifficulty.label": {
+      "de": "KI-Schwierigkeitsgrad",
+      "en": "AI opponent difficulty"
+    },
+    "cfg.sessionAttributes.OpponentDifficulty.description": {
+      "de": "Schwierigkeitsgrad der KI-Gegner, von 0 bis 100. Gilt nur beim Laden, wenn „GridSize“ größer als „MaxPlayers“ ist und das Flag „FILL_SESSION_WITH_AI“ aktiviert ist.",
+      "en": "AI opponent difficulty, from 0 to 100. Applies only on loading if GridSize is larger than MaxPlayers, and the FILL_SESSION_WITH_AI flag is enabled."
+    },
+    "attributes.session.title": {
+      "de": "Sitzungseinstellungen",
+      "en": "Session settings"
+    },
+    "attributes.session.description": {
+      "de": "Mit einer Sitzung verbundene Spielattribute",
+      "en": "Gameplay attributes associated with a session"
+    },
+    "attributes.session.ServerControlsSetup.label": {
+      "de": "Server steuert Einstellungen",
+      "en": "Server controls setup"
+    },
+    "attributes.session.ServerControlsSetup.description": {
+      "de": "Steuert der Server die Spielkonfiguration? Falls ja, werden die Lobby-Einstellungen des Hosts deaktiviert. Die Einstellungen werden automatisch anhand der Server-Einstellungen festgelegt und können nicht über HTTP- oder Lua-APIs geändert werden.",
+      "en": "Does the server control the game's setup? If yes, the host's lobby settings will be disabled. Set automatically from the server's settings, can't be modified by HTTP or Lua APIs."
+    },
+    "attributes.session.ServerControlsTrack.label": {
+      "de": "Server steuert Strecke",
+      "en": "Server controls track"
+    },
+    "attributes.session.ServerControlsTrack.description": {
+      "de": "Steuert der Server die Streckenauswahl? Falls ja, wird die Streckenauswahl aller Spieler deaktiviert.",
+      "en": "Does the server control the track selection? If yes, everyone's track selection will be disabled."
+    },
+    "attributes.session.ServerControlsVehicleClass.label": {
+      "de": "Server steuert Fahrzeugklasse",
+      "en": "Server controls vehicle class"
+    },
+    "attributes.session.ServerControlsVehicleClass.description": {
+      "de": "Steuert der Server die Fahrzeugklasse? Falls ja, wird die Fahrzeugauswahl aller Spieler auf Fahrzeuge der Klasse VehicleClassId beschränkt. Versuche, über die Garage zu einer anderen Klasse zu wechseln, werden nicht funktionieren. Sollte immer in Kombination mit dem FORCE_SAME_VEHICLE_CLASS-Sitzungsflag verwendet werden.",
+      "en": "Does the server control the vehicle class selection? If yes, everyone's vehicle selection will be restricted to vehicles from class VehicleClassId, any attempts to change to another class via the garage will not work. Should be always combined with the FORCE_SAME_VEHICLE_CLASS session flag."
+    },
+    "attributes.session.ServerControlsVehicle.label": {
+      "de": "Server steuert Fahrzeug",
+      "en": "Server controls vehicle"
+    },
+    "attributes.session.ServerControlsVehicle.description": {
+      "de": "Steuert der Server die Fahrzeugauswahl? Falls ja, wird die Fahrzeugauswahl aller Spieler auf das Fahrzeug VehicleModelId beschränkt. Sollte immer in Kombination mit dem FORCE_IDENTICAL_VEHICLE-Sitzungsflag verwendet werden.",
+      "en": "Does the server control the vehicle selection? If yes, everyone's vehicle selection will be restricted to vehicle VehicleModelId. Should be always combined with the FORCE_IDENTICAL_VEHICLE session flag."
+    },
+    "attributes.session.GridSize.label": {
+      "de": "Startfeldgröße",
+      "en": "Grid size"
+    },
+    "attributes.session.GridSize.description": {
+      "de": "Gesamte maximale Startfeldgröße, einschließlich KI-Teilnehmer. Kann nur für die 'nächste Sitzung' geändert werden und kann niemals größer sein als die maximale Sitzungsgröße, die in der Serverkonfiguration festgelegt ist.",
+      "en": "Total maximum grid size, including AI participants. Can be modified only for the 'next session' and can never be larger than the maximum session size set in the server config."
+    },
+    "attributes.session.GridLayout.label": {
+      "de": "Startfeldaufstellung",
+      "en": "Grid layout"
+    },
+    "attributes.session.GridLayout.description": {
+      "de": "Definiert wie Spieler über das Startfeld verteilt werden. Kann nur für die 'nächste Sitzung' geändert werden. Verwenden Sie (position+10), um die genaue Position des Admin-Spielers festzulegen. Verwenden Sie den Enum-Wert für andere Fälle. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/grid_positions oder in den globalen Lua-Tabellen lists.enums.grid_positions, GridPositions und value_to_grid_positions verfügbar.",
+      "en": "Defines how players are distributed over the grid. Can be modified only for the 'next session'. Use (position+10) to set exact position of admin player. Use enum value for other cases. The enum values are available also via HTTP API at /api/list/enums/grid_positions or in Lua global tables lists.enums.grid_positions, GridPositions and value_to_grid_positions."
+    },
+    "attributes.session.MaxPlayers.label": {
+      "de": "Maximale Spieleranzahl",
+      "en": "Max players"
+    },
+    "attributes.session.MaxPlayers.description": {
+      "de": "Maximale Anzahl der Spieler. Kann nicht höher als GridSize sein, kann aber niedriger sein und dann werden die zusätzlichen Slots für KI-Fahrzeuge reserviert. Kann nur für die 'nächste Sitzung' geändert werden.",
+      "en": "Maximum number of players. Can't be higher than GridSize, but can be lower and then the extra slots will be reserved for AI vehicles. Can be modified only for the 'next session'."
+    },
+    "attributes.session.OpponentDifficulty.label": {
+      "de": "Schwierigkeitsgrad der Gegner",
+      "en": "Opponent difficulty"
+    },
+    "attributes.session.OpponentDifficulty.description": {
+      "de": "Schwierigkeitsgrad der KI-Teilnehmer. Gültige Werte im Bereich 0-100.",
+      "en": "Difficulty of AI participants. Valid values in range 0-100."
+    },
+    "attributes.session.Flags.label": {
+      "de": "Schalter",
+      "en": "Flags"
+    },
+    "attributes.session.Flags.description": {
+      "de": "Sitzungseinstellungsschalter. Die Schalterwerte sind auch über die HTTP-API unter /api/list/flags/session oder in den globalen Lua-Tabellen lists.flags.session, SessionFlags und value_to_session_flag verfügbar.",
+      "en": "Session setup flags. The flag values are available also via HTTP API at /api/list/flags/session or in Lua global tables lists.flags.session, SessionFlags and value_to_session_flag."
+    },
+    "attributes.session.AutoAdvanceSession.label": {
+      "de": "Automatische Sitzungsfortschritt",
+      "en": "Auto advance session"
+    },
+    "attributes.session.AutoAdvanceSession.description": {
+      "de": "Wenn aktiviert, werden die Sitzungen automatisch vom End-Leaderboard fortgesetzt, wenn keine Eingabe vom Host erfolgt. (0) deaktiviert (1) aktiviert",
+      "en": "When enabled, Sessions will advance from the end leaderboard automatically if there is no input from the host. (0) disabled (1) enabled"
+    },
+    "attributes.session.DamageType.label": {
+      "de": "Schadensart",
+      "en": "Damage type"
+    },
+    "attributes.session.DamageType.description": {
+      "de": "Schadensart. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/damage oder in den globalen Lua-Tabellen lists.enums.damage, Damage und value_to_damage verfügbar.",
+      "en": "Damage type. The enum values are available also via HTTP API at /api/list/enums/damage or in Lua global tables lists.enums.damage, Damage and value_to_damage."
+    },
+    "attributes.session.DamageScale.label": {
+      "de": "Schadensskalierung",
+      "en": "Damage scale"
+    },
+    "attributes.session.DamageScale.description": {
+      "de": "Skaliert die Kräfte, die zum Schaden/Abtrennung von Teilen benötigt werden, wenn Fahrzeugschaden aktiviert ist. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/damage_scale oder in den globalen Lua-Tabellen lists.enums.damage_scale, DamageScale und value_to_damage_scale verfügbar.",
+      "en": "Scales the forces required to damage/detach parts when vehicle damage is enabled. The enum values are available also via HTTP API at /api/list/enums/damage_scale or in Lua global tables lists.enums.damage_scale, DamageScale and value_to_damage_scale."
+    },
+    "attributes.session.DamageRandomFailures.label": {
+      "de": "Zufällige Fehler",
+      "en": "Damage random failures"
+    },
+    "attributes.session.DamageRandomFailures.description": {
+      "de": "Aktiviert/Deaktiviert/Zeitskaliert zufällige mechanische Ausfälle. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/random_failures oder in den globalen Lua-Tabellen lists.enums.random_failures, Damage und value_to_random_failure verfügbar.",
+      "en": "Enables/disables/timescales random mechanical failures. The enum values are available also via HTTP API at /api/list/enums/random_failures or in Lua global tables lists.enums.random_failures, Damage and value_to_random_failure"
+    },
+    "attributes.session.TireWearType.label": {
+      "de": "Reifenverschleißtyp",
+      "en": "Tire wear type"
+    },
+    "attributes.session.TireWearType.description": {
+      "de": "Typ des Reifenverschleißes. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/tire_wear oder in den globalen Lua-Tabellen lists.enums.tire_wear, TireWear und value_to_tire_wear verfügbar.",
+      "en": "Tire wear type. The enum values are available also via HTTP API at /api/list/enums/tire_wear or in Lua global tables lists.enums.tire_wear, TireWear and value_to_tire_wear."
+    },
+    "attributes.session.FuelUsageType.label": {
+      "de": "Kraftstoffverbrauchstyp",
+      "en": "Fuel usage type"
+    },
+    "attributes.session.FuelUsageType.description": {
+      "de": "Typ des Kraftstoffverbrauchs. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/fuel_usage oder in den globalen Lua-Tabellen lists.enums.fuel_usage, FuelUsage und value_to_fuel_usage verfügbar.",
+      "en": "Fuel usage type. The enum values are available also via HTTP API at /api/list/enums/fuel_usage or in Lua global tables lists.enums.fuel_usage, FuelUsage and value_to_fuel_usage."
+    },
+    "attributes.session.PenaltiesType.label": {
+      "de": "Strafart",
+      "en": "Penalties type"
+    },
+    "attributes.session.PenaltiesType.description": {
+      "de": "Typ der Strafen. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/penalties oder in den globalen Lua-Tabellen lists.enums.penalties, Penalties und value_to_penalties verfügbar.",
+      "en": "Penalties type. The enum values are available also via HTTP API at /api/list/enums/penalties or in Lua global tables lists.enums.penalties, Penalties and value_to_penalties."
+    },
+    "attributes.session.PitWhiteLinePenalty.label": {
+      "de": "Strafe wegen Überfahren der weißen Linie in der Boxengasse",
+      "en": "Pit white line penalty"
+    },
+    "attributes.session.PitWhiteLinePenalty.description": {
+      "de": "Strafe wegen Überfahren der weißen Linie in der Boxengasse. Setzen Sie 1, um sie zu aktivieren.",
+      "en": "White line penalty on pit exit. Set 1 to enable."
+    },
+    "attributes.session.DriveThroughPenalty.label": {
+      "de": "Durchfahrtsstrafe",
+      "en": "Drive through penalty"
+    },
+    "attributes.session.DriveThroughPenalty.description": {
+      "de": "Durchfahrtsstrafe. Setzen Sie 1, um sie zu aktivieren.",
+      "en": "Drive through penalty. Set 1 to enable."
+    },
+    "attributes.session.AllowedCutsBeforePenalty.label": {
+      "de": "Erlaubte Schnitte vor Strafe",
+      "en": "Allowed cuts before penalty"
+    },
+    "attributes.session.AllowedCutsBeforePenalty.description": {
+      "de": "Die Anzahl der Male, wenn ein Fahrer gewarnt wird, bevor eine Durchfahrtsstrafe (oder Zeitstrafe, wenn Durchfahrten deaktiviert sind) verhängt wird. 0 zum Deaktivieren von Schnittstrafen, gültiger Bereich, der vom Spiel unterstützt wird, ist 1 bis 50.",
+      "en": "The number of times a driver will be warned for cutting the track before a drive-through penalty (or time penalty if drive-throughs are disabled) is issued. 0 to disable cut penalties, valid range supported by game is 1 to 50."
+    },
+    "attributes.session.PitSpeedLimit.label": {
+      "de": "Geschwindigkeitsbegrenzung in der Boxengasse",
+      "en": "Pit speed limit"
+    },
+    "attributes.session.PitSpeedLimit.description": {
+      "de": "Die Geschwindigkeitsbegrenzung in der Boxengasse in km/h. Gültige Werte sind zwischen 40 und 200 in Schritten von 5 (gegenwärtig abgerundet, wenn nötig). Unset, 0 oder < 40 führen zu der Standard-Geschwindigkeitsbegrenzung der Strecke.",
+      "en": "The pit speed limit in KPH. Values between 40 and 200 in steps of 5 are valid (rounded down when needed). Unset, 0 or < 40 will result in track default limit."
+    },
+    "attributes.session.ManualPitStops.label": {
+      "de": "Manuelle Boxenstopps",
+      "en": "Manual pit stops"
+    },
+    "attributes.session.ManualPitStops.description": {
+      "de": "Steuerungsmodus während der Fahrt durch die Boxengasse. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/pit_control oder in den globalen Lua-Tabellen lists.enums.pit_control, PitControl und value_to_pit_control verfügbar.",
+      "en": "TODO: rename to PitControl. Control mode while driving through pits. The enum values are available also via HTTP API at /api/list/enums/pit_control or in Lua global tables lists.enums.pit_control, PitControl and value_to_pit_control."
+    },
+    "attributes.session.ManualRollingStarts.label": {
+      "de": "Manuelle rollende Starts",
+      "en": "Manual rolling starts"
+    },
+    "attributes.session.ManualRollingStarts.description": {
+      "de": "Legt fest, ob der Admin manuelle rollende Starts setzt. Setzen Sie 1, um sie zu aktivieren.",
+      "en": "Does the admin set manual rolling starts.  Set 1 to enable."
+    },
+    "attributes.session.AllowedViews.label": {
+      "de": "Erlaubte Kameraperspektiven",
+      "en": "Allowed views"
+    },
+    "attributes.session.AllowedViews.description": {
+      "de": "Erlaubte Kameraperspektiven. Nur Any (0) und CockpitHelmet (2) werden vom Spiel unterstützt, Schreibungen anderer Werte werden ignoriert. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/allowed_view oder in den globalen Lua-Tabellen lists.enums.allowed_view, AllowedView und value_to_allowed_view verfügbar.",
+      "en": "Allowed cameras. Only Any (0) and CockpitHelmet (2) are supported by the game, writes of other values will be ignored. The enum values are available also via HTTP API at /api/list/enums/allowed_view or in Lua global tables lists.enums.allowed_view, AllowedView and value_to_allowed_view."
+    },
+    "attributes.session.FullCourseYellows.label": {
+      "de": "Vollkurs-Gelb",
+      "en": "Full course yellows"
+    },
+    "attributes.session.FullCourseYellows.description": {
+      "de": "Vollkurs-Gelb. (0) deaktiviert (1) aktiviert",
+      "en": "Full Course Yellows. (0) disabled (1) enabled"
+    },
+    "attributes.session.TrackId.label": {
+      "de": "Streckennummer",
+      "en": "Track id"
+    },
+    "attributes.session.TrackId.description": {
+      "de": "Streckennummer. Spieler können dies ändern, es sei denn, ServerControlsTrack ist auf ungleich null gesetzt. Die Liste aller gültigen Strecken ist auch über die HTTP-API unter /api/list/tracks oder in den globalen Lua-Tabellen lists.tracks, id_to_track und name_to_track verfügbar.",
+      "en": "Track id. Players will be able to change this unless ServerControlsTrack is set to non-zero. The list of all valid tracks is available also via HTTP API at /api/list/tracks or in Lua global tables lists.tracks, id_to_track and name_to_track."
+    },
+    "attributes.session.VehicleClassId.label": {
+      "de": "Fahrzeugklasse-ID",
+      "en": "Vehicle class id"
+    },
+    "attributes.session.VehicleClassId.description": {
+      "de": "Fahrzeugklasse-ID, die verwendet wird, wenn die Fahrzeugklasse erzwungen wird (Sitzungsflag FORCE_SAME_VEHICLE_CLASS ist gesetzt). Wenn sie vom Server gesteuert wird, setzen Sie auch das Attribut ServerControlsVehicleClass. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Vehicle class id, used when forcing vehicle class (session flag FORCE_SAME_VEHICLE_CLASS is set). If controlled from the server also set attribute ServerControlsVehicleClass. Latest class list is available also via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlots.label": {
+      "de": "Mehrfach-Klassen-Slots",
+      "en": "Multi class slots"
+    },
+    "attributes.session.MultiClassSlots.description": {
+      "de": "Anzahl zusätzlicher Fahrzeugklassen (bis zu 3), die verwendet werden, wenn Multi-class erzwungen wird (Sitzungsflag FORCE_MULTI_VEHICLE_CLASS ist gesetzt). Wenn sie vom Server gesteuert wird, setzen Sie auch das Attribut ServerControlsVehicleClass. Eine Zahl zwischen 1 und 3, um IDs aus vordefinierten Vorlagen in MultiClassSlotN anzugeben.",
+      "en": "Number of additional vehicle classes (up to 3), used when Multi-class is forced (session flag FORCE_MULTI_VEHICLE_CLASS is set). If controlled from the server also set attribute ServerControlsVehicleClass. Number between 1 and 3 to specify ids from predefined templates in MultiClassSlotN."
+    },
+    "attributes.session.MultiClassSlot1.label": {
+      "de": "Mehrfach-Klassen-Slot 1",
+      "en": "Multi class slot1"
+    },
+    "attributes.session.MultiClassSlot1.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 1. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 1. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot2.label": {
+      "de": "Mehrfach-Klassen-Slot 2",
+      "en": "Multi class slot2"
+    },
+    "attributes.session.MultiClassSlot2.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 2. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 2. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot3.label": {
+      "de": "Mehrfach-Klassen-Slot 3",
+      "en": "Multi class slot3"
+    },
+    "attributes.session.MultiClassSlot3.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 3. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 3. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot4.label": {
+      "de": "Mehrfach-Klassen-Slot 4",
+      "en": "Multi class slot4"
+    },
+    "attributes.session.MultiClassSlot4.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 4. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 4. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot5.label": {
+      "de": "Mehrfach-Klassen-Slot 5",
+      "en": "Multi class slot5"
+    },
+    "attributes.session.MultiClassSlot5.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 5. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 5. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot6.label": {
+      "de": "Mehrfach-Klassen-Slot 6",
+      "en": "Multi class slot6"
+    },
+    "attributes.session.MultiClassSlot6.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 6. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 6. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot7.label": {
+      "de": "Mehrfach-Klassen-Slot 7",
+      "en": "Multi class slot7"
+    },
+    "attributes.session.MultiClassSlot7.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 7. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 7. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot8.label": {
+      "de": "Mehrfach-Klassen-Slot 8",
+      "en": "Multi class slot8"
+    },
+    "attributes.session.MultiClassSlot8.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 8. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 8. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.MultiClassSlot9.label": {
+      "de": "Mehrfach-Klassen-Slot 9",
+      "en": "Multi class slot9"
+    },
+    "attributes.session.MultiClassSlot9.description": {
+      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 9. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
+      "en": "Additional vehicle class id, slot 9. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+    },
+    "attributes.session.VehicleModelId.label": {
+      "de": "Fahrzeugmodell-ID",
+      "en": "Vehicle model id"
+    },
+    "attributes.session.VehicleModelId.description": {
+      "de": "Fahrzeugmodell-ID, die verwendet wird, wenn identische Fahrzeuge erzwungen werden (Sitzungsflag FORCE_IDENTICAL_VEHICLES ist gesetzt). Wenn sie vom Server gesteuert wird, setzen Sie auch das Attribut ServerControlsVehicle. Die aktuelle Fahrzeugliste ist auch über die HTTP-API unter /api/list/vehicles und in den globalen Lua-Tabellen lists.vehicles, id_to_vehicle und name_to_vehicle verfügbar.",
+      "en": "Vehicle model id, used when forcing identical vehicles (session flag FORCE_IDENTICAL_VEHICLES is set). If controlled from the server also set attribute ServerControlsVehicle. Latest vehicle list is available also via HTTP API at /api/list/vehicles and in Lua global tables lists.vehicles, id_to_vehicle and name_to_vehicle."
+    },
+    "attributes.session.MinimumOnlineRank.label": {
+      "de": "Mindest-Online-Rang",
+      "en": "Minimum online rank"
+    },
+    "attributes.session.MinimumOnlineRank.description": {
+      "de": "Der Mindest-Online-Sicherheitsrang. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/online_rep oder in den globalen Lua-Tabellen lists.enums.online_rep, OnlineRep und value_to_online_rep verfügbar.",
+      "en": "Minimum online safety rank. The enum values are available also via HTTP API at /api/list/enums/online_rep or in Lua global tables lists.enums.online_rep, OnlineRep and value_to_online_rep."
+    },
+    "attributes.session.MinimumOnlineStrength.label": {
+      "de": "Mindest-Online-Stärke",
+      "en": "Minimum online strength"
+    },
+    "attributes.session.MinimumOnlineStrength.description": {
+      "de": "Die minimale Online-Stärke. Gültige Werte liegen im Bereich von 100 bis 5000.",
+      "en": "Minimum online strength. Valid values are in range from 100 to 5000."
+    },
+    "attributes.session.PracticeLength.label": {
+      "de": "Trainingslänge",
+      "en": "Practice length"
+    },
+    "attributes.session.PracticeLength.description": {
+      "de": "Die Länge der Trainings session in Minuten.",
+      "en": "Length of practice session in minutes."
+    },
+    "attributes.session.PracticeDateHour.label": {
+      "de": "Trainingsdatum Stunde",
+      "en": "Practice date hour"
+    },
+    "attributes.session.PracticeDateHour.description": {
+      "de": "Das Startdatum der Trainings session - Stunde des Tages.",
+      "en": "Starting practice session date - hour of day."
+    },
+    "attributes.session.PracticeDateProgression.label": {
+      "de": "Training - Zeitfortschritt",
+      "en": "Practice date progression"
+    },
+    "attributes.session.PracticeDateProgression.description": {
+      "de": "Trainingssitzungs-Datum/Uhrzeit-Fortschrittsmultiplikator. Nur einige Werte zwischen 1 und 60 sind gültig, das Spiel kann den angeforderten Wert auf den nächstgelegenen gültigen Wert ändern.",
+      "en": "Practice session date/time progression multiplier. Only some values between 1 and 60 are valid, the game might change the requested value to closest valid one."
+    },
+    "attributes.session.PracticeWeatherProgression.label": {
+      "de": "Trainingswetter Fortschritt",
+      "en": "Practice weather progression"
+    },
+    "attributes.session.PracticeWeatherProgression.description": {
+      "de": "Trainingssitzungs-Wetter-Fortschrittsmultiplikator. Nur einige Werte zwischen 1 und 60 sind gültig, das Spiel kann den angeforderten Wert auf den nächstgelegenen gültigen Wert ändern.",
+      "en": "Practice session time-based forecast progression multiplier. Only some values between 1 and 60 are valid, the game might change the requested value to closest valid one."
+    },
+    "attributes.session.PracticeWeatherSlots.label": {
+      "de": "Trainingswetter Slots",
+      "en": "Practice weather slots"
+    },
+    "attributes.session.PracticeWeatherSlots.description": {
+      "de": "Anzahl der verwendeten Trainingswetter-Slots. Auf 0 setzen, um echtes Wetter zu verwenden, und auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen in WeatherSlotN zu interpolieren.",
+      "en": "Number of practice session weather slots in use. Set to 0 to use real weather, and to a number between 1 and 4 to interpolate between predefined templates in WeatherSlotN."
+    },
+    "attributes.session.PracticeWeatherSlot1.label": {
+      "de": "Trainingswetter-Slot 1",
+      "en": "Practice weather slot1"
+    },
+    "attributes.session.PracticeWeatherSlot1.description": {
+      "de": "Fester Wetterstatus für die Trainings session, Slot 1. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed practice session weather, slot 1. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.PracticeWeatherSlot2.label": {
+      "de": "Trainingswetter-Slot 2",
+      "en": "Practice weather slot2"
+    },
+    "attributes.session.PracticeWeatherSlot2.description": {
+      "de": "Fester Wetterstatus für die Trainings session, Slot 2. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed practice session weather, slot 2. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.PracticeWeatherSlot3.label": {
+      "de": "Trainingswetter-Slot 3 ",
+      "en": "Practice weather slot3"
+    },
+    "attributes.session.PracticeWeatherSlot3.description": {
+      "de": "Fester Wetterstatus für die Trainings session, Slot 3. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed practice session weather, slot 3. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.PracticeWeatherSlot4.label": {
+      "de": "Trainingswetter-Slot 4 ",
+      "en": "Practice weather slot4"
+    },
+    "attributes.session.PracticeWeatherSlot4.description": {
+      "de": "Fester Wetterstatus für die Trainings session, Slot 4. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed practice session weather, slot 4. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.PracticeLiveTrackPreset.label": {
+      "de": "Zustand der Streckenoberfläche - Voreinstellung für das Training",
+      "en": "Practice live track preset"
+    },
+    "attributes.session.PracticeLiveTrackPreset.description": {
+      "de": "Anfänglicher Streckenzustand für das Training. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "en": "Starting Live Track preset for the practice session. The enum values are available via HTTP API at /api/list/enums/weather"
+    },
+    "attributes.session.QualifyLength.label": {
+      "de": "Qualifying-Dauer",
+      "en": "Qualify length"
+    },
+    "attributes.session.QualifyLength.description": {
+      "de": "Dauer der Qualifying-Sitzung in Minuten.",
+      "en": "Length of qualification session in minutes."
+    },
+    "attributes.session.QualifyDateHour.label": {
+      "de": "Qualifying-Datum und Uhrzeit",
+      "en": "Qualify date hour"
+    },
+    "attributes.session.QualifyDateHour.description": {
+      "de": "Startdatum und -uhrzeit der Qualifying-Sitzung.",
+      "en": "Starting qualifying session date - hour of day."
+    },
+    "attributes.session.QualifyDateProgression.label": {
+      "de": "Qualifying - Zeitfortschritt",
+      "en": "Qualify date progression"
+    },
+    "attributes.session.QualifyDateProgression.description": {
+      "de": "Multiplikator für den Fortschritt des Qualifying-Datums/der Uhrzeit. Nur einige Werte zwischen 1 und 60 sind gültig, das Spiel könnte den angeforderten Wert auf den nächstliegenden gültigen Wert ändern.",
+      "en": "Qualifying session date/time progression multiplier. Only some values between 1 and 60 are valid, the game might change the requested value to closest valid one."
+    },
+    "attributes.session.QualifyWeatherProgression.label": {
+      "de": "Qualifying-Wetterfortschritt",
+      "en": "Qualify weather progression"
+    },
+    "attributes.session.QualifyWeatherProgression.description": {
+      "de": "Multiplikator für den Wetterfortschritt in der Qualifying-Sitzung. Nur einige Werte zwischen 1 und 60 sind gültig, das Spiel könnte den angeforderten Wert auf den nächstliegenden gültigen Wert ändern.",
+      "en": "Qualifying session time-based forecast progression multiplier. Only some values between 1 and 60 are valid, the game might change the requested value to closest valid one."
+    },
+    "attributes.session.QualifyWeatherSlots.label": {
+      "de": "Qualifying-Wetter-Slots",
+      "en": "Qualify weather slots"
+    },
+    "attributes.session.QualifyWeatherSlots.description": {
+      "de": "Anzahl der verwendeten Wetter-Slots in der Qualifying-Sitzung. Auf 0 setzen, um echtes Wetter zu verwenden, oder auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen in WeatherSlotN zu interpolieren.",
+      "en": "Number of qualifying session weather slots in use. Set to 0 to use real weather, and to a number between 1 and 4 to interpolate between predefined templates in WeatherSlotN."
+    },
+    "attributes.session.QualifyWeatherSlot1.label": {
+      "de": "Qualifying-Wetter-Slot 1",
+      "en": "Qualify weather slot1"
+    },
+    "attributes.session.QualifyWeatherSlot1.description": {
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 1. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "en": "Fixed qualifying session weather, slot 1. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.QualifyWeatherSlot2.label": {
+      "de": "Qualifying-Wetter-Slot 2",
+      "en": "Qualify weather slot2"
+    },
+    "attributes.session.QualifyWeatherSlot2.description": {
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 2. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "en": "Fixed qualifying session weather, slot 2. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.QualifyWeatherSlot3.label": {
+      "de": "Qualifying-Wetter-Slot 3",
+      "en": "Qualify weather slot3"
+    },
+    "attributes.session.QualifyWeatherSlot3.description": {
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 3. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "en": "Fixed qualifying session weather, slot 3. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.QualifyWeatherSlot4.label": {
+      "de": "Qualifying-Wetter-Slot 4",
+      "en": "Qualify weather slot4"
+    },
+    "attributes.session.QualifyWeatherSlot4.description": {
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 4. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "en": "Fixed qualifying session weather, slot 4. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.QualifyLiveTrackPreset.label": {
+      "de": "Zustand der Streckenoberfläche - Voreinstellung für das Qualifying",
+      "en": "Qualify live track preset"
+    },
+    "attributes.session.QualifyLiveTrackPreset.description": {
+      "de": "Anfänglicher Streckenzustand für das Qualifying. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "en": "Starting Live Track preset for the qualifying session."
+    },
+    "attributes.session.QualifyPrivateSession.label": {
+      "de": "Qualifying-Private-Sitzung",
+      "en": "Qualify private session"
+    },
+    "attributes.session.QualifyPrivateSession.description": {
+      "de": "Soll die Qualifying-Sitzung privat sein, bei der die Autos auf der Strecke isoliert laufen? (1) aktiviert, (0) deaktiviert",
+      "en": "Should qualifying session be private with cars running in isolation on track. (1) enabled, (0) disabled"
+    },
+    "attributes.session.RaceLength.label": {
+      "de": "Rennlänge",
+      "en": "Race length"
+    },
+    "attributes.session.RaceLength.description": {
+      "de": "Länge des Rennens in Runden.",
+      "en": "Race 1 length in lap count."
+    },
+    "attributes.session.RaceExtraLap.label": {
+      "de": "Extra-Runde",
+      "en": "Race extra lap"
+    },
+    "attributes.session.RaceExtraLap.description": {
+      "de": "Wenn aktiv, wird eine zusätzliche volle Runde zur Rennstrecke bei zeitgesteuerten Rennen hinzugefügt. Auf 0/1 setzen, um zu deaktivieren/aktivieren.",
+      "en": "When enabled an extra full lap will be added to the race distance of timed races. Set to 0/1 to disable/enable."
+    },
+    "attributes.session.RaceDateYear.label": {
+      "de": "Renndatum - Jahr",
+      "en": "Race date year"
+    },
+    "attributes.session.RaceDateYear.description": {
+      "de": "Jahr des Rennens.",
+      "en": "Starting race date - year."
+    },
+    "attributes.session.RaceDateMonth.label": {
+      "de": "Renndatum - Monat",
+      "en": "Race date month"
+    },
+    "attributes.session.RaceDateMonth.description": {
+      "de": "Monat des Rennens.",
+      "en": "Starting race date - month."
+    },
+    "attributes.session.RaceDateDay.label": {
+      "de": "Renndatum - Tag",
+      "en": "Race date day"
+    },
+    "attributes.session.RaceDateDay.description": {
+      "de": "Tag des Rennens.",
+      "en": "Starting race date - day of month."
+    },
+    "attributes.session.RaceDateHour.label": {
+      "de": "Renndatum - Stunde",
+      "en": "Race date hour"
+    },
+    "attributes.session.RaceDateHour.description": {
+      "de": "Stunde des Rennens.",
+      "en": "Starting race date - hour of day."
+    },
+    "attributes.session.RaceDateProgression.label": {
+      "de": "Rennen - Zeitfortschritt",
+      "en": "Race date progression"
+    },
+    "attributes.session.RaceDateProgression.description": {
+      "de": "Multiplikator für den Verlauf von Datum und Uhrzeit des Rennens. Es sind nur bestimmte Werte zwischen 1 und 60 zulässig; das Spiel passt den eingegebenen Wert möglicherweise an den nächstgelegenen zulässigen Wert an.",
+      "en": "Race date/time progression multiplier. Only some values between 1 and 60 are valid, the game might change the requested value to closest valid one."
+    },
+    "attributes.session.RaceWeatherProgression.label": {
+      "de": "Rennen - Wetterfortschritt",
+      "en": "Race weather progression"
+    },
+    "attributes.session.RaceWeatherProgression.description": {
+      "de": "Multiplikator für den Verlauf des Rennwetters. Es sind nur bestimmte Werte zwischen 1 und 60 zulässig; das Spiel passt den eingegebenen Wert möglicherweise an den nächstgelegenen zulässigen Wert an.",
+      "en": "Race session time-based forecast progression multiplier. Only some values between 1 and 60 are valid, the game might change the requested value to closest valid one."
+    },
+    "attributes.session.RaceWeatherSlots.label": {
+      "de": "Rennen - Wetter-Slots",
+      "en": "Race weather slots"
+    },
+    "attributes.session.RaceWeatherSlots.description": {
+      "de": "Anzahl der verwendeten Wetter-Slots im Rennen. Auf 0 setzen, um echtes Wetter zu verwenden, oder auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen in WeatherSlotN zu interpolieren.",
+      "en": "Number of race weather slots in use. Set to 0 to use real weather, and to a number between 1 and 4 to interpolate between predefined templates in WeatherSlotN."
+    },
+    "attributes.session.RaceWeatherSlot1.label": {
+      "de": "Rennen - Wetter-Slot 1",
+      "en": "Race weather slot1"
+    },
+    "attributes.session.RaceWeatherSlot1.description": {
+      "de": "Festgelegtes Rennwetter, Slot 1. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed race weather, slot 1. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.RaceWeatherSlot2.label": {
+      "de": "Rennen - Wetter-Slot 2",
+      "en": "Race weather slot2"
+    },
+    "attributes.session.RaceWeatherSlot2.description": {
+      "de": "Festgelegtes Rennwetter, Slot 2. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed race weather, slot 2. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.RaceWeatherSlot3.label": {
+      "de": "Rennen - Wetter-Slot 3",
+      "en": "Race weather slot3"
+    },
+    "attributes.session.RaceWeatherSlot3.description": {
+      "de": "Festgelegtes Rennwetter, Slot 3. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed race weather, slot 3. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.RaceWeatherSlot4.label": {
+      "de": "Rennen - Wetter-Slot 4",
+      "en": "Race weather slot4"
+    },
+    "attributes.session.RaceWeatherSlot4.description": {
+      "de": "Festgelegtes Rennwetter, Slot 4. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
+      "en": "Fixed race weather, slot 4. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+    },
+    "attributes.session.RaceRollingStart.label": {
+      "de": "Rennen - rollender Start",
+      "en": "Race rolling start"
+    },
+    "attributes.session.RaceRollingStart.description": {
+      "de": "Wert für den rollenden Start des Rennens. Setze den Wert auf 1, um diese Funktion zu aktivieren.",
+      "en": "Race rolling start value. Set 1 to enable."
+    },
+    "attributes.session.RaceMandatoryPitStops.label": {
+      "de": "Rennen - Pflicht-Boxenstopps",
+      "en": "Race mandatory pit stops"
+    },
+    "attributes.session.RaceMandatoryPitStops.description": {
+      "de": "Pflicht-Boxenstopps im Rennen. Setze den Wert auf 1, um diese Funktion zu aktivieren.",
+      "en": "Race mandatory pit stops. Set 1 to enable."
+    },
+    "attributes.session.RaceMandatoryPitStopsMinTyres.label": {
+      "de": "Rennen - Mindestreifen für Pflicht-Boxenstopps",
+      "en": "Race mandatory pit stops min tyres"
+    },
+    "attributes.session.RaceMandatoryPitStopsMinTyres.description": {
+      "de": "Mindestanzahl an Reifen, die für einen gültigen Pflicht-Boxenstopps erforderlich sind. 0-4",
+      "en": "Minimum tyres required for a valid mandatory stop. 0-4"
+    },
+    "attributes.session.RaceFormationLap.label": {
+      "de": "Rennen - Formationsrunde",
+      "en": "Race formation lap"
+    },
+    "attributes.session.RaceFormationLap.description": {
+      "de": "Formationsrunde in der Rennsession. Setze den Wert auf 1, um diese Funktion zu aktivieren. Nur gültig, wenn der rollende Start aktiviert ist.",
+      "en": "Race session formation lap. Set 1 to enable. Only valid if Race Rolling Start is enabled."
+    },
+    "attributes.session.RaceLiveTrackPreset.label": {
+      "de": "Zustand der Streckenoberfläche - Voreinstellung für das Rennen",
+      "en": "Race live track preset"
+    },
+    "attributes.session.RaceLiveTrackPreset.description": {
+      "de": "Anfänglicher Streckenzustand für das Rennen.",
+      "en": "Starting Live Track preset for the race session."
+    },
+    "attributes.session.RaceScheduledFullCourseYellow.label": {
+      "de": "Rennen - Geplante Vollkurs-Gelb",
+      "en": "Race scheduled full course yellow"
+    },
+    "attributes.session.RaceScheduledFullCourseYellow.description": {
+      "de": "Wenn für die Sitzung eine Vollkurs-Gelb garantiert sein soll. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/scheduledfcy oder in den globalen Lua-Tabellen „lists.enums.scheduledfcy“, „ScheduledFCY“ und „value_to_scheduledfcy“ verfügbar.",
+      "en": "If the session should be garaunteed to have an FCY. The enum values are available via HTTP API at /api/list/enums/scheduledfcy or in Lua global tables lists.enums.scheduledfcy, ScheduledFCY and value_to_scheduledfcy"
+    },
+    "attributes.session.DisablePitstopRefuelling.label": {
+      "de": "Boxenstopp-Tanken deaktivieren",
+      "en": "Disable pitstop refuelling"
+    },
+    "attributes.session.DisablePitstopRefuelling.description": {
+      "de": "Verhindert das Auftanken während von Boxenstößen, wenn auf 1 gesetzt.",
+      "en": "Prevents refuelling during pitstops when set to 1."
+    },
+    "vehicle_classes.description": {
+      "de": "Alle bekannten Fahrzeugklassen",
+      "en": "All known vehicle classes"
+    },
+    "vehicle_classes.F-3.label": {
+      "de": "F3 Brasil",
+      "en": "F3 Brasil"
+    },
+    "vehicle_classes.LMP2_Gen1.label": {
+      "de": "LMP2 Gen1",
+      "en": "LMP2 Gen1"
+    },
+    "vehicle_classes.GT3_Gen2.label": {
+      "de": "GT3 Gen2",
+      "en": "GT3 Gen2"
+    },
+    "vehicle_classes.F-Ultimate.label": {
+      "de": "Formula Ultimate",
+      "en": "Formula Ultimate"
+    },
+    "vehicle_classes.StockCarV8_2020.label": {
+      "de": "Stock Car Brasil 2020",
+      "en": "Stock Car Brasil 2020"
+    },
+    "vehicle_classes.F-Retro_Gen1.label": {
+      "de": "Formula Retro Gen1",
+      "en": "Formula Retro Gen1"
+    },
+    "vehicle_classes.OldStock.label": {
+      "de": "Old Stock",
+      "en": "Old Stock"
+    },
+    "vehicle_classes.Cat_Academy.label": {
+      "de": "Caterham Academy",
+      "en": "Caterham Academy"
+    },
+    "vehicle_classes.F-V10_Gen2.label": {
+      "de": "Formula V10 Gen2",
+      "en": "Formula V10 Gen2"
+    },
+    "vehicle_classes.KartShifter.label": {
+      "de": "Kart Shifter",
+      "en": "Kart Shifter"
+    },
+    "vehicle_classes.F-Classic_Gen3.label": {
+      "de": "Formula Classic Gen3",
+      "en": "Formula Classic Gen3"
+    },
+    "vehicle_classes.Opala79.label": {
+      "de": "Opala 79",
+      "en": "Opala 79"
+    },
+    "vehicle_classes.P1Gen2.label": {
+      "de": "P1 Gen2",
+      "en": "P1 Gen2"
+    },
+    "vehicle_classes.GT1.label": {
+      "de": "GT1",
+      "en": "GT1"
+    },
+    "vehicle_classes.F-Trainer_A.label": {
+      "de": "Formula Trainer Advanced",
+      "en": "Formula Trainer Advanced"
+    },
+    "vehicle_classes.P1.label": {
+      "de": "P1",
+      "en": "P1"
+    },
+    "vehicle_classes.TC60S2.label": {
+      "de": "Vintage Cars - Tier 2",
+      "en": "Vintage Cars - Tier 2"
+    },
+    "vehicle_classes.GT4.label": {
+      "de": "GT4",
+      "en": "GT4"
+    },
+    "vehicle_classes.F-Vee.label": {
+      "de": "Formula Vee Brazil Gen1",
+      "en": "Formula Vee Brazil Gen1"
+    },
+    "vehicle_classes.Hypercars.label": {
+      "de": "Hypercars",
+      "en": "Hypercars"
+    },
+    "vehicle_classes.Carrera Cup.label": {
+      "de": "Porsche Carrera Cup",
+      "en": "Porsche Carrera Cup"
+    },
+    "vehicle_classes.GTE.label": {
+      "de": "GTE",
+      "en": "GTE"
+    },
+    "vehicle_classes.F-Trainer.label": {
+      "de": "Formula Trainer",
+      "en": "Formula Trainer"
+    },
+    "vehicle_classes.LMP2_05.label": {
+      "de": "LMP2 2005",
+      "en": "LMP2 2005"
+    },
+    "vehicle_classes.F-USA_Gen1.label": {
+      "de": "Formula USA Gen1",
+      "en": "Formula USA Gen1"
+    },
+    "vehicle_classes.F-USA_Gen2.label": {
+      "de": "Formula USA Gen2",
+      "en": "Formula USA Gen2"
+    },
+    "vehicle_classes.F-Vintage_Gen2.label": {
+      "de": "Formula Vintage Gen2",
+      "en": "Formula Vintage Gen2"
+    },
+    "vehicle_classes.Kart125cc.label": {
+      "de": "Kart 125cc",
+      "en": "Kart 125cc"
+    },
+    "vehicle_classes.RX.label": {
+      "de": "RX",
+      "en": "RX"
+    },
+    "vehicle_classes.MiniChallenge.label": {
+      "de": "Mini JCW UK",
+      "en": "Mini JCW UK"
+    },
+    "vehicle_classes.Kartcross.label": {
+      "de": "Kartcross",
+      "en": "Kartcross"
+    },
+    "vehicle_classes.F-Vee_Gen2.label": {
+      "de": "Formula Vee Brazil Gen2",
+      "en": "Formula Vee Brazil Gen2"
+    },
+    "vehicle_classes.GT1_05.label": {
+      "de": "GT1 2005",
+      "en": "GT1 2005"
+    },
+    "vehicle_classes.Stock_USA_Gen3_LM.label": {
+      "de": "Stock USA Gen3 Le Mans",
+      "en": "Stock USA Gen3 Le Mans"
+    },
+    "vehicle_classes.STT.label": {
+      "de": "STT",
+      "en": "STT"
+    },
+    "vehicle_classes.CopaUno.label": {
+      "de": "Copa Uno",
+      "en": "Copa Uno"
+    },
+    "vehicle_classes.CopaClassicFL.label": {
+      "de": "Copa Classic FL",
+      "en": "Copa Classic FL"
+    },
+    "vehicle_classes.P4.label": {
+      "de": "P4",
+      "en": "P4"
+    },
+    "vehicle_classes.KartRental.label": {
+      "de": "Kart Rental",
+      "en": "Kart Rental"
+    },
+    "vehicle_classes.KartGX390.label": {
+      "de": "Kart GX390",
+      "en": "Kart GX390"
+    },
+    "vehicle_classes.StockCar99.label": {
+      "de": "Stock Car 99",
+      "en": "Stock Car 99"
+    },
+    "vehicle_classes.Stock_USA_Gen3.label": {
+      "de": "Stock USA Gen3",
+      "en": "Stock USA Gen3"
+    },
+    "vehicle_classes.Procar.label": {
+      "de": "Procar",
+      "en": "Procar"
+    },
+    "vehicle_classes.Hot Cars.label": {
+      "de": "Hot Cars",
+      "en": "Hot Cars"
+    },
+    "vehicle_classes.DPI.label": {
+      "de": "DPI",
+      "en": "DPI"
+    },
+    "vehicle_classes.StockCarV8_2021.label": {
+      "de": "Stock Car Brasil 2021",
+      "en": "Stock Car Brasil 2021"
+    },
+    "vehicle_classes.GT5.label": {
+      "de": "GT5",
+      "en": "GT5"
+    },
+    "vehicle_classes.ARC_Cam.label": {
+      "de": "ARC Camaro",
+      "en": "ARC Camaro"
+    },
+    "vehicle_classes.Stock_USA_Gen2.label": {
+      "de": "Stock USA Gen2",
+      "en": "Stock USA Gen2"
+    },
+    "vehicle_classes.CopaClassicB.label": {
+      "de": "Copa Classic B",
+      "en": "Copa Classic B"
+    },
+    "vehicle_classes.TSICup.label": {
+      "de": "TSI Cup",
+      "en": "TSI Cup"
+    },
+    "vehicle_classes.Group A.label": {
+      "de": "Group A",
+      "en": "Group A"
+    },
+    "vehicle_classes.GTR_04.label": {
+      "de": "GTR 2004",
+      "en": "GTR 2004"
+    },
+    "vehicle_classes.Supercars.label": {
+      "de": "Supercars",
+      "en": "Supercars"
+    },
+    "vehicle_classes.CopaFusca.label": {
+      "de": "Copa Fusca",
+      "en": "Copa Fusca"
+    },
+    "vehicle_classes.LES_2025.label": {
+      "de": "Ligier European Series",
+      "en": "Ligier European Series"
+    },
+    "vehicle_classes.SuperV8.label": {
+      "de": "Super V8",
+      "en": "Super V8"
+    },
+    "vehicle_classes.StockCarV8_2024.label": {
+      "de": "Stock Car Pro Series 2024",
+      "en": "Stock Car Pro Series 2024"
+    },
+    "vehicle_classes.G40Cup.label": {
+      "de": "G40Cup",
+      "en": "G40Cup"
+    },
+    "vehicle_classes.F-Classic_Gen4.label": {
+      "de": "Formula Classic Gen4",
+      "en": "Formula Classic Gen4"
+    },
+    "vehicle_classes.StockCarV8_2022.label": {
+      "de": "Stock Car Pro Series 2022",
+      "en": "Stock Car Pro Series 2022"
+    },
+    "vehicle_classes.F-Junior.label": {
+      "de": "Formula Junior",
+      "en": "Formula Junior"
+    },
+    "vehicle_classes.TC70S.label": {
+      "de": "GT Classics",
+      "en": "GT Classics"
+    },
+    "vehicle_classes.TC60S.label": {
+      "de": "Vintage Cars - Tier 1",
+      "en": "Vintage Cars - Tier 1"
+    },
+    "vehicle_classes.Super Trofeo.label": {
+      "de": "Super Trofeo",
+      "en": "Super Trofeo"
+    },
+    "vehicle_classes.F-Hitech_Gen1.label": {
+      "de": "F-Hitech Gen1",
+      "en": "F-Hitech Gen1"
+    },
+    "vehicle_classes.SuperKart.label": {
+      "de": "Superkart",
+      "en": "Superkart"
+    },
+    "vehicle_classes.F-USA_Gen3.label": {
+      "de": "Formula USA Gen3",
+      "en": "Formula USA Gen3"
+    },
+    "vehicle_classes.CopaTruck.label": {
+      "de": "Copa Truck",
+      "en": "Copa Truck"
+    },
+    "vehicle_classes.LMDh.label": {
+      "de": "LMDh",
+      "en": "LMDh"
+    },
+    "vehicle_classes.ST96.label": {
+      "de": "Super Trofeo 96",
+      "en": "Super Trofeo 96"
+    },
+    "vehicle_classes.LMP1_05.label": {
+      "de": "LMP1 2005",
+      "en": "LMP1 2005"
+    },
+    "vehicle_classes.Stock_USA_Gen1.label": {
+      "de": "Stock USA Gen1",
+      "en": "Stock USA Gen1"
+    },
+    "vehicle_classes.F-Hitech_Gen2.label": {
+      "de": "F-Hitech Gen2",
+      "en": "F-Hitech Gen2"
+    },
+    "vehicle_classes.LMP2.label": {
+      "de": "LMP2 Gen2",
+      "en": "LMP2 Gen2"
+    },
+    "vehicle_classes.P2.label": {
+      "de": "P2",
+      "en": "P2"
+    },
+    "vehicle_classes.Montana.label": {
+      "de": "Copa Montana",
+      "en": "Copa Montana"
+    },
+    "vehicle_classes.G55Supercup.label": {
+      "de": "G55 Supercup",
+      "en": "G55 Supercup"
+    },
+    "vehicle_classes.F-USA_2023.label": {
+      "de": "Formula USA 2023",
+      "en": "Formula USA 2023"
+    },
+    "vehicle_classes.Cat_Superlight.label": {
+      "de": "Caterham Superlight",
+      "en": "Caterham Superlight"
+    },
+    "vehicle_classes.F-V12.label": {
+      "de": "Formula V12",
+      "en": "Formula V12"
+    },
+    "vehicle_classes.StockCarV8_2023.label": {
+      "de": "Stock Car Pro Series 2023",
+      "en": "Stock Car Pro Series 2023"
+    },
+    "vehicle_classes.GT3.label": {
+      "de": "GT3",
+      "en": "GT3"
+    },
+    "vehicle_classes.Cat_Supersport.label": {
+      "de": "Caterham Supersport",
+      "en": "Caterham Supersport"
+    },
+    "vehicle_classes.F-Inter.label": {
+      "de": "Formula Inter",
+      "en": "Formula Inter"
+    },
+    "vehicle_classes.F-V10_Gen1.label": {
+      "de": "Formula V10 Gen1",
+      "en": "Formula V10 Gen1"
+    },
+    "vehicle_classes.F-Reiza.label": {
+      "de": "Formula Reiza",
+      "en": "Formula Reiza"
+    },
+    "vehicle_classes.Street.label": {
+      "de": "Street",
+      "en": "Street"
+    },
+    "vehicle_classes.F-Retro_Gen3.label": {
+      "de": "Formula Retro Gen3",
+      "en": "Formula Retro Gen3"
+    },
+    "vehicle_classes.StockCarV8.label": {
+      "de": "Stock Car Brasil 2019",
+      "en": "Stock Car Brasil 2019"
+    },
+    "vehicle_classes.LancerCup.label": {
+      "de": "Lancer Cup",
+      "en": "Lancer Cup"
+    },
+    "vehicle_classes.F-Ultimate_Gen2.label": {
+      "de": "Formula Ultimate Gen2",
+      "en": "Formula Ultimate Gen2"
+    },
+    "vehicle_classes.F-Vintage_Gen1.label": {
+      "de": "Formula Vintage Gen1",
+      "en": "Formula Vintage Gen1"
+    },
+    "vehicle_classes.Cat620R.label": {
+      "de": "Caterham 620R",
+      "en": "Caterham 620R"
+    },
+    "vehicle_classes.Opala86.label": {
+      "de": "Opala 86",
+      "en": "Opala 86"
+    },
+    "vehicle_classes.F-Retro_Gen2.label": {
+      "de": "Formula Retro Gen2",
+      "en": "Formula Retro Gen2"
+    },
+    "vehicle_classes.GT2_05.label": {
+      "de": "GT2 2005",
+      "en": "GT2 2005"
+    },
+    "vehicle_classes.GTOpen.label": {
+      "de": "GT Open",
+      "en": "GT Open"
+    },
+    "vehicle_classes.P3.label": {
+      "de": "P3",
+      "en": "P3"
+    },
+    "vehicle_classes.F-Classic_Gen2.label": {
+      "de": "Formula Classic Gen2",
+      "en": "Formula Classic Gen2"
+    },
+    "vehicle_classes.F-Dirt.label": {
+      "de": "Formula Dirt",
+      "en": "Formula Dirt"
+    },
+    "vehicle_classes.SprintRace.label": {
+      "de": "Sprint Race",
+      "en": "Sprint Race"
+    },
+    "vehicle_classes.F-Classic_Gen1.label": {
+      "de": "Formula Classic Gen1",
+      "en": "Formula Classic Gen1"
+    },
+    "vehicle_classes.Group C.label": {
+      "de": "Group C",
+      "en": "Group C"
+    },
+    "vehicles.description": {
+      "de": "Alle bekannten Fahrzeuge. Jede Struktur enthält die Fahrzeug-ID, den Namen und (optional) die Klasse des Fahrzeugs.",
+      "en": "All known vehicles. Each structure contains the vehicle's id, name and (optionally) class."
+    },
+    "vehicles.Alpine A424.label": {
+      "de": "Alpine a424",
+      "en": "Alpine a424"
+    },
+    "vehicles.Alpine A110 GT4 Evo.label": {
+      "de": "Alpine a110 gt4 evo",
+      "en": "Alpine a110 gt4 evo"
+    },
+    "vehicles.Aston Martin DBR9.label": {
+      "de": "Aston martin dbr9",
+      "en": "Aston martin dbr9"
+    },
+    "vehicles.Aston Martin Valkyrie.label": {
+      "de": "Aston martin valkyrie",
+      "en": "Aston martin valkyrie"
+    },
+    "vehicles.Aston Martin Valkyrie Hypercar.label": {
+      "de": "Aston martin valkyrie hypercar",
+      "en": "Aston martin valkyrie hypercar"
+    },
+    "vehicles.Aston Martin Vantage GTE.label": {
+      "de": "Aston martin vantage gte",
+      "en": "Aston martin vantage gte"
+    },
+    "vehicles.Aston Martin Vantage GT3 Evo.label": {
+      "de": "Aston martin vantage gt3 evo",
+      "en": "Aston martin vantage gt3 evo"
+    },
+    "vehicles.Aston Martin Vantage GT4 Evo.label": {
+      "de": "Aston martin vantage gt4 evo",
+      "en": "Aston martin vantage gt4 evo"
+    },
+    "vehicles.Audi R8 LMP1.label": {
+      "de": "Audi r8 lmp1",
+      "en": "Audi r8 lmp1"
+    },
+    "vehicles.Audi V8 quattro DTM.label": {
+      "de": "Audi v8 quattro dtm",
+      "en": "Audi v8 quattro dtm"
+    },
+    "vehicles.Audi R8 LMS GT3.label": {
+      "de": "Audi r8 lms gt3",
+      "en": "Audi r8 lms gt3"
+    },
+    "vehicles.Audi R8 LMS GT3 evo II.label": {
+      "de": "Audi r8 lms gt3 evo ii",
+      "en": "Audi r8 lms gt3 evo ii"
+    },
+    "vehicles.Audi R8 LMS GT4.label": {
+      "de": "Audi r8 lms gt4",
+      "en": "Audi r8 lms gt4"
+    },
+    "vehicles.Audi R8 V10 GT.label": {
+      "de": "Audi r8 v10 gt",
+      "en": "Audi r8 v10 gt"
+    },
+    "vehicles.BMW M1 Procar.label": {
+      "de": "Bmw m1 procar",
+      "en": "Bmw m1 procar"
+    },
+    "vehicles.BMW M3 Sport Evo Group A.label": {
+      "de": "Bmw m3 sport evo group a",
+      "en": "Bmw m3 sport evo group a"
+    },
+    "vehicles.BMW M Hybrid V8.label": {
+      "de": "Bmw m hybrid v8",
+      "en": "Bmw m hybrid v8"
+    },
+    "vehicles.BMW M3 E46 GTR.label": {
+      "de": "Bmw m3 e46 gtr",
+      "en": "Bmw m3 e46 gtr"
+    },
+    "vehicles.Mercedes-Benz 190E 2.5-16 Evo II DTM.label": {
+      "de": "Mercedes-benz 190 e 2.5-16 evo ii dtm",
+      "en": "Mercedes-benz 190 e 2.5-16 evo ii dtm"
+    },
+    "vehicles.MINI Cooper S 1965.label": {
+      "de": "Mini cooper s 1965",
+      "en": "Mini cooper s 1965"
+    },
+    "vehicles.MINI Cooper S 1965 B.label": {
+      "de": "Mini cooper s 1965 b",
+      "en": "Mini cooper s 1965 b"
+    },
+    "vehicles.Lotus 23.label": {
+      "de": "Lotus 23",
+      "en": "Lotus 23"
+    },
+    "vehicles.MINI Cooper JCW.label": {
+      "de": "Mini cooper jcw",
+      "en": "Mini cooper jcw"
+    },
+    "vehicles.Courage C60 Hybrid.label": {
+      "de": "Courage c60 hybrid",
+      "en": "Courage c60 hybrid"
+    },
+    "vehicles.Dallara SP1.label": {
+      "de": "Dallara sp1",
+      "en": "Dallara sp1"
+    },
+    "vehicles.Dodge Viper ACR.label": {
+      "de": "Dodge viper acr",
+      "en": "Dodge viper acr"
+    },
+    "vehicles.Dodge Viper GTS-R.label": {
+      "de": "Dodge viper gts-r",
+      "en": "Dodge viper gts-r"
+    },
+    "vehicles.Lola B05/40 Turbo.label": {
+      "de": "Lola b05/40 turbo",
+      "en": "Lola b05/40 turbo"
+    },
+    "vehicles.Lola B05/40 V8.label": {
+      "de": "Lola b05/40 v8",
+      "en": "Lola b05/40 v8"
+    },
+    "vehicles.Cadillac DPi-VR.label": {
+      "de": "Cadillac dpi-vr",
+      "en": "Cadillac dpi-vr"
+    },
+    "vehicles.Cadillac V-Series.R.label": {
+      "de": "Cadillac v-series.r",
+      "en": "Cadillac v-series.r"
+    },
+    "vehicles.Caterham Academy.label": {
+      "de": "Caterham academy",
+      "en": "Caterham academy"
+    },
+    "vehicles.Caterham 620R.label": {
+      "de": "Caterham 620 r",
+      "en": "Caterham 620 r"
+    },
+    "vehicles.Caterham Superlight.label": {
+      "de": "Caterham superlight",
+      "en": "Caterham superlight"
+    },
+    "vehicles.Caterham Supersport.label": {
+      "de": "Caterham supersport",
+      "en": "Caterham supersport"
+    },
+    "vehicles.Chevrolet Camaro SS.label": {
+      "de": "Chevrolet camaro ss",
+      "en": "Chevrolet camaro ss"
+    },
+    "vehicles.Dallara F301.label": {
+      "de": "Dallara f301",
+      "en": "Dallara f301"
+    },
+    "vehicles.Dallara F309.label": {
+      "de": "Dallara f309",
+      "en": "Dallara f309"
+    },
+    "vehicles.McLaren Honda MP4/4.label": {
+      "de": "Mc laren honda mp4/4",
+      "en": "Mc laren honda mp4/4"
+    },
+    "vehicles.McLaren Honda MP4/5B.label": {
+      "de": "Mc laren honda mp4/5 b",
+      "en": "Mc laren honda mp4/5 b"
+    },
+    "vehicles.McLaren Honda MP4/6.label": {
+      "de": "Mc laren honda mp4/6",
+      "en": "Mc laren honda mp4/6"
+    },
+    "vehicles.McLaren Honda MP4/7A.label": {
+      "de": "Mc laren honda mp4/7 a",
+      "en": "Mc laren honda mp4/7 a"
+    },
+    "vehicles.McLaren Cosworth MP4/8.label": {
+      "de": "Mc laren cosworth mp4/8",
+      "en": "Mc laren cosworth mp4/8"
+    },
+    "vehicles.Formula Classic Gen1 Model1.label": {
+      "de": "Formula classic gen1 model1",
+      "en": "Formula classic gen1 model1"
+    },
+    "vehicles.Formula Classic Gen1 Model2.label": {
+      "de": "Formula classic gen1 model2",
+      "en": "Formula classic gen1 model2"
+    },
+    "vehicles.Formula Classic Gen2 Model1.label": {
+      "de": "Formula classic gen2 model1",
+      "en": "Formula classic gen2 model1"
+    },
+    "vehicles.Formula Classic Gen2 Model2.label": {
+      "de": "Formula classic gen2 model2",
+      "en": "Formula classic gen2 model2"
+    },
+    "vehicles.Formula Classic Gen2 Model3.label": {
+      "de": "Formula classic gen2 model3",
+      "en": "Formula classic gen2 model3"
+    },
+    "vehicles.Formula Classic Gen3 Model1.label": {
+      "de": "Formula classic gen3 model1",
+      "en": "Formula classic gen3 model1"
+    },
+    "vehicles.Formula Classic Gen3 Model2.label": {
+      "de": "Formula classic gen3 model2",
+      "en": "Formula classic gen3 model2"
+    },
+    "vehicles.Formula Classic Gen3 Model3.label": {
+      "de": "Formula classic gen3 model3",
+      "en": "Formula classic gen3 model3"
+    },
+    "vehicles.Formula Classic Gen3 Model4.label": {
+      "de": "Formula classic gen3 model4",
+      "en": "Formula classic gen3 model4"
+    },
+    "vehicles.Formula Classic Gen4 Model1.label": {
+      "de": "Formula classic gen4 model1",
+      "en": "Formula classic gen4 model1"
+    },
+    "vehicles.Formula Classic Gen4 Model2.label": {
+      "de": "Formula classic gen4 model2",
+      "en": "Formula classic gen4 model2"
+    },
+    "vehicles.Formula Classic Gen4 Model3.label": {
+      "de": "Formula classic gen4 model3",
+      "en": "Formula classic gen4 model3"
+    },
+    "vehicles.Formula Vintage Gen1 Model1.label": {
+      "de": "Formula vintage gen1 model1",
+      "en": "Formula vintage gen1 model1"
+    },
+    "vehicles.Formula Vintage Gen1 Model2.label": {
+      "de": "Formula vintage gen1 model2",
+      "en": "Formula vintage gen1 model2"
+    },
+    "vehicles.Formula Vintage Gen2 Model1.label": {
+      "de": "Formula vintage gen2 model1",
+      "en": "Formula vintage gen2 model1"
+    },
+    "vehicles.Formula Vintage Gen2 Model2.label": {
+      "de": "Formula vintage gen2 model2",
+      "en": "Formula vintage gen2 model2"
+    },
+    "vehicles.Formula HiTech Gen1 Model1.label": {
+      "de": "Formula hi tech gen1 model1",
+      "en": "Formula hi tech gen1 model1"
+    },
+    "vehicles.Formula HiTech Gen1 Model2.label": {
+      "de": "Formula hi tech gen1 model2",
+      "en": "Formula hi tech gen1 model2"
+    },
+    "vehicles.Formula HiTech Gen1 Model3.label": {
+      "de": "Formula hi tech gen1 model3",
+      "en": "Formula hi tech gen1 model3"
+    },
+    "vehicles.Formula HiTech Gen1 Model4.label": {
+      "de": "Formula hi tech gen1 model4",
+      "en": "Formula hi tech gen1 model4"
+    },
+    "vehicles.Formula HiTech Gen2 Model1.label": {
+      "de": "Formula hi tech gen2 model1",
+      "en": "Formula hi tech gen2 model1"
+    },
+    "vehicles.Formula HiTech Gen2 Model2.label": {
+      "de": "Formula hi tech gen2 model2",
+      "en": "Formula hi tech gen2 model2"
+    },
+    "vehicles.Formula HiTech Gen2 Model3.label": {
+      "de": "Formula hi tech gen2 model3",
+      "en": "Formula hi tech gen2 model3"
+    },
+    "vehicles.Formula Junior.label": {
+      "de": "Formula junior",
+      "en": "Formula junior"
+    },
+    "vehicles.Formula USA 2023.label": {
+      "de": "Formula usa 2023",
+      "en": "Formula usa 2023"
+    },
+    "vehicles.Brabham BT26A.label": {
+      "de": "Brabham bt26 a",
+      "en": "Brabham bt26 a"
+    },
+    "vehicles.Lotus 49C.label": {
+      "de": "Lotus 49 c",
+      "en": "Lotus 49 c"
+    },
+    "vehicles.Lotus 72E.label": {
+      "de": "Lotus 72 e",
+      "en": "Lotus 72 e"
+    },
+    "vehicles.Lotus Renault 98T.label": {
+      "de": "Lotus renault 98 t",
+      "en": "Lotus renault 98 t"
+    },
+    "vehicles.Brabham BT44.label": {
+      "de": "Brabham bt44",
+      "en": "Brabham bt44"
+    },
+    "vehicles.Formula Retro V8.label": {
+      "de": "Formula retro v8",
+      "en": "Formula retro v8"
+    },
+    "vehicles.Formula Retro V12.label": {
+      "de": "Formula retro v12",
+      "en": "Formula retro v12"
+    },
+    "vehicles.McLaren M23.label": {
+      "de": "Mc laren m23",
+      "en": "Mc laren m23"
+    },
+    "vehicles.Formula Retro Gen2.label": {
+      "de": "Formula retro gen2",
+      "en": "Formula retro gen2"
+    },
+    "vehicles.Lotus 79.label": {
+      "de": "Lotus 79",
+      "en": "Lotus 79"
+    },
+    "vehicles.Brabham Alfa Romeo BT46B.label": {
+      "de": "Brabham alfa romeo bt46 b",
+      "en": "Brabham alfa romeo bt46 b"
+    },
+    "vehicles.Brabham Cosworth BT49.label": {
+      "de": "Brabham cosworth bt49",
+      "en": "Brabham cosworth bt49"
+    },
+    "vehicles.Brabham BMW BT52.label": {
+      "de": "Brabham bmw bt52",
+      "en": "Brabham bmw bt52"
+    },
+    "vehicles.McLaren Cosworth MP4/1C.label": {
+      "de": "Mc laren cosworth mp4/1 c",
+      "en": "Mc laren cosworth mp4/1 c"
+    },
+    "vehicles.Formula Retro Gen3 DFY.label": {
+      "de": "Formula retro gen3 dfy",
+      "en": "Formula retro gen3 dfy"
+    },
+    "vehicles.Formula Retro Gen3 Turbo.label": {
+      "de": "Formula retro gen3 turbo",
+      "en": "Formula retro gen3 turbo"
+    },
+    "vehicles.Formula Vee Gen1.label": {
+      "de": "Formula vee gen1",
+      "en": "Formula vee gen1"
+    },
+    "vehicles.Formula Vee Gen1 + Fin.label": {
+      "de": "Formula vee gen1 + fin",
+      "en": "Formula vee gen1 + fin"
+    },
+    "vehicles.Formula Vee Gen2.label": {
+      "de": "Formula vee gen2",
+      "en": "Formula vee gen2"
+    },
+    "vehicles.Formula Trainer.label": {
+      "de": "Formula trainer",
+      "en": "Formula trainer"
+    },
+    "vehicles.Formula Trainer Advanced.label": {
+      "de": "Formula trainer advanced",
+      "en": "Formula trainer advanced"
+    },
+    "vehicles.Formula Inter MG-15.label": {
+      "de": "Formula inter mg-15",
+      "en": "Formula inter mg-15"
+    },
+    "vehicles.Formula V8 Gen3.label": {
+      "de": "Formula v8 gen3",
+      "en": "Formula v8 gen3"
+    },
+    "vehicles.Formula Ultimate Hybrid Gen2.label": {
+      "de": "Formula ultimate hybrid gen2",
+      "en": "Formula ultimate hybrid gen2"
+    },
+    "vehicles.Formula Ultimate Hybrid Gen3.label": {
+      "de": "Formula ultimate hybrid gen3",
+      "en": "Formula ultimate hybrid gen3"
+    },
+    "vehicles.Formula V10 Gen2.label": {
+      "de": "Formula v10 gen2",
+      "en": "Formula v10 gen2"
+    },
+    "vehicles.Formula V10 Gen1.label": {
+      "de": "Formula v10 gen1",
+      "en": "Formula v10 gen1"
+    },
+    "vehicles.McLaren Mercedes MP4/12.label": {
+      "de": "Mc laren mercedes mp4/12",
+      "en": "Mc laren mercedes mp4/12"
+    },
+    "vehicles.Formula V12.label": {
+      "de": "Formula v12",
+      "en": "Formula v12"
+    },
+    "vehicles.Iveco Stralis.label": {
+      "de": "Iveco stralis",
+      "en": "Iveco stralis"
+    },
+    "vehicles.MAN TGX.label": {
+      "de": "Man tgx",
+      "en": "Man tgx"
+    },
+    "vehicles.Mercedes-Benz Actros.label": {
+      "de": "Mercedes-benz actros",
+      "en": "Mercedes-benz actros"
+    },
+    "vehicles.Volkswagen Constellation.label": {
+      "de": "Volkswagen constellation",
+      "en": "Volkswagen constellation"
+    },
+    "vehicles.Vulkan Truck.label": {
+      "de": "Vulkan truck",
+      "en": "Vulkan truck"
+    },
+    "vehicles.Ginetta G40.label": {
+      "de": "Ginetta g40",
+      "en": "Ginetta g40"
+    },
+    "vehicles.Ginetta G40 Cup.label": {
+      "de": "Ginetta g40 cup",
+      "en": "Ginetta g40 cup"
+    },
+    "vehicles.Ginetta G55 GT4 Supercup.label": {
+      "de": "Ginetta g55 gt4 supercup",
+      "en": "Ginetta g55 gt4 supercup"
+    },
+    "vehicles.Ginetta G55 GT4.label": {
+      "de": "Ginetta g55 gt4",
+      "en": "Ginetta g55 gt4"
+    },
+    "vehicles.Ginetta G55 GT3.label": {
+      "de": "Ginetta g55 gt3",
+      "en": "Ginetta g55 gt3"
+    },
+    "vehicles.Ginetta G58.label": {
+      "de": "Ginetta g58",
+      "en": "Ginetta g58"
+    },
+    "vehicles.Ginetta G58 Gen2.label": {
+      "de": "Ginetta g58 gen2",
+      "en": "Ginetta g58 gen2"
+    },
+    "vehicles.Ligier JS P217.label": {
+      "de": "Ligier js p217",
+      "en": "Ligier js p217"
+    },
+    "vehicles.Ligier JS P320.label": {
+      "de": "Ligier js p320",
+      "en": "Ligier js p320"
+    },
+    "vehicles.Ligier JS P4.label": {
+      "de": "Ligier js p4",
+      "en": "Ligier js p4"
+    },
+    "vehicles.Chevrolet Corvette C3.label": {
+      "de": "Chevrolet corvette c3",
+      "en": "Chevrolet corvette c3"
+    },
+    "vehicles.Chevrolet Corvette C3.R.label": {
+      "de": "Chevrolet corvette c3.r",
+      "en": "Chevrolet corvette c3.r"
+    },
+    "vehicles.Chevrolet Corvette C3.R Convertible.label": {
+      "de": "Chevrolet corvette c3.r convertible",
+      "en": "Chevrolet corvette c3.r convertible"
+    },
+    "vehicles.Chevrolet Corvette C5-R.label": {
+      "de": "Chevrolet corvette c5-r",
+      "en": "Chevrolet corvette c5-r"
+    },
+    "vehicles.Chevrolet Corvette C8.R.label": {
+      "de": "Chevrolet corvette c8.r",
+      "en": "Chevrolet corvette c8.r"
+    },
+    "vehicles.Chevrolet Corvette C8 Z06 (+Z07 Upgrade).label": {
+      "de": "Chevrolet corvette c8 z06 (+z07 upgrade)",
+      "en": "Chevrolet corvette c8 z06 (+z07 upgrade)"
+    },
+    "vehicles.Chevrolet Corvette Z06 GT3.R.label": {
+      "de": "Chevrolet corvette z06 gt3.r",
+      "en": "Chevrolet corvette z06 gt3.r"
+    },
+    "vehicles.Chevrolet Corvette GTP.label": {
+      "de": "Chevrolet corvette gtp",
+      "en": "Chevrolet corvette gtp"
+    },
+    "vehicles.Porsche 911 RSR GTE.label": {
+      "de": "Porsche 911 rsr gte",
+      "en": "Porsche 911 rsr gte"
+    },
+    "vehicles.BMW M8 GTE.label": {
+      "de": "Bmw m8 gte",
+      "en": "Bmw m8 gte"
+    },
+    "vehicles.BMW M6 GT3.label": {
+      "de": "Bmw m6 gt3",
+      "en": "Bmw m6 gt3"
+    },
+    "vehicles.BMW M4 GT4.label": {
+      "de": "Bmw m4 gt4",
+      "en": "Bmw m4 gt4"
+    },
+    "vehicles.BMW M4 GT3.label": {
+      "de": "Bmw m4 gt3",
+      "en": "Bmw m4 gt3"
+    },
+    "vehicles.BMW 2002 Turbo.label": {
+      "de": "Bmw 2002 turbo",
+      "en": "Bmw 2002 turbo"
+    },
+    "vehicles.Lamborghini Miura SV.label": {
+      "de": "Lamborghini miura sv",
+      "en": "Lamborghini miura sv"
+    },
+    "vehicles.Lamborghini Murcielago R-GT.label": {
+      "de": "Lamborghini murcielago r-gt",
+      "en": "Lamborghini murcielago r-gt"
+    },
+    "vehicles.Lamborghini Diablo SV-R.label": {
+      "de": "Lamborghini diablo sv-r",
+      "en": "Lamborghini diablo sv-r"
+    },
+    "vehicles.Lamborghini Veneno Roadster.label": {
+      "de": "Lamborghini veneno roadster",
+      "en": "Lamborghini veneno roadster"
+    },
+    "vehicles.Lamborghini Revuelto.label": {
+      "de": "Lamborghini revuelto",
+      "en": "Lamborghini revuelto"
+    },
+    "vehicles.Lamborghini Huracan Super Trofeo EVO2.label": {
+      "de": "Lamborghini huracan super trofeo evo2",
+      "en": "Lamborghini huracan super trofeo evo2"
+    },
+    "vehicles.Lamborghini Huracan GT3 EVO2.label": {
+      "de": "Lamborghini huracan gt3 evo2",
+      "en": "Lamborghini huracan gt3 evo2"
+    },
+    "vehicles.Lamborghini SC63.label": {
+      "de": "Lamborghini sc63",
+      "en": "Lamborghini sc63"
+    },
+    "vehicles.Ligier JS2 R.label": {
+      "de": "Ligier js2 r",
+      "en": "Ligier js2 r"
+    },
+    "vehicles.Mercedes-AMG GT3.label": {
+      "de": "Mercedes-amg gt3",
+      "en": "Mercedes-amg gt3"
+    },
+    "vehicles.Mercedes-AMG GT3 Evo.label": {
+      "de": "Mercedes-amg gt3 evo",
+      "en": "Mercedes-amg gt3 evo"
+    },
+    "vehicles.Mercedes-AMG GT4.label": {
+      "de": "Mercedes-amg gt4",
+      "en": "Mercedes-amg gt4"
+    },
+    "vehicles.Maserati GT2 Stradale.label": {
+      "de": "Maserati gt2 stradale",
+      "en": "Maserati gt2 stradale"
+    },
+    "vehicles.Maserati MC12 GT1.label": {
+      "de": "Maserati mc12 gt1",
+      "en": "Maserati mc12 gt1"
+    },
+    "vehicles.Milano GT36.label": {
+      "de": "Milano gt36",
+      "en": "Milano gt36"
+    },
+    "vehicles.Porsche 963.label": {
+      "de": "Porsche 963",
+      "en": "Porsche 963"
+    },
+    "vehicles.Porsche 911 GT3 R.label": {
+      "de": "Porsche 911 gt3 r",
+      "en": "Porsche 911 gt3 r"
+    },
+    "vehicles.Porsche 992 GT3 R.label": {
+      "de": "Porsche 992 gt3 r",
+      "en": "Porsche 992 gt3 r"
+    },
+    "vehicles.Nissan GT-R Nismo GT3.label": {
+      "de": "Nissan gt-r nismo gt3",
+      "en": "Nissan gt-r nismo gt3"
+    },
+    "vehicles.Porsche 911 GT3 Cup 3.8.label": {
+      "de": "Porsche 911 gt3 cup 3.8",
+      "en": "Porsche 911 gt3 cup 3.8"
+    },
+    "vehicles.Porsche 911 GT3 Cup 4.0.label": {
+      "de": "Porsche 911 gt3 cup 4.0",
+      "en": "Porsche 911 gt3 cup 4.0"
+    },
+    "vehicles.Porsche Cayman GT4 Clubsport MR.label": {
+      "de": "Porsche cayman gt4 clubsport mr",
+      "en": "Porsche cayman gt4 clubsport mr"
+    },
+    "vehicles.Porsche 996 GT3 RSR.label": {
+      "de": "Porsche 996 gt3 rsr",
+      "en": "Porsche 996 gt3 rsr"
+    },
+    "vehicles.McLaren 570S GT4.label": {
+      "de": "Mc laren 570 s gt4",
+      "en": "Mc laren 570 s gt4"
+    },
+    "vehicles.McLaren 720S GT3.label": {
+      "de": "Mc laren 720 s gt3",
+      "en": "Mc laren 720 s gt3"
+    },
+    "vehicles.McLaren 720S GT3 Evo.label": {
+      "de": "Mc laren 720 s gt3 evo",
+      "en": "Mc laren 720 s gt3 evo"
+    },
+    "vehicles.Chevrolet Camaro GT4.R.label": {
+      "de": "Chevrolet camaro gt4.r",
+      "en": "Chevrolet camaro gt4.r"
+    },
+    "vehicles.McLaren F1 GTR.label": {
+      "de": "Mc laren f1 gtr",
+      "en": "Mc laren f1 gtr"
+    },
+    "vehicles.Mercedes-Benz CLK LM.label": {
+      "de": "Mercedes-benz clk lm",
+      "en": "Mercedes-benz clk lm"
+    },
+    "vehicles.Porsche 911 GT1-98.label": {
+      "de": "Porsche 911 gt1-98",
+      "en": "Porsche 911 gt1-98"
+    },
+    "vehicles.Oreca 07.label": {
+      "de": "Oreca 07",
+      "en": "Oreca 07"
+    },
+    "vehicles.Nissan R390 GT1.label": {
+      "de": "Nissan r390 gt1",
+      "en": "Nissan r390 gt1"
+    },
+    "vehicles.Nissan R89C.label": {
+      "de": "Nissan r89 c",
+      "en": "Nissan r89 c"
+    },
+    "vehicles.Porsche 962C.label": {
+      "de": "Porsche 962 c",
+      "en": "Porsche 962 c"
+    },
+    "vehicles.Sauber Mercedes C9.label": {
+      "de": "Sauber mercedes c9",
+      "en": "Sauber mercedes c9"
+    },
+    "vehicles.Brabham BT62.label": {
+      "de": "Brabham bt62",
+      "en": "Brabham bt62"
+    },
+    "vehicles.Kart 2-Stroke 125cc Direct.label": {
+      "de": "Kart 2-stroke 125cc direct",
+      "en": "Kart 2-stroke 125cc direct"
+    },
+    "vehicles.Kart 4-Stroke Rental.label": {
+      "de": "Kart 4-stroke rental",
+      "en": "Kart 4-stroke rental"
+    },
+    "vehicles.Kart 4-Stroke Race.label": {
+      "de": "Kart 4-stroke race",
+      "en": "Kart 4-stroke race"
+    },
+    "vehicles.Kart 2-Stroke 125cc Shifter.label": {
+      "de": "Kart 2-stroke 125cc shifter",
+      "en": "Kart 2-stroke 125cc shifter"
+    },
+    "vehicles.MCR S2000.label": {
+      "de": "Mcr s2000",
+      "en": "Mcr s2000"
+    },
+    "vehicles.McLaren F1 LM.label": {
+      "de": "Mc laren f1 lm",
+      "en": "Mc laren f1 lm"
+    },
+    "vehicles.McLaren Senna.label": {
+      "de": "Mc laren senna",
+      "en": "Mc laren senna"
+    },
+    "vehicles.MetalMoro AJR Chevrolet.label": {
+      "de": "Metal moro ajr chevrolet",
+      "en": "Metal moro ajr chevrolet"
+    },
+    "vehicles.MetalMoro AJR Honda.label": {
+      "de": "Metal moro ajr honda",
+      "en": "Metal moro ajr honda"
+    },
+    "vehicles.MetalMoro AJR Judd.label": {
+      "de": "Metal moro ajr judd",
+      "en": "Metal moro ajr judd"
+    },
+    "vehicles.MetalMoro AJR Nissan.label": {
+      "de": "Metal moro ajr nissan",
+      "en": "Metal moro ajr nissan"
+    },
+    "vehicles.MetalMoro AJR Gen2 Chevrolet.label": {
+      "de": "Metal moro ajr gen2 chevrolet",
+      "en": "Metal moro ajr gen2 chevrolet"
+    },
+    "vehicles.MetalMoro AJR Gen2 Honda.label": {
+      "de": "Metal moro ajr gen2 honda",
+      "en": "Metal moro ajr gen2 honda"
+    },
+    "vehicles.MetalMoro AJR Gen2 Nissan.label": {
+      "de": "Metal moro ajr gen2 nissan",
+      "en": "Metal moro ajr gen2 nissan"
+    },
+    "vehicles.Mitsubishi Lancer R.label": {
+      "de": "Mitsubishi lancer r",
+      "en": "Mitsubishi lancer r"
+    },
+    "vehicles.Mitsubishi Lancer RS.label": {
+      "de": "Mitsubishi lancer rs",
+      "en": "Mitsubishi lancer rs"
+    },
+    "vehicles.Copa Montana.label": {
+      "de": "Copa montana",
+      "en": "Copa montana"
+    },
+    "vehicles.Sprint Race.label": {
+      "de": "Sprint race",
+      "en": "Sprint race"
+    },
+    "vehicles.Super V8.label": {
+      "de": "Super v8",
+      "en": "Super v8"
+    },
+    "vehicles.Chevrolet Cruze Stock Car 2019.label": {
+      "de": "Chevrolet cruze stock car 2019",
+      "en": "Chevrolet cruze stock car 2019"
+    },
+    "vehicles.Chevrolet Cruze Stock Car 2020.label": {
+      "de": "Chevrolet cruze stock car 2020",
+      "en": "Chevrolet cruze stock car 2020"
+    },
+    "vehicles.Chevrolet Cruze Stock Car 2021.label": {
+      "de": "Chevrolet cruze stock car 2021",
+      "en": "Chevrolet cruze stock car 2021"
+    },
+    "vehicles.Chevrolet Cruze Stock Car 2022.label": {
+      "de": "Chevrolet cruze stock car 2022",
+      "en": "Chevrolet cruze stock car 2022"
+    },
+    "vehicles.Chevrolet Cruze Stock Car 2023.label": {
+      "de": "Chevrolet cruze stock car 2023",
+      "en": "Chevrolet cruze stock car 2023"
+    },
+    "vehicles.Chevrolet Cruze Stock Car 2024.label": {
+      "de": "Chevrolet cruze stock car 2024",
+      "en": "Chevrolet cruze stock car 2024"
+    },
+    "vehicles.Toyota Corolla Stock Car 2020.label": {
+      "de": "Toyota corolla stock car 2020",
+      "en": "Toyota corolla stock car 2020"
+    },
+    "vehicles.Toyota Corolla Stock Car 2021.label": {
+      "de": "Toyota corolla stock car 2021",
+      "en": "Toyota corolla stock car 2021"
+    },
+    "vehicles.Toyota Corolla Stock Car 2022.label": {
+      "de": "Toyota corolla stock car 2022",
+      "en": "Toyota corolla stock car 2022"
+    },
+    "vehicles.Toyota Corolla Stock Car 2023.label": {
+      "de": "Toyota corolla stock car 2023",
+      "en": "Toyota corolla stock car 2023"
+    },
+    "vehicles.Toyota Corolla Stock Car 2024.label": {
+      "de": "Toyota corolla stock car 2024",
+      "en": "Toyota corolla stock car 2024"
+    },
+    "vehicles.Chevrolet Omega Stock Car 1999.label": {
+      "de": "Chevrolet omega stock car 1999",
+      "en": "Chevrolet omega stock car 1999"
+    },
+    "vehicles.Stock USA Gen1.label": {
+      "de": "Stock usa gen1",
+      "en": "Stock usa gen1"
+    },
+    "vehicles.Stock USA Gen2.label": {
+      "de": "Stock usa gen2",
+      "en": "Stock usa gen2"
+    },
+    "vehicles.Stock USA Gen3.label": {
+      "de": "Stock usa gen3",
+      "en": "Stock usa gen3"
+    },
+    "vehicles.Stock USA Gen3 LM.label": {
+      "de": "Stock usa gen3 lm",
+      "en": "Stock usa gen3 lm"
+    },
+    "vehicles.Superkart 250cc.label": {
+      "de": "Superkart 250cc",
+      "en": "Superkart 250cc"
+    },
+    "vehicles.Super Trophy Trucks.label": {
+      "de": "Super trophy trucks",
+      "en": "Super trophy trucks"
+    },
+    "vehicles.Ultima GTR.label": {
+      "de": "Ultima gtr",
+      "en": "Ultima gtr"
+    },
+    "vehicles.Ultima GTR Race.label": {
+      "de": "Ultima gtr race",
+      "en": "Ultima gtr race"
+    },
+    "vehicles.MetalMoro MRX Duratec Turbo P2.label": {
+      "de": "Metal moro mrx duratec turbo p2",
+      "en": "Metal moro mrx duratec turbo p2"
+    },
+    "vehicles.MetalMoro MRX Honda P3.label": {
+      "de": "Metal moro mrx honda p3",
+      "en": "Metal moro mrx honda p3"
+    },
+    "vehicles.MetalMoro MRX Duratec P4.label": {
+      "de": "Metal moro mrx duratec p4",
+      "en": "Metal moro mrx duratec p4"
+    },
+    "vehicles.MetalMoro MRX Duratec Turbo P3.label": {
+      "de": "Metal moro mrx duratec turbo p3",
+      "en": "Metal moro mrx duratec turbo p3"
+    },
+    "vehicles.Roco 001.label": {
+      "de": "Roco 001",
+      "en": "Roco 001"
+    },
+    "vehicles.Sigma P1.label": {
+      "de": "Sigma p1",
+      "en": "Sigma p1"
+    },
+    "vehicles.Sigma P1 G5.label": {
+      "de": "Sigma p1 g5",
+      "en": "Sigma p1 g5"
+    },
+    "vehicles.Chevrolet Opala Stock Cars 1979.label": {
+      "de": "Chevrolet opala stock cars 1979",
+      "en": "Chevrolet opala stock cars 1979"
+    },
+    "vehicles.Chevrolet Opala Stock Cars 1986.label": {
+      "de": "Chevrolet opala stock cars 1986",
+      "en": "Chevrolet opala stock cars 1986"
+    },
+    "vehicles.Chevrolet Opala Old Stock Race.label": {
+      "de": "Chevrolet opala old stock race",
+      "en": "Chevrolet opala old stock race"
+    },
+    "vehicles.Porsche 911 RSR 1974.label": {
+      "de": "Porsche 911 rsr 1974",
+      "en": "Porsche 911 rsr 1974"
+    },
+    "vehicles.Puma GTB.label": {
+      "de": "Puma gtb",
+      "en": "Puma gtb"
+    },
+    "vehicles.Puma GTE.label": {
+      "de": "Puma gte",
+      "en": "Puma gte"
+    },
+    "vehicles.Puma P052.label": {
+      "de": "Puma p052",
+      "en": "Puma p052"
+    },
+    "vehicles.Chevrolet Chevette.label": {
+      "de": "Chevrolet chevette",
+      "en": "Chevrolet chevette"
+    },
+    "vehicles.Copa Fusca.label": {
+      "de": "Copa fusca",
+      "en": "Copa fusca"
+    },
+    "vehicles.Fusca Classic FL.label": {
+      "de": "Fusca classic fl",
+      "en": "Fusca classic fl"
+    },
+    "vehicles.Copa Uno.label": {
+      "de": "Copa uno",
+      "en": "Copa uno"
+    },
+    "vehicles.Uno Classic B.label": {
+      "de": "Uno classic b",
+      "en": "Uno classic b"
+    },
+    "vehicles.Gol Classic FL.label": {
+      "de": "Gol classic fl",
+      "en": "Gol classic fl"
+    },
+    "vehicles.Gol Classic B.label": {
+      "de": "Gol classic b",
+      "en": "Gol classic b"
+    },
+    "vehicles.Passat Classic FL.label": {
+      "de": "Passat classic fl",
+      "en": "Passat classic fl"
+    },
+    "vehicles.Passat Classic B.label": {
+      "de": "Passat classic b",
+      "en": "Passat classic b"
+    },
+    "vehicles.Fusca 1 Hot Cars.label": {
+      "de": "Fusca 1 hot cars",
+      "en": "Fusca 1 hot cars"
+    },
+    "vehicles.Fusca 2 Hot Cars.label": {
+      "de": "Fusca 2 hot cars",
+      "en": "Fusca 2 hot cars"
+    },
+    "vehicles.Passat Hot Cars.label": {
+      "de": "Passat hot cars",
+      "en": "Passat hot cars"
+    },
+    "vehicles.Gol Hot Cars.label": {
+      "de": "Gol hot cars",
+      "en": "Gol hot cars"
+    },
+    "vehicles.ARC Camaro.label": {
+      "de": "Arc camaro",
+      "en": "Arc camaro"
+    },
+    "vehicles.Volkswagen Polo.label": {
+      "de": "Volkswagen polo",
+      "en": "Volkswagen polo"
+    },
+    "vehicles.Volkswagen Polo GTS.label": {
+      "de": "Volkswagen polo gts",
+      "en": "Volkswagen polo gts"
+    },
+    "vehicles.Volkswagen Virtus.label": {
+      "de": "Volkswagen virtus",
+      "en": "Volkswagen virtus"
+    },
+    "vehicles.Volkswagen Virtus GTS.label": {
+      "de": "Volkswagen virtus gts",
+      "en": "Volkswagen virtus gts"
+    },
+    "vehicles.Lola T95/00 Ford-Cosworth.label": {
+      "de": "Lola t95/00 ford-cosworth",
+      "en": "Lola t95/00 ford-cosworth"
+    },
+    "vehicles.Lola T95/00 Mercedes-Benz.label": {
+      "de": "Lola t95/00 mercedes-benz",
+      "en": "Lola t95/00 mercedes-benz"
+    },
+    "vehicles.Lola T98/00 Ford-Cosworth.label": {
+      "de": "Lola t98/00 ford-cosworth",
+      "en": "Lola t98/00 ford-cosworth"
+    },
+    "vehicles.Lola B2K00 Ford-Cosworth.label": {
+      "de": "Lola b2 k00 ford-cosworth",
+      "en": "Lola b2 k00 ford-cosworth"
+    },
+    "vehicles.Lola B2K00 Mercedes-Benz.label": {
+      "de": "Lola b2 k00 mercedes-benz",
+      "en": "Lola b2 k00 mercedes-benz"
+    },
+    "vehicles.Lola B2K00 Toyota.label": {
+      "de": "Lola b2 k00 toyota",
+      "en": "Lola b2 k00 toyota"
+    },
+    "vehicles.Reynard 95i Ford-Cosworth.label": {
+      "de": "Reynard 95i ford-cosworth",
+      "en": "Reynard 95i ford-cosworth"
+    },
+    "vehicles.Reynard 95i Honda.label": {
+      "de": "Reynard 95i honda",
+      "en": "Reynard 95i honda"
+    },
+    "vehicles.Reynard 95i Mercedes-Benz.label": {
+      "de": "Reynard 95i mercedes-benz",
+      "en": "Reynard 95i mercedes-benz"
+    },
+    "vehicles.Reynard 98i Ford-Cosworth.label": {
+      "de": "Reynard 98i ford-cosworth",
+      "en": "Reynard 98i ford-cosworth"
+    },
+    "vehicles.Reynard 98i Honda.label": {
+      "de": "Reynard 98i honda",
+      "en": "Reynard 98i honda"
+    },
+    "vehicles.Reynard 98i Mercedes-Benz.label": {
+      "de": "Reynard 98i mercedes-benz",
+      "en": "Reynard 98i mercedes-benz"
+    },
+    "vehicles.Reynard 98i Toyota.label": {
+      "de": "Reynard 98i toyota",
+      "en": "Reynard 98i toyota"
+    },
+    "vehicles.Reynard 2Ki Ford-Cosworth.label": {
+      "de": "Reynard 2 ki ford-cosworth",
+      "en": "Reynard 2 ki ford-cosworth"
+    },
+    "vehicles.Reynard 2Ki Honda.label": {
+      "de": "Reynard 2 ki honda",
+      "en": "Reynard 2 ki honda"
+    },
+    "vehicles.Reynard 2Ki Mercedes-Benz.label": {
+      "de": "Reynard 2 ki mercedes-benz",
+      "en": "Reynard 2 ki mercedes-benz"
+    },
+    "vehicles.Reynard 2Ki Toyota.label": {
+      "de": "Reynard 2 ki toyota",
+      "en": "Reynard 2 ki toyota"
+    },
+    "vehicles.Swift 009c Ford-Cosworth.label": {
+      "de": "Swift 009c ford-cosworth",
+      "en": "Swift 009c ford-cosworth"
+    },
+    "vehicles.Formula Dirt.label": {
+      "de": "Formula dirt",
+      "en": "Formula dirt"
+    },
+    "vehicles.Kart Cross.label": {
+      "de": "Kart cross",
+      "en": "Kart cross"
+    },
+    "vehicles.MINI Countryman R60 RX.label": {
+      "de": "Mini countryman r60 rx",
+      "en": "Mini countryman r60 rx"
+    },
+    "vehicles.Citroen DS3 RX.label": {
+      "de": "Citroen ds3 rx",
+      "en": "Citroen ds3 rx"
+    },
+    "vehicles.Volkswagen Polo RX.label": {
+      "de": "Volkswagen polo rx",
+      "en": "Volkswagen polo rx"
+    },
+    "vehicles.Mitsubishi Lancer Evo10 RX.label": {
+      "de": "Mitsubishi lancer evo10 rx",
+      "en": "Mitsubishi lancer evo10 rx"
+    },
+    "liveries.description": {
+      "de": "Alle bekannten Fahrzeuge. Jede Struktur enthält die Fahrzeug-ID, den Namen, (optional) die Klasse und eine Liste aller Lackierungen",
+      "en": "All known vehicles. Each structure contains the vehicle's id, name, (optionally) class and list of all liveries"
+    },
+    "liveries.Alpine A424.label": {
+      "de": "Alpine a424",
+      "en": "Alpine a424"
+    },
+    "liveries.Alpine A110 GT4 Evo.label": {
+      "de": "Alpine a110 gt4 evo",
+      "en": "Alpine a110 gt4 evo"
+    },
+    "liveries.Aston Martin DBR9.label": {
+      "de": "Aston martin dbr9",
+      "en": "Aston martin dbr9"
+    },
+    "liveries.Aston Martin Valkyrie.label": {
+      "de": "Aston martin valkyrie",
+      "en": "Aston martin valkyrie"
+    },
+    "liveries.Aston Martin Valkyrie Hypercar.label": {
+      "de": "Aston martin valkyrie hypercar",
+      "en": "Aston martin valkyrie hypercar"
+    },
+    "liveries.Aston Martin Vantage GTE.label": {
+      "de": "Aston martin vantage gte",
+      "en": "Aston martin vantage gte"
+    },
+    "liveries.Aston Martin Vantage GT3 Evo.label": {
+      "de": "Aston martin vantage gt3 evo",
+      "en": "Aston martin vantage gt3 evo"
+    },
+    "liveries.Aston Martin Vantage GT4 Evo.label": {
+      "de": "Aston martin vantage gt4 evo",
+      "en": "Aston martin vantage gt4 evo"
+    },
+    "liveries.Audi R8 LMP1.label": {
+      "de": "Audi r8 lmp1",
+      "en": "Audi r8 lmp1"
+    },
+    "liveries.Audi V8 quattro DTM.label": {
+      "de": "Audi v8 quattro dtm",
+      "en": "Audi v8 quattro dtm"
+    },
+    "liveries.Audi R8 LMS GT3.label": {
+      "de": "Audi r8 lms gt3",
+      "en": "Audi r8 lms gt3"
+    },
+    "liveries.Audi R8 LMS GT3 evo II.label": {
+      "de": "Audi r8 lms gt3 evo ii",
+      "en": "Audi r8 lms gt3 evo ii"
+    },
+    "liveries.Audi R8 LMS GT4.label": {
+      "de": "Audi r8 lms gt4",
+      "en": "Audi r8 lms gt4"
+    },
+    "liveries.Audi R8 V10 GT.label": {
+      "de": "Audi r8 v10 gt",
+      "en": "Audi r8 v10 gt"
+    },
+    "liveries.BMW M1 Procar.label": {
+      "de": "Bmw m1 procar",
+      "en": "Bmw m1 procar"
+    },
+    "liveries.BMW M3 Sport Evo Group A.label": {
+      "de": "Bmw m3 sport evo group a",
+      "en": "Bmw m3 sport evo group a"
+    },
+    "liveries.BMW M Hybrid V8.label": {
+      "de": "Bmw m hybrid v8",
+      "en": "Bmw m hybrid v8"
+    },
+    "liveries.BMW M3 E46 GTR.label": {
+      "de": "Bmw m3 e46 gtr",
+      "en": "Bmw m3 e46 gtr"
+    },
+    "liveries.Mercedes-Benz 190E 2.5-16 Evo II DTM.label": {
+      "de": "Mercedes-benz 190 e 2.5-16 evo ii dtm",
+      "en": "Mercedes-benz 190 e 2.5-16 evo ii dtm"
+    },
+    "liveries.MINI Cooper S 1965.label": {
+      "de": "Mini cooper s 1965",
+      "en": "Mini cooper s 1965"
+    },
+    "liveries.MINI Cooper S 1965 B.label": {
+      "de": "Mini cooper s 1965 b",
+      "en": "Mini cooper s 1965 b"
+    },
+    "liveries.Lotus 23.label": {
+      "de": "Lotus 23",
+      "en": "Lotus 23"
+    },
+    "liveries.MINI Cooper JCW.label": {
+      "de": "Mini cooper jcw",
+      "en": "Mini cooper jcw"
+    },
+    "liveries.Courage C60 Hybrid.label": {
+      "de": "Courage c60 hybrid",
+      "en": "Courage c60 hybrid"
+    },
+    "liveries.Dallara SP1.label": {
+      "de": "Dallara sp1",
+      "en": "Dallara sp1"
+    },
+    "liveries.Dodge Viper ACR.label": {
+      "de": "Dodge viper acr",
+      "en": "Dodge viper acr"
+    },
+    "liveries.Dodge Viper GTS-R.label": {
+      "de": "Dodge viper gts-r",
+      "en": "Dodge viper gts-r"
+    },
+    "liveries.Lola B05/40 Turbo.label": {
+      "de": "Lola b05/40 turbo",
+      "en": "Lola b05/40 turbo"
+    },
+    "liveries.Lola B05/40 V8.label": {
+      "de": "Lola b05/40 v8",
+      "en": "Lola b05/40 v8"
+    },
+    "liveries.Cadillac DPi-VR.label": {
+      "de": "Cadillac dpi-vr",
+      "en": "Cadillac dpi-vr"
+    },
+    "liveries.Cadillac V-Series.R.label": {
+      "de": "Cadillac v-series.r",
+      "en": "Cadillac v-series.r"
+    },
+    "liveries.Caterham Academy.label": {
+      "de": "Caterham academy",
+      "en": "Caterham academy"
+    },
+    "liveries.Caterham 620R.label": {
+      "de": "Caterham 620 r",
+      "en": "Caterham 620 r"
+    },
+    "liveries.Caterham Superlight.label": {
+      "de": "Caterham superlight",
+      "en": "Caterham superlight"
+    },
+    "liveries.Caterham Supersport.label": {
+      "de": "Caterham supersport",
+      "en": "Caterham supersport"
+    },
+    "liveries.Chevrolet Camaro SS.label": {
+      "de": "Chevrolet camaro ss",
+      "en": "Chevrolet camaro ss"
+    },
+    "liveries.Dallara F301.label": {
+      "de": "Dallara f301",
+      "en": "Dallara f301"
+    },
+    "liveries.Dallara F309.label": {
+      "de": "Dallara f309",
+      "en": "Dallara f309"
+    },
+    "liveries.McLaren Honda MP4/4.label": {
+      "de": "Mc laren honda mp4/4",
+      "en": "Mc laren honda mp4/4"
+    },
+    "liveries.McLaren Honda MP4/5B.label": {
+      "de": "Mc laren honda mp4/5 b",
+      "en": "Mc laren honda mp4/5 b"
+    },
+    "liveries.McLaren Honda MP4/6.label": {
+      "de": "Mc laren honda mp4/6",
+      "en": "Mc laren honda mp4/6"
+    },
+    "liveries.McLaren Honda MP4/7A.label": {
+      "de": "Mc laren honda mp4/7 a",
+      "en": "Mc laren honda mp4/7 a"
+    },
+    "liveries.McLaren Cosworth MP4/8.label": {
+      "de": "Mc laren cosworth mp4/8",
+      "en": "Mc laren cosworth mp4/8"
+    },
+    "liveries.Formula Classic Gen1 Model1.label": {
+      "de": "Formula classic gen1 model1",
+      "en": "Formula classic gen1 model1"
+    },
+    "liveries.Formula Classic Gen1 Model2.label": {
+      "de": "Formula classic gen1 model2",
+      "en": "Formula classic gen1 model2"
+    },
+    "liveries.Formula Classic Gen2 Model1.label": {
+      "de": "Formula classic gen2 model1",
+      "en": "Formula classic gen2 model1"
+    },
+    "liveries.Formula Classic Gen2 Model2.label": {
+      "de": "Formula classic gen2 model2",
+      "en": "Formula classic gen2 model2"
+    },
+    "liveries.Formula Classic Gen2 Model3.label": {
+      "de": "Formula classic gen2 model3",
+      "en": "Formula classic gen2 model3"
+    },
+    "liveries.Formula Classic Gen3 Model1.label": {
+      "de": "Formula classic gen3 model1",
+      "en": "Formula classic gen3 model1"
+    },
+    "liveries.Formula Classic Gen3 Model2.label": {
+      "de": "Formula classic gen3 model2",
+      "en": "Formula classic gen3 model2"
+    },
+    "liveries.Formula Classic Gen3 Model3.label": {
+      "de": "Formula classic gen3 model3",
+      "en": "Formula classic gen3 model3"
+    },
+    "liveries.Formula Classic Gen3 Model4.label": {
+      "de": "Formula classic gen3 model4",
+      "en": "Formula classic gen3 model4"
+    },
+    "liveries.Formula Classic Gen4 Model1.label": {
+      "de": "Formula classic gen4 model1",
+      "en": "Formula classic gen4 model1"
+    },
+    "liveries.Formula Classic Gen4 Model2.label": {
+      "de": "Formula classic gen4 model2",
+      "en": "Formula classic gen4 model2"
+    },
+    "liveries.Formula Classic Gen4 Model3.label": {
+      "de": "Formula classic gen4 model3",
+      "en": "Formula classic gen4 model3"
+    },
+    "liveries.Formula Vintage Gen1 Model1.label": {
+      "de": "Formula vintage gen1 model1",
+      "en": "Formula vintage gen1 model1"
+    },
+    "liveries.Formula Vintage Gen1 Model2.label": {
+      "de": "Formula vintage gen1 model2",
+      "en": "Formula vintage gen1 model2"
+    },
+    "liveries.Formula Vintage Gen2 Model1.label": {
+      "de": "Formula vintage gen2 model1",
+      "en": "Formula vintage gen2 model1"
+    },
+    "liveries.Formula Vintage Gen2 Model2.label": {
+      "de": "Formula vintage gen2 model2",
+      "en": "Formula vintage gen2 model2"
+    },
+    "liveries.Formula HiTech Gen1 Model1.label": {
+      "de": "Formula hi tech gen1 model1",
+      "en": "Formula hi tech gen1 model1"
+    },
+    "liveries.Formula HiTech Gen1 Model2.label": {
+      "de": "Formula hi tech gen1 model2",
+      "en": "Formula hi tech gen1 model2"
+    },
+    "liveries.Formula HiTech Gen1 Model3.label": {
+      "de": "Formula hi tech gen1 model3",
+      "en": "Formula hi tech gen1 model3"
+    },
+    "liveries.Formula HiTech Gen1 Model4.label": {
+      "de": "Formula hi tech gen1 model4",
+      "en": "Formula hi tech gen1 model4"
+    },
+    "liveries.Formula HiTech Gen2 Model1.label": {
+      "de": "Formula hi tech gen2 model1",
+      "en": "Formula hi tech gen2 model1"
+    },
+    "liveries.Formula HiTech Gen2 Model2.label": {
+      "de": "Formula hi tech gen2 model2",
+      "en": "Formula hi tech gen2 model2"
+    },
+    "liveries.Formula HiTech Gen2 Model3.label": {
+      "de": "Formula hi tech gen2 model3",
+      "en": "Formula hi tech gen2 model3"
+    },
+    "liveries.Formula Junior.label": {
+      "de": "Formula junior",
+      "en": "Formula junior"
+    },
+    "liveries.Formula USA 2023.label": {
+      "de": "Formula usa 2023",
+      "en": "Formula usa 2023"
+    },
+    "liveries.Brabham BT26A.label": {
+      "de": "Brabham bt26 a",
+      "en": "Brabham bt26 a"
+    },
+    "liveries.Lotus 49C.label": {
+      "de": "Lotus 49 c",
+      "en": "Lotus 49 c"
+    },
+    "liveries.Lotus 72E.label": {
+      "de": "Lotus 72 e",
+      "en": "Lotus 72 e"
+    },
+    "liveries.Lotus Renault 98T.label": {
+      "de": "Lotus renault 98 t",
+      "en": "Lotus renault 98 t"
+    },
+    "liveries.Brabham BT44.label": {
+      "de": "Brabham bt44",
+      "en": "Brabham bt44"
+    },
+    "liveries.Formula Retro V8.label": {
+      "de": "Formula retro v8",
+      "en": "Formula retro v8"
+    },
+    "liveries.Formula Retro V12.label": {
+      "de": "Formula retro v12",
+      "en": "Formula retro v12"
+    },
+    "liveries.McLaren M23.label": {
+      "de": "Mc laren m23",
+      "en": "Mc laren m23"
+    },
+    "liveries.Formula Retro Gen2.label": {
+      "de": "Formula retro gen2",
+      "en": "Formula retro gen2"
+    },
+    "liveries.Lotus 79.label": {
+      "de": "Lotus 79",
+      "en": "Lotus 79"
+    },
+    "liveries.Brabham Alfa Romeo BT46B.label": {
+      "de": "Brabham alfa romeo bt46 b",
+      "en": "Brabham alfa romeo bt46 b"
+    },
+    "liveries.Brabham Cosworth BT49.label": {
+      "de": "Brabham cosworth bt49",
+      "en": "Brabham cosworth bt49"
+    },
+    "liveries.Brabham BMW BT52.label": {
+      "de": "Brabham bmw bt52",
+      "en": "Brabham bmw bt52"
+    },
+    "liveries.McLaren Cosworth MP4/1C.label": {
+      "de": "Mc laren cosworth mp4/1 c",
+      "en": "Mc laren cosworth mp4/1 c"
+    },
+    "liveries.Formula Retro Gen3 DFY.label": {
+      "de": "Formula retro gen3 dfy",
+      "en": "Formula retro gen3 dfy"
+    },
+    "liveries.Formula Retro Gen3 Turbo.label": {
+      "de": "Formula retro gen3 turbo",
+      "en": "Formula retro gen3 turbo"
+    },
+    "liveries.Formula Vee Gen1.label": {
+      "de": "Formula vee gen1",
+      "en": "Formula vee gen1"
+    },
+    "liveries.Formula Vee Gen1 + Fin.label": {
+      "de": "Formula vee gen1 + fin",
+      "en": "Formula vee gen1 + fin"
+    },
+    "liveries.Formula Vee Gen2.label": {
+      "de": "Formula vee gen2",
+      "en": "Formula vee gen2"
+    },
+    "liveries.Formula Trainer.label": {
+      "de": "Formula trainer",
+      "en": "Formula trainer"
+    },
+    "liveries.Formula Trainer Advanced.label": {
+      "de": "Formula trainer advanced",
+      "en": "Formula trainer advanced"
+    },
+    "liveries.Formula Inter MG-15.label": {
+      "de": "Formula inter mg-15",
+      "en": "Formula inter mg-15"
+    },
+    "liveries.Formula V8 Gen3.label": {
+      "de": "Formula v8 gen3",
+      "en": "Formula v8 gen3"
+    },
+    "liveries.Formula Ultimate Hybrid Gen2.label": {
+      "de": "Formula ultimate hybrid gen2",
+      "en": "Formula ultimate hybrid gen2"
+    },
+    "liveries.Formula Ultimate Hybrid Gen3.label": {
+      "de": "Formula ultimate hybrid gen3",
+      "en": "Formula ultimate hybrid gen3"
+    },
+    "liveries.Formula V10 Gen2.label": {
+      "de": "Formula v10 gen2",
+      "en": "Formula v10 gen2"
+    },
+    "liveries.Formula V10 Gen1.label": {
+      "de": "Formula v10 gen1",
+      "en": "Formula v10 gen1"
+    },
+    "liveries.McLaren Mercedes MP4/12.label": {
+      "de": "Mc laren mercedes mp4/12",
+      "en": "Mc laren mercedes mp4/12"
+    },
+    "liveries.Formula V12.label": {
+      "de": "Formula v12",
+      "en": "Formula v12"
+    },
+    "liveries.Iveco Stralis.label": {
+      "de": "Iveco stralis",
+      "en": "Iveco stralis"
+    },
+    "liveries.MAN TGX.label": {
+      "de": "Man tgx",
+      "en": "Man tgx"
+    },
+    "liveries.Mercedes-Benz Actros.label": {
+      "de": "Mercedes-benz actros",
+      "en": "Mercedes-benz actros"
+    },
+    "liveries.Volkswagen Constellation.label": {
+      "de": "Volkswagen constellation",
+      "en": "Volkswagen constellation"
+    },
+    "liveries.Vulkan Truck.label": {
+      "de": "Vulkan truck",
+      "en": "Vulkan truck"
+    },
+    "liveries.Ginetta G40.label": {
+      "de": "Ginetta g40",
+      "en": "Ginetta g40"
+    },
+    "liveries.Ginetta G40 Cup.label": {
+      "de": "Ginetta g40 cup",
+      "en": "Ginetta g40 cup"
+    },
+    "liveries.Ginetta G55 GT4 Supercup.label": {
+      "de": "Ginetta g55 gt4 supercup",
+      "en": "Ginetta g55 gt4 supercup"
+    },
+    "liveries.Ginetta G55 GT4.label": {
+      "de": "Ginetta g55 gt4",
+      "en": "Ginetta g55 gt4"
+    },
+    "liveries.Ginetta G55 GT3.label": {
+      "de": "Ginetta g55 gt3",
+      "en": "Ginetta g55 gt3"
+    },
+    "liveries.Ginetta G58.label": {
+      "de": "Ginetta g58",
+      "en": "Ginetta g58"
+    },
+    "liveries.Ginetta G58 Gen2.label": {
+      "de": "Ginetta g58 gen2",
+      "en": "Ginetta g58 gen2"
+    },
+    "liveries.Ligier JS P217.label": {
+      "de": "Ligier js p217",
+      "en": "Ligier js p217"
+    },
+    "liveries.Ligier JS P320.label": {
+      "de": "Ligier js p320",
+      "en": "Ligier js p320"
+    },
+    "liveries.Ligier JS P4.label": {
+      "de": "Ligier js p4",
+      "en": "Ligier js p4"
+    },
+    "liveries.Chevrolet Corvette C3.label": {
+      "de": "Chevrolet corvette c3",
+      "en": "Chevrolet corvette c3"
+    },
+    "liveries.Chevrolet Corvette C3.R.label": {
+      "de": "Chevrolet corvette c3.r",
+      "en": "Chevrolet corvette c3.r"
+    },
+    "liveries.Chevrolet Corvette C3.R Convertible.label": {
+      "de": "Chevrolet corvette c3.r convertible",
+      "en": "Chevrolet corvette c3.r convertible"
+    },
+    "liveries.Chevrolet Corvette C5-R.label": {
+      "de": "Chevrolet corvette c5-r",
+      "en": "Chevrolet corvette c5-r"
+    },
+    "liveries.Chevrolet Corvette C8.R.label": {
+      "de": "Chevrolet corvette c8.r",
+      "en": "Chevrolet corvette c8.r"
+    },
+    "liveries.Chevrolet Corvette C8 Z06 (+Z07 Upgrade).label": {
+      "de": "Chevrolet corvette c8 z06 (+z07 upgrade)",
+      "en": "Chevrolet corvette c8 z06 (+z07 upgrade)"
+    },
+    "liveries.Chevrolet Corvette Z06 GT3.R.label": {
+      "de": "Chevrolet corvette z06 gt3.r",
+      "en": "Chevrolet corvette z06 gt3.r"
+    },
+    "liveries.Chevrolet Corvette GTP.label": {
+      "de": "Chevrolet corvette gtp",
+      "en": "Chevrolet corvette gtp"
+    },
+    "liveries.Porsche 911 RSR GTE.label": {
+      "de": "Porsche 911 rsr gte",
+      "en": "Porsche 911 rsr gte"
+    },
+    "liveries.BMW M8 GTE.label": {
+      "de": "Bmw m8 gte",
+      "en": "Bmw m8 gte"
+    },
+    "liveries.BMW M6 GT3.label": {
+      "de": "Bmw m6 gt3",
+      "en": "Bmw m6 gt3"
+    },
+    "liveries.BMW M4 GT4.label": {
+      "de": "Bmw m4 gt4",
+      "en": "Bmw m4 gt4"
+    },
+    "liveries.BMW M4 GT3.label": {
+      "de": "Bmw m4 gt3",
+      "en": "Bmw m4 gt3"
+    },
+    "liveries.BMW 2002 Turbo.label": {
+      "de": "Bmw 2002 turbo",
+      "en": "Bmw 2002 turbo"
+    },
+    "liveries.Lamborghini Miura SV.label": {
+      "de": "Lamborghini miura sv",
+      "en": "Lamborghini miura sv"
+    },
+    "liveries.Lamborghini Murcielago R-GT.label": {
+      "de": "Lamborghini murcielago r-gt",
+      "en": "Lamborghini murcielago r-gt"
+    },
+    "liveries.Lamborghini Diablo SV-R.label": {
+      "de": "Lamborghini diablo sv-r",
+      "en": "Lamborghini diablo sv-r"
+    },
+    "liveries.Lamborghini Veneno Roadster.label": {
+      "de": "Lamborghini veneno roadster",
+      "en": "Lamborghini veneno roadster"
+    },
+    "liveries.Lamborghini Revuelto.label": {
+      "de": "Lamborghini revuelto",
+      "en": "Lamborghini revuelto"
+    },
+    "liveries.Lamborghini Huracan Super Trofeo EVO2.label": {
+      "de": "Lamborghini huracan super trofeo evo2",
+      "en": "Lamborghini huracan super trofeo evo2"
+    },
+    "liveries.Lamborghini Huracan GT3 EVO2.label": {
+      "de": "Lamborghini huracan gt3 evo2",
+      "en": "Lamborghini huracan gt3 evo2"
+    },
+    "liveries.Lamborghini SC63.label": {
+      "de": "Lamborghini sc63",
+      "en": "Lamborghini sc63"
+    },
+    "liveries.Ligier JS2 R.label": {
+      "de": "Ligier js2 r",
+      "en": "Ligier js2 r"
+    },
+    "liveries.Mercedes-AMG GT3.label": {
+      "de": "Mercedes-amg gt3",
+      "en": "Mercedes-amg gt3"
+    },
+    "liveries.Mercedes-AMG GT3 Evo.label": {
+      "de": "Mercedes-amg gt3 evo",
+      "en": "Mercedes-amg gt3 evo"
+    },
+    "liveries.Mercedes-AMG GT4.label": {
+      "de": "Mercedes-amg gt4",
+      "en": "Mercedes-amg gt4"
+    },
+    "liveries.Maserati GT2 Stradale.label": {
+      "de": "Maserati gt2 stradale",
+      "en": "Maserati gt2 stradale"
+    },
+    "liveries.Maserati MC12 GT1.label": {
+      "de": "Maserati mc12 gt1",
+      "en": "Maserati mc12 gt1"
+    },
+    "liveries.Milano GT36.label": {
+      "de": "Milano gt36",
+      "en": "Milano gt36"
+    },
+    "liveries.Porsche 963.label": {
+      "de": "Porsche 963",
+      "en": "Porsche 963"
+    },
+    "liveries.Porsche 911 GT3 R.label": {
+      "de": "Porsche 911 gt3 r",
+      "en": "Porsche 911 gt3 r"
+    },
+    "liveries.Porsche 992 GT3 R.label": {
+      "de": "Porsche 992 gt3 r",
+      "en": "Porsche 992 gt3 r"
+    },
+    "liveries.Nissan GT-R Nismo GT3.label": {
+      "de": "Nissan gt-r nismo gt3",
+      "en": "Nissan gt-r nismo gt3"
+    },
+    "liveries.Porsche 911 GT3 Cup 3.8.label": {
+      "de": "Porsche 911 gt3 cup 3.8",
+      "en": "Porsche 911 gt3 cup 3.8"
+    },
+    "liveries.Porsche 911 GT3 Cup 4.0.label": {
+      "de": "Porsche 911 gt3 cup 4.0",
+      "en": "Porsche 911 gt3 cup 4.0"
+    },
+    "liveries.Porsche Cayman GT4 Clubsport MR.label": {
+      "de": "Porsche cayman gt4 clubsport mr",
+      "en": "Porsche cayman gt4 clubsport mr"
+    },
+    "liveries.Porsche 996 GT3 RSR.label": {
+      "de": "Porsche 996 gt3 rsr",
+      "en": "Porsche 996 gt3 rsr"
+    },
+    "liveries.McLaren 570S GT4.label": {
+      "de": "Mc laren 570 s gt4",
+      "en": "Mc laren 570 s gt4"
+    },
+    "liveries.McLaren 720S GT3.label": {
+      "de": "Mc laren 720 s gt3",
+      "en": "Mc laren 720 s gt3"
+    },
+    "liveries.McLaren 720S GT3 Evo.label": {
+      "de": "Mc laren 720 s gt3 evo",
+      "en": "Mc laren 720 s gt3 evo"
+    },
+    "liveries.Chevrolet Camaro GT4.R.label": {
+      "de": "Chevrolet camaro gt4.r",
+      "en": "Chevrolet camaro gt4.r"
+    },
+    "liveries.McLaren F1 GTR.label": {
+      "de": "Mc laren f1 gtr",
+      "en": "Mc laren f1 gtr"
+    },
+    "liveries.Mercedes-Benz CLK LM.label": {
+      "de": "Mercedes-benz clk lm",
+      "en": "Mercedes-benz clk lm"
+    },
+    "liveries.Porsche 911 GT1-98.label": {
+      "de": "Porsche 911 gt1-98",
+      "en": "Porsche 911 gt1-98"
+    },
+    "liveries.Oreca 07.label": {
+      "de": "Oreca 07",
+      "en": "Oreca 07"
+    },
+    "liveries.Nissan R390 GT1.label": {
+      "de": "Nissan r390 gt1",
+      "en": "Nissan r390 gt1"
+    },
+    "liveries.Nissan R89C.label": {
+      "de": "Nissan r89 c",
+      "en": "Nissan r89 c"
+    },
+    "liveries.Porsche 962C.label": {
+      "de": "Porsche 962 c",
+      "en": "Porsche 962 c"
+    },
+    "liveries.Sauber Mercedes C9.label": {
+      "de": "Sauber mercedes c9",
+      "en": "Sauber mercedes c9"
+    },
+    "liveries.Brabham BT62.label": {
+      "de": "Brabham bt62",
+      "en": "Brabham bt62"
+    },
+    "liveries.Kart 2-Stroke 125cc Direct.label": {
+      "de": "Kart 2-stroke 125cc direct",
+      "en": "Kart 2-stroke 125cc direct"
+    },
+    "liveries.Kart 4-Stroke Rental.label": {
+      "de": "Kart 4-stroke rental",
+      "en": "Kart 4-stroke rental"
+    },
+    "liveries.Kart 4-Stroke Race.label": {
+      "de": "Kart 4-stroke race",
+      "en": "Kart 4-stroke race"
+    },
+    "liveries.Kart 2-Stroke 125cc Shifter.label": {
+      "de": "Kart 2-stroke 125cc shifter",
+      "en": "Kart 2-stroke 125cc shifter"
+    },
+    "liveries.MCR S2000.label": {
+      "de": "Mcr s2000",
+      "en": "Mcr s2000"
+    },
+    "liveries.McLaren F1 LM.label": {
+      "de": "Mc laren f1 lm",
+      "en": "Mc laren f1 lm"
+    },
+    "liveries.McLaren Senna.label": {
+      "de": "Mc laren senna",
+      "en": "Mc laren senna"
+    },
+    "liveries.MetalMoro AJR Chevrolet.label": {
+      "de": "Metal moro ajr chevrolet",
+      "en": "Metal moro ajr chevrolet"
+    },
+    "liveries.MetalMoro AJR Honda.label": {
+      "de": "Metal moro ajr honda",
+      "en": "Metal moro ajr honda"
+    },
+    "liveries.MetalMoro AJR Judd.label": {
+      "de": "Metal moro ajr judd",
+      "en": "Metal moro ajr judd"
+    },
+    "liveries.MetalMoro AJR Nissan.label": {
+      "de": "Metal moro ajr nissan",
+      "en": "Metal moro ajr nissan"
+    },
+    "liveries.MetalMoro AJR Gen2 Chevrolet.label": {
+      "de": "Metal moro ajr gen2 chevrolet",
+      "en": "Metal moro ajr gen2 chevrolet"
+    },
+    "liveries.MetalMoro AJR Gen2 Honda.label": {
+      "de": "Metal moro ajr gen2 honda",
+      "en": "Metal moro ajr gen2 honda"
+    },
+    "liveries.MetalMoro AJR Gen2 Nissan.label": {
+      "de": "Metal moro ajr gen2 nissan",
+      "en": "Metal moro ajr gen2 nissan"
+    },
+    "liveries.Mitsubishi Lancer R.label": {
+      "de": "Mitsubishi lancer r",
+      "en": "Mitsubishi lancer r"
+    },
+    "liveries.Mitsubishi Lancer RS.label": {
+      "de": "Mitsubishi lancer rs",
+      "en": "Mitsubishi lancer rs"
+    },
+    "liveries.Copa Montana.label": {
+      "de": "Copa montana",
+      "en": "Copa montana"
+    },
+    "liveries.Sprint Race.label": {
+      "de": "Sprint race",
+      "en": "Sprint race"
+    },
+    "liveries.Super V8.label": {
+      "de": "Super v8",
+      "en": "Super v8"
+    },
+    "liveries.Chevrolet Cruze Stock Car 2019.label": {
+      "de": "Chevrolet cruze stock car 2019",
+      "en": "Chevrolet cruze stock car 2019"
+    },
+    "liveries.Chevrolet Cruze Stock Car 2020.label": {
+      "de": "Chevrolet cruze stock car 2020",
+      "en": "Chevrolet cruze stock car 2020"
+    },
+    "liveries.Chevrolet Cruze Stock Car 2021.label": {
+      "de": "Chevrolet cruze stock car 2021",
+      "en": "Chevrolet cruze stock car 2021"
+    },
+    "liveries.Chevrolet Cruze Stock Car 2022.label": {
+      "de": "Chevrolet cruze stock car 2022",
+      "en": "Chevrolet cruze stock car 2022"
+    },
+    "liveries.Chevrolet Cruze Stock Car 2023.label": {
+      "de": "Chevrolet cruze stock car 2023",
+      "en": "Chevrolet cruze stock car 2023"
+    },
+    "liveries.Chevrolet Cruze Stock Car 2024.label": {
+      "de": "Chevrolet cruze stock car 2024",
+      "en": "Chevrolet cruze stock car 2024"
+    },
+    "liveries.Toyota Corolla Stock Car 2020.label": {
+      "de": "Toyota corolla stock car 2020",
+      "en": "Toyota corolla stock car 2020"
+    },
+    "liveries.Toyota Corolla Stock Car 2021.label": {
+      "de": "Toyota corolla stock car 2021",
+      "en": "Toyota corolla stock car 2021"
+    },
+    "liveries.Toyota Corolla Stock Car 2022.label": {
+      "de": "Toyota corolla stock car 2022",
+      "en": "Toyota corolla stock car 2022"
+    },
+    "liveries.Toyota Corolla Stock Car 2023.label": {
+      "de": "Toyota corolla stock car 2023",
+      "en": "Toyota corolla stock car 2023"
+    },
+    "liveries.Toyota Corolla Stock Car 2024.label": {
+      "de": "Toyota corolla stock car 2024",
+      "en": "Toyota corolla stock car 2024"
+    },
+    "liveries.Chevrolet Omega Stock Car 1999.label": {
+      "de": "Chevrolet omega stock car 1999",
+      "en": "Chevrolet omega stock car 1999"
+    },
+    "liveries.Stock USA Gen1.label": {
+      "de": "Stock usa gen1",
+      "en": "Stock usa gen1"
+    },
+    "liveries.Stock USA Gen2.label": {
+      "de": "Stock usa gen2",
+      "en": "Stock usa gen2"
+    },
+    "liveries.Stock USA Gen3.label": {
+      "de": "Stock usa gen3",
+      "en": "Stock usa gen3"
+    },
+    "liveries.Stock USA Gen3 LM.label": {
+      "de": "Stock usa gen3 lm",
+      "en": "Stock usa gen3 lm"
+    },
+    "liveries.Superkart 250cc.label": {
+      "de": "Superkart 250cc",
+      "en": "Superkart 250cc"
+    },
+    "liveries.Super Trophy Trucks.label": {
+      "de": "Super trophy trucks",
+      "en": "Super trophy trucks"
+    },
+    "liveries.Ultima GTR.label": {
+      "de": "Ultima gtr",
+      "en": "Ultima gtr"
+    },
+    "liveries.Ultima GTR Race.label": {
+      "de": "Ultima gtr race",
+      "en": "Ultima gtr race"
+    },
+    "liveries.MetalMoro MRX Duratec Turbo P2.label": {
+      "de": "Metal moro mrx duratec turbo p2",
+      "en": "Metal moro mrx duratec turbo p2"
+    },
+    "liveries.MetalMoro MRX Honda P3.label": {
+      "de": "Metal moro mrx honda p3",
+      "en": "Metal moro mrx honda p3"
+    },
+    "liveries.MetalMoro MRX Duratec P4.label": {
+      "de": "Metal moro mrx duratec p4",
+      "en": "Metal moro mrx duratec p4"
+    },
+    "liveries.MetalMoro MRX Duratec Turbo P3.label": {
+      "de": "Metal moro mrx duratec turbo p3",
+      "en": "Metal moro mrx duratec turbo p3"
+    },
+    "liveries.Roco 001.label": {
+      "de": "Roco 001",
+      "en": "Roco 001"
+    },
+    "liveries.Sigma P1.label": {
+      "de": "Sigma p1",
+      "en": "Sigma p1"
+    },
+    "liveries.Sigma P1 G5.label": {
+      "de": "Sigma p1 g5",
+      "en": "Sigma p1 g5"
+    },
+    "liveries.Chevrolet Opala Stock Cars 1979.label": {
+      "de": "Chevrolet opala stock cars 1979",
+      "en": "Chevrolet opala stock cars 1979"
+    },
+    "liveries.Chevrolet Opala Stock Cars 1986.label": {
+      "de": "Chevrolet opala stock cars 1986",
+      "en": "Chevrolet opala stock cars 1986"
+    },
+    "liveries.Chevrolet Opala Old Stock Race.label": {
+      "de": "Chevrolet opala old stock race",
+      "en": "Chevrolet opala old stock race"
+    },
+    "liveries.Porsche 911 RSR 1974.label": {
+      "de": "Porsche 911 rsr 1974",
+      "en": "Porsche 911 rsr 1974"
+    },
+    "liveries.Puma GTB.label": {
+      "de": "Puma gtb",
+      "en": "Puma gtb"
+    },
+    "liveries.Puma GTE.label": {
+      "de": "Puma gte",
+      "en": "Puma gte"
+    },
+    "liveries.Puma P052.label": {
+      "de": "Puma p052",
+      "en": "Puma p052"
+    },
+    "liveries.Chevrolet Chevette.label": {
+      "de": "Chevrolet chevette",
+      "en": "Chevrolet chevette"
+    },
+    "liveries.Copa Fusca.label": {
+      "de": "Copa fusca",
+      "en": "Copa fusca"
+    },
+    "liveries.Fusca Classic FL.label": {
+      "de": "Fusca classic fl",
+      "en": "Fusca classic fl"
+    },
+    "liveries.Copa Uno.label": {
+      "de": "Copa uno",
+      "en": "Copa uno"
+    },
+    "liveries.Uno Classic B.label": {
+      "de": "Uno classic b",
+      "en": "Uno classic b"
+    },
+    "liveries.Gol Classic FL.label": {
+      "de": "Gol classic fl",
+      "en": "Gol classic fl"
+    },
+    "liveries.Gol Classic B.label": {
+      "de": "Gol classic b",
+      "en": "Gol classic b"
+    },
+    "liveries.Passat Classic FL.label": {
+      "de": "Passat classic fl",
+      "en": "Passat classic fl"
+    },
+    "liveries.Passat Classic B.label": {
+      "de": "Passat classic b",
+      "en": "Passat classic b"
+    },
+    "liveries.Fusca 1 Hot Cars.label": {
+      "de": "Fusca 1 hot cars",
+      "en": "Fusca 1 hot cars"
+    },
+    "liveries.Fusca 2 Hot Cars.label": {
+      "de": "Fusca 2 hot cars",
+      "en": "Fusca 2 hot cars"
+    },
+    "liveries.Passat Hot Cars.label": {
+      "de": "Passat hot cars",
+      "en": "Passat hot cars"
+    },
+    "liveries.Gol Hot Cars.label": {
+      "de": "Gol hot cars",
+      "en": "Gol hot cars"
+    },
+    "liveries.ARC Camaro.label": {
+      "de": "Arc camaro",
+      "en": "Arc camaro"
+    },
+    "liveries.Volkswagen Polo.label": {
+      "de": "Volkswagen polo",
+      "en": "Volkswagen polo"
+    },
+    "liveries.Volkswagen Polo GTS.label": {
+      "de": "Volkswagen polo gts",
+      "en": "Volkswagen polo gts"
+    },
+    "liveries.Volkswagen Virtus.label": {
+      "de": "Volkswagen virtus",
+      "en": "Volkswagen virtus"
+    },
+    "liveries.Volkswagen Virtus GTS.label": {
+      "de": "Volkswagen virtus gts",
+      "en": "Volkswagen virtus gts"
+    },
+    "liveries.Lola T95/00 Ford-Cosworth.label": {
+      "de": "Lola t95/00 ford-cosworth",
+      "en": "Lola t95/00 ford-cosworth"
+    },
+    "liveries.Lola T95/00 Mercedes-Benz.label": {
+      "de": "Lola t95/00 mercedes-benz",
+      "en": "Lola t95/00 mercedes-benz"
+    },
+    "liveries.Lola T98/00 Ford-Cosworth.label": {
+      "de": "Lola t98/00 ford-cosworth",
+      "en": "Lola t98/00 ford-cosworth"
+    },
+    "liveries.Lola B2K00 Ford-Cosworth.label": {
+      "de": "Lola b2 k00 ford-cosworth",
+      "en": "Lola b2 k00 ford-cosworth"
+    },
+    "liveries.Lola B2K00 Mercedes-Benz.label": {
+      "de": "Lola b2 k00 mercedes-benz",
+      "en": "Lola b2 k00 mercedes-benz"
+    },
+    "liveries.Lola B2K00 Toyota.label": {
+      "de": "Lola b2 k00 toyota",
+      "en": "Lola b2 k00 toyota"
+    },
+    "liveries.Reynard 95i Ford-Cosworth.label": {
+      "de": "Reynard 95i ford-cosworth",
+      "en": "Reynard 95i ford-cosworth"
+    },
+    "liveries.Reynard 95i Honda.label": {
+      "de": "Reynard 95i honda",
+      "en": "Reynard 95i honda"
+    },
+    "liveries.Reynard 95i Mercedes-Benz.label": {
+      "de": "Reynard 95i mercedes-benz",
+      "en": "Reynard 95i mercedes-benz"
+    },
+    "liveries.Reynard 98i Ford-Cosworth.label": {
+      "de": "Reynard 98i ford-cosworth",
+      "en": "Reynard 98i ford-cosworth"
+    },
+    "liveries.Reynard 98i Honda.label": {
+      "de": "Reynard 98i honda",
+      "en": "Reynard 98i honda"
+    },
+    "liveries.Reynard 98i Mercedes-Benz.label": {
+      "de": "Reynard 98i mercedes-benz",
+      "en": "Reynard 98i mercedes-benz"
+    },
+    "liveries.Reynard 98i Toyota.label": {
+      "de": "Reynard 98i toyota",
+      "en": "Reynard 98i toyota"
+    },
+    "liveries.Reynard 2Ki Ford-Cosworth.label": {
+      "de": "Reynard 2 ki ford-cosworth",
+      "en": "Reynard 2 ki ford-cosworth"
+    },
+    "liveries.Reynard 2Ki Honda.label": {
+      "de": "Reynard 2 ki honda",
+      "en": "Reynard 2 ki honda"
+    },
+    "liveries.Reynard 2Ki Mercedes-Benz.label": {
+      "de": "Reynard 2 ki mercedes-benz",
+      "en": "Reynard 2 ki mercedes-benz"
+    },
+    "liveries.Reynard 2Ki Toyota.label": {
+      "de": "Reynard 2 ki toyota",
+      "en": "Reynard 2 ki toyota"
+    },
+    "liveries.Swift 009c Ford-Cosworth.label": {
+      "de": "Swift 009c ford-cosworth",
+      "en": "Swift 009c ford-cosworth"
+    },
+    "liveries.Formula Dirt.label": {
+      "de": "Formula dirt",
+      "en": "Formula dirt"
+    },
+    "liveries.Kart Cross.label": {
+      "de": "Kart cross",
+      "en": "Kart cross"
+    },
+    "liveries.MINI Countryman R60 RX.label": {
+      "de": "Mini countryman r60 rx",
+      "en": "Mini countryman r60 rx"
+    },
+    "liveries.Citroen DS3 RX.label": {
+      "de": "Citroen ds3 rx",
+      "en": "Citroen ds3 rx"
+    },
+    "liveries.Volkswagen Polo RX.label": {
+      "de": "Volkswagen polo rx",
+      "en": "Volkswagen polo rx"
+    },
+    "liveries.Mitsubishi Lancer Evo10 RX.label": {
+      "de": "Mitsubishi lancer evo10 rx",
+      "en": "Mitsubishi lancer evo10 rx"
+    },
+    "tracks.description": {
+      "de": "Alle bekannten Track-IDs",
+      "en": "All known track ids"
+    },
+    "tracks.Adelaide_Historic.label": {
+      "de": "Adelaide historic",
+      "en": "Adelaide historic"
+    },
+    "tracks.Adelaide_Modern.label": {
+      "de": "Adelaide modern",
+      "en": "Adelaide modern"
+    },
+    "tracks.Ascurra_DIRT.label": {
+      "de": "Ascurra dirt",
+      "en": "Ascurra dirt"
+    },
+    "tracks.Ascurra_RX.label": {
+      "de": "Ascurra rx",
+      "en": "Ascurra rx"
+    },
+    "tracks.Azure_Circuit_2021.label": {
+      "de": "Azure circuit 2021",
+      "en": "Azure circuit 2021"
+    },
+    "tracks.Barcelona_1991.label": {
+      "de": "Barcelona 1991",
+      "en": "Barcelona 1991"
+    },
+    "tracks.Circuit_de_Catalunya_GP.label": {
+      "de": "Circuit de catalunya gp",
+      "en": "Circuit de catalunya gp"
+    },
+    "tracks.Circuit_de_Catalunya_GP_NC.label": {
+      "de": "Circuit de catalunya gp nc",
+      "en": "Circuit de catalunya gp nc"
+    },
+    "tracks.Circuit_de_Catalunya_NATL_NC.label": {
+      "de": "Circuit de catalunya natl nc",
+      "en": "Circuit de catalunya natl nc"
+    },
+    "tracks.Bathurst_1983.label": {
+      "de": "Bathurst 1983",
+      "en": "Bathurst 1983"
+    },
+    "tracks.Bathurst_2020.label": {
+      "de": "Bathurst 2020",
+      "en": "Bathurst 2020"
+    },
+    "tracks.BrandsHatch_GP.label": {
+      "de": "Brands hatch gp",
+      "en": "Brands hatch gp"
+    },
+    "tracks.BrandsHatch_Indy.label": {
+      "de": "Brands hatch indy",
+      "en": "Brands hatch indy"
+    },
+    "tracks.Brasilia_Full.label": {
+      "de": "Brasilia full",
+      "en": "Brasilia full"
+    },
+    "tracks.Brasilia_Outer.label": {
+      "de": "Brasilia outer",
+      "en": "Brasilia outer"
+    },
+    "tracks.Buenos_Aires_Circuito_6.label": {
+      "de": "Buenos aires circuito 6",
+      "en": "Buenos aires circuito 6"
+    },
+    "tracks.Buenos_Aires_Circuito_6T.label": {
+      "de": "Buenos aires circuito 6 t",
+      "en": "Buenos aires circuito 6 t"
+    },
+    "tracks.Buenos_Aires_Circuito_7.label": {
+      "de": "Buenos aires circuito 7",
+      "en": "Buenos aires circuito 7"
+    },
+    "tracks.Buenos_Aires_Circuito_8.label": {
+      "de": "Buenos aires circuito 8",
+      "en": "Buenos aires circuito 8"
+    },
+    "tracks.Buenos_Aires_Circuito_9.label": {
+      "de": "Buenos aires circuito 9",
+      "en": "Buenos aires circuito 9"
+    },
+    "tracks.Buenos_Aires_Circuito_12.label": {
+      "de": "Buenos aires circuito 12",
+      "en": "Buenos aires circuito 12"
+    },
+    "tracks.Buenos_Aires_Circuito_15.label": {
+      "de": "Buenos aires circuito 15",
+      "en": "Buenos aires circuito 15"
+    },
+    "tracks.Buskerud_Long.label": {
+      "de": "Buskerud long",
+      "en": "Buskerud long"
+    },
+    "tracks.Buskerud_Short.label": {
+      "de": "Buskerud short",
+      "en": "Buskerud short"
+    },
+    "tracks.CadwellPark.label": {
+      "de": "Cadwell park",
+      "en": "Cadwell park"
+    },
+    "tracks.CampoGrande1.label": {
+      "de": "Campo grande1",
+      "en": "Campo grande1"
+    },
+    "tracks.Cascavel2.label": {
+      "de": "Cascavel2",
+      "en": "Cascavel2"
+    },
+    "tracks.Cleveland_GP.label": {
+      "de": "Cleveland gp",
+      "en": "Cleveland gp"
+    },
+    "tracks.Cordoba_International.label": {
+      "de": "Cordoba international",
+      "en": "Cordoba international"
+    },
+    "tracks.Cordoba_GP.label": {
+      "de": "Cordoba gp",
+      "en": "Cordoba gp"
+    },
+    "tracks.Cordoba_NATL.label": {
+      "de": "Cordoba natl",
+      "en": "Cordoba natl"
+    },
+    "tracks.CuritibaInternacional.label": {
+      "de": "Curitiba internacional",
+      "en": "Curitiba internacional"
+    },
+    "tracks.Curitiba_outer.label": {
+      "de": "Curitiba outer",
+      "en": "Curitiba outer"
+    },
+    "tracks.CurveloLong.label": {
+      "de": "Curvelo long",
+      "en": "Curvelo long"
+    },
+    "tracks.CurveloShort.label": {
+      "de": "Curvelo short",
+      "en": "Curvelo short"
+    },
+    "tracks.Daytona_Speedway_Tri_Oval.label": {
+      "de": "Daytona speedway tri oval",
+      "en": "Daytona speedway tri oval"
+    },
+    "tracks.Daytona_Road_Course.label": {
+      "de": "Daytona road course",
+      "en": "Daytona road course"
+    },
+    "tracks.Daytona_Nascar_Road_Course.label": {
+      "de": "Daytona nascar road course",
+      "en": "Daytona nascar road course"
+    },
+    "tracks.Donington_GP.label": {
+      "de": "Donington gp",
+      "en": "Donington gp"
+    },
+    "tracks.Donington_Nat.label": {
+      "de": "Donington nat",
+      "en": "Donington nat"
+    },
+    "tracks.Cascais_1988.label": {
+      "de": "Cascais 1988",
+      "en": "Cascais 1988"
+    },
+    "tracks.Cascais.label": {
+      "de": "Cascais",
+      "en": "Cascais"
+    },
+    "tracks.Cascais_Alternate.label": {
+      "de": "Cascais alternate",
+      "en": "Cascais alternate"
+    },
+    "tracks.Fontana_OVAL.label": {
+      "de": "Fontana oval",
+      "en": "Fontana oval"
+    },
+    "tracks.Fontana_OVAL_Historic.label": {
+      "de": "Fontana oval historic",
+      "en": "Fontana oval historic"
+    },
+    "tracks.Fontana_SCC.label": {
+      "de": "Fontana scc",
+      "en": "Fontana scc"
+    },
+    "tracks.Foz_RX.label": {
+      "de": "Foz rx",
+      "en": "Foz rx"
+    },
+    "tracks.Galeao_Airport.label": {
+      "de": "Galeao airport",
+      "en": "Galeao airport"
+    },
+    "tracks.Gateway_OVAL.label": {
+      "de": "Gateway oval",
+      "en": "Gateway oval"
+    },
+    "tracks.Gateway_RC1.label": {
+      "de": "Gateway rc1",
+      "en": "Gateway rc1"
+    },
+    "tracks.Gateway_RC2.label": {
+      "de": "Gateway rc2",
+      "en": "Gateway rc2"
+    },
+    "tracks.GoianiaMixed.label": {
+      "de": "Goiania mixed",
+      "en": "Goiania mixed"
+    },
+    "tracks.GoianiaOuter.label": {
+      "de": "Goiania outer",
+      "en": "Goiania outer"
+    },
+    "tracks.GoianiaShort.label": {
+      "de": "Goiania short",
+      "en": "Goiania short"
+    },
+    "tracks.CopaSaoPauloStage2.label": {
+      "de": "Copa sao paulo stage2",
+      "en": "Copa sao paulo stage2"
+    },
+    "tracks.GranjaVianaKart101.label": {
+      "de": "Granja viana kart101",
+      "en": "Granja viana kart101"
+    },
+    "tracks.GranjaVianaKart102.label": {
+      "de": "Granja viana kart102",
+      "en": "Granja viana kart102"
+    },
+    "tracks.GranjaVianaKart121.label": {
+      "de": "Granja viana kart121",
+      "en": "Granja viana kart121"
+    },
+    "tracks.Guapore.label": {
+      "de": "Guapore",
+      "en": "Guapore"
+    },
+    "tracks.Hockenheim_GP.label": {
+      "de": "Hockenheim gp",
+      "en": "Hockenheim gp"
+    },
+    "tracks.Hockenheim_ShortA.label": {
+      "de": "Hockenheim short a",
+      "en": "Hockenheim short a"
+    },
+    "tracks.Hockenheim_ShortB.label": {
+      "de": "Hockenheim short b",
+      "en": "Hockenheim short b"
+    },
+    "tracks.Hockenheim_National.label": {
+      "de": "Hockenheim national",
+      "en": "Hockenheim national"
+    },
+    "tracks.Hockenheim_2001.label": {
+      "de": "Hockenheim 2001",
+      "en": "Hockenheim 2001"
+    },
+    "tracks.Hockenheim_1988.label": {
+      "de": "Hockenheim 1988",
+      "en": "Hockenheim 1988"
+    },
+    "tracks.Hockenheim_1988_short.label": {
+      "de": "Hockenheim 1988 short",
+      "en": "Hockenheim 1988 short"
+    },
+    "tracks.Hockenheim_1977.label": {
+      "de": "Hockenheim 1977",
+      "en": "Hockenheim 1977"
+    },
+    "tracks.Ibarra2.label": {
+      "de": "Ibarra2",
+      "en": "Ibarra2"
+    },
+    "tracks.Ibarra_Reverse.label": {
+      "de": "Ibarra reverse",
+      "en": "Ibarra reverse"
+    },
+    "tracks.Imola_GP_2018.label": {
+      "de": "Imola gp 2018",
+      "en": "Imola gp 2018"
+    },
+    "tracks.Imola_GP_1972.label": {
+      "de": "Imola gp 1972",
+      "en": "Imola gp 1972"
+    },
+    "tracks.Imola_GP_1988.label": {
+      "de": "Imola gp 1988",
+      "en": "Imola gp 1988"
+    },
+    "tracks.Imola_GP_2001.label": {
+      "de": "Imola gp 2001",
+      "en": "Imola gp 2001"
+    },
+    "tracks.Indianapolis_2022_Oval.label": {
+      "de": "Indianapolis 2022 oval",
+      "en": "Indianapolis 2022 oval"
+    },
+    "tracks.Indianapolis_2022_RC.label": {
+      "de": "Indianapolis 2022 rc",
+      "en": "Indianapolis 2022 rc"
+    },
+    "tracks.Interlagos_1991.label": {
+      "de": "Interlagos 1991",
+      "en": "Interlagos 1991"
+    },
+    "tracks.Interlagos_1993.label": {
+      "de": "Interlagos 1993",
+      "en": "Interlagos 1993"
+    },
+    "tracks.Interlagos_GP.label": {
+      "de": "Interlagos gp",
+      "en": "Interlagos gp"
+    },
+    "tracks.Interlagos_SCB.label": {
+      "de": "Interlagos scb",
+      "en": "Interlagos scb"
+    },
+    "tracks.Interlagos_Historic.label": {
+      "de": "Interlagos historic",
+      "en": "Interlagos historic"
+    },
+    "tracks.Interlagos_Historic_Outer.label": {
+      "de": "Interlagos historic outer",
+      "en": "Interlagos historic outer"
+    },
+    "tracks.InterlagosKart1.label": {
+      "de": "Interlagos kart1",
+      "en": "Interlagos kart1"
+    },
+    "tracks.InterlagosKart2.label": {
+      "de": "Interlagos kart2",
+      "en": "Interlagos kart2"
+    },
+    "tracks.InterlagosKart3.label": {
+      "de": "Interlagos kart3",
+      "en": "Interlagos kart3"
+    },
+    "tracks.Jacarepagua_Historic.label": {
+      "de": "Jacarepagua historic",
+      "en": "Jacarepagua historic"
+    },
+    "tracks.Jacarepagua_2005.label": {
+      "de": "Jacarepagua 2005",
+      "en": "Jacarepagua 2005"
+    },
+    "tracks.Jacarepagua_OVAL.label": {
+      "de": "Jacarepagua oval",
+      "en": "Jacarepagua oval"
+    },
+    "tracks.Jacarepagua_SCB.label": {
+      "de": "Jacarepagua scb",
+      "en": "Jacarepagua scb"
+    },
+    "tracks.Jacarepagua_SHORT.label": {
+      "de": "Jacarepagua short",
+      "en": "Jacarepagua short"
+    },
+    "tracks.Jerez_GP1988.label": {
+      "de": "Jerez gp1988",
+      "en": "Jerez gp1988"
+    },
+    "tracks.Jerez_GP2019.label": {
+      "de": "Jerez gp2019",
+      "en": "Jerez gp2019"
+    },
+    "tracks.Jerez_Standard.label": {
+      "de": "Jerez standard",
+      "en": "Jerez standard"
+    },
+    "tracks.Kansai_GP.label": {
+      "de": "Kansai gp",
+      "en": "Kansai gp"
+    },
+    "tracks.Kansai_Classic.label": {
+      "de": "Kansai classic",
+      "en": "Kansai classic"
+    },
+    "tracks.Kansai_East.label": {
+      "de": "Kansai east",
+      "en": "Kansai east"
+    },
+    "tracks.Kansai_West.label": {
+      "de": "Kansai west",
+      "en": "Kansai west"
+    },
+    "tracks.Kyalami_2019.label": {
+      "de": "Kyalami 2019",
+      "en": "Kyalami 2019"
+    },
+    "tracks.Kyalami_Historic.label": {
+      "de": "Kyalami historic",
+      "en": "Kyalami historic"
+    },
+    "tracks.Laguna_Seca_2020.label": {
+      "de": "Laguna seca 2020",
+      "en": "Laguna seca 2020"
+    },
+    "tracks.Le_Mans_24h_2005.label": {
+      "de": "Le mans 24h 2005",
+      "en": "Le mans 24h 2005"
+    },
+    "tracks.Le_Mans_24h.label": {
+      "de": "Le mans 24h",
+      "en": "Le mans 24h"
+    },
+    "tracks.Le_Mans_Circuit_Bugatti.label": {
+      "de": "Le mans circuit bugatti",
+      "en": "Le mans circuit bugatti"
+    },
+    "tracks.Londrina_short.label": {
+      "de": "Londrina short",
+      "en": "Londrina short"
+    },
+    "tracks.Londrina_long.label": {
+      "de": "Londrina long",
+      "en": "Londrina long"
+    },
+    "tracks.LondrinaKart1.label": {
+      "de": "Londrina kart1",
+      "en": "Londrina kart1"
+    },
+    "tracks.LondrinaKart2.label": {
+      "de": "Londrina kart2",
+      "en": "Londrina kart2"
+    },
+    "tracks.Long_Beach.label": {
+      "de": "Long beach",
+      "en": "Long beach"
+    },
+    "tracks.Montreal_Historic_1991.label": {
+      "de": "Montreal historic 1991",
+      "en": "Montreal historic 1991"
+    },
+    "tracks.Montreal_Historic.label": {
+      "de": "Montreal historic",
+      "en": "Montreal historic"
+    },
+    "tracks.Montreal_Modern.label": {
+      "de": "Montreal modern",
+      "en": "Montreal modern"
+    },
+    "tracks.Monza_1971_10k.label": {
+      "de": "Monza 1971 10k",
+      "en": "Monza 1971 10k"
+    },
+    "tracks.Monza_1971_10knc.label": {
+      "de": "Monza 1971 10knc",
+      "en": "Monza 1971 10knc"
+    },
+    "tracks.Monza_1971.label": {
+      "de": "Monza 1971",
+      "en": "Monza 1971"
+    },
+    "tracks.Monza_1991.label": {
+      "de": "Monza 1991",
+      "en": "Monza 1991"
+    },
+    "tracks.Monza_1971_Junior.label": {
+      "de": "Monza 1971 junior",
+      "en": "Monza 1971 junior"
+    },
+    "tracks.Monza_2020.label": {
+      "de": "Monza 2020",
+      "en": "Monza 2020"
+    },
+    "tracks.Monza_2020_Junior.label": {
+      "de": "Monza 2020 junior",
+      "en": "Monza 2020 junior"
+    },
+    "tracks.Mosport.label": {
+      "de": "Mosport",
+      "en": "Mosport"
+    },
+    "tracks.Nordschleife_2020.label": {
+      "de": "Nordschleife 2020",
+      "en": "Nordschleife 2020"
+    },
+    "tracks.Nordschleife_2020_24hr.label": {
+      "de": "Nordschleife 2020 24hr",
+      "en": "Nordschleife 2020 24hr"
+    },
+    "tracks.Nordschleife_2025.label": {
+      "de": "Nordschleife 2025",
+      "en": "Nordschleife 2025"
+    },
+    "tracks.Nordschleife_2025_24hr.label": {
+      "de": "Nordschleife 2025 24hr",
+      "en": "Nordschleife 2025 24hr"
+    },
+    "tracks.Nordschleife_2025_tourist.label": {
+      "de": "Nordschleife 2025 tourist",
+      "en": "Nordschleife 2025 tourist"
+    },
+    "tracks.Nurb_1971_Beton.label": {
+      "de": "Nurb 1971 beton",
+      "en": "Nurb 1971 beton"
+    },
+    "tracks.Nurb_1971_Gesamt.label": {
+      "de": "Nurb 1971 gesamt",
+      "en": "Nurb 1971 gesamt"
+    },
+    "tracks.Nurb_1971_Nords.label": {
+      "de": "Nurb 1971 nords",
+      "en": "Nurb 1971 nords"
+    },
+    "tracks.Nurb_1971_Suds.label": {
+      "de": "Nurb 1971 suds",
+      "en": "Nurb 1971 suds"
+    },
+    "tracks.Nurb_2020_RX.label": {
+      "de": "Nurb 2020 rx",
+      "en": "Nurb 2020 rx"
+    },
+    "tracks.Nurb_GP_2020.label": {
+      "de": "Nurb gp 2020",
+      "en": "Nurb gp 2020"
+    },
+    "tracks.Nurb_GP_2020_Sprint.label": {
+      "de": "Nurb gp 2020 sprint",
+      "en": "Nurb gp 2020 sprint"
+    },
+    "tracks.Nurb_GP_2020_Sprint_S.label": {
+      "de": "Nurb gp 2020 sprint s",
+      "en": "Nurb gp 2020 sprint s"
+    },
+    "tracks.Nurb_GP_2020_Veedol.label": {
+      "de": "Nurb gp 2020 veedol",
+      "en": "Nurb gp 2020 veedol"
+    },
+    "tracks.Nurb_GP_2025.label": {
+      "de": "Nurb gp 2025",
+      "en": "Nurb gp 2025"
+    },
+    "tracks.Ortona1.label": {
+      "de": "Ortona1",
+      "en": "Ortona1"
+    },
+    "tracks.Ortona2.label": {
+      "de": "Ortona2",
+      "en": "Ortona2"
+    },
+    "tracks.Ortona3.label": {
+      "de": "Ortona3",
+      "en": "Ortona3"
+    },
+    "tracks.Ortona4.label": {
+      "de": "Ortona4",
+      "en": "Ortona4"
+    },
+    "tracks.OultonPark_International.label": {
+      "de": "Oulton park international",
+      "en": "Oulton park international"
+    },
+    "tracks.OultonPark_Classic.label": {
+      "de": "Oulton park classic",
+      "en": "Oulton park classic"
+    },
+    "tracks.OultonPark_Fosters.label": {
+      "de": "Oulton park fosters",
+      "en": "Oulton park fosters"
+    },
+    "tracks.OultonPark_Island.label": {
+      "de": "Oulton park island",
+      "en": "Oulton park island"
+    },
+    "tracks.Pocono_OVAL.label": {
+      "de": "Pocono oval",
+      "en": "Pocono oval"
+    },
+    "tracks.Pocono_RC1.label": {
+      "de": "Pocono rc1",
+      "en": "Pocono rc1"
+    },
+    "tracks.Pocono_RC2.label": {
+      "de": "Pocono rc2",
+      "en": "Pocono rc2"
+    },
+    "tracks.Pocono_RC3.label": {
+      "de": "Pocono rc3",
+      "en": "Pocono rc3"
+    },
+    "tracks.Pocono_RC4.label": {
+      "de": "Pocono rc4",
+      "en": "Pocono rc4"
+    },
+    "tracks.Pocono_RC5.label": {
+      "de": "Pocono rc5",
+      "en": "Pocono rc5"
+    },
+    "tracks.Pocono_RC6.label": {
+      "de": "Pocono rc6",
+      "en": "Pocono rc6"
+    },
+    "tracks.Road_America_RC.label": {
+      "de": "Road america rc",
+      "en": "Road america rc"
+    },
+    "tracks.Road_America_RCB.label": {
+      "de": "Road america rcb",
+      "en": "Road america rcb"
+    },
+    "tracks.Road_Atlanta.label": {
+      "de": "Road atlanta",
+      "en": "Road atlanta"
+    },
+    "tracks.Road_Atlanta_Moto.label": {
+      "de": "Road atlanta moto",
+      "en": "Road atlanta moto"
+    },
+    "tracks.Road_Atlanta_2005.label": {
+      "de": "Road atlanta 2005",
+      "en": "Road atlanta 2005"
+    },
+    "tracks.Road_Atlanta_2005_short.label": {
+      "de": "Road atlanta 2005 short",
+      "en": "Road atlanta 2005 short"
+    },
+    "tracks.Salvador_Street_Circuit.label": {
+      "de": "Salvador street circuit",
+      "en": "Salvador street circuit"
+    },
+    "tracks.SantaCruzDoSul.label": {
+      "de": "Santa cruz do sul",
+      "en": "Santa cruz do sul"
+    },
+    "tracks.Sebring.label": {
+      "de": "Sebring",
+      "en": "Sebring"
+    },
+    "tracks.Sebring_Club.label": {
+      "de": "Sebring club",
+      "en": "Sebring club"
+    },
+    "tracks.Sebring_School.label": {
+      "de": "Sebring school",
+      "en": "Sebring school"
+    },
+    "tracks.Silverstone_1975.label": {
+      "de": "Silverstone 1975",
+      "en": "Silverstone 1975"
+    },
+    "tracks.Silverstone_1975_No_Chicane.label": {
+      "de": "Silverstone 1975 no chicane",
+      "en": "Silverstone 1975 no chicane"
+    },
+    "tracks.Silverstone_1991.label": {
+      "de": "Silverstone 1991",
+      "en": "Silverstone 1991"
+    },
+    "tracks.Silverstone_2001.label": {
+      "de": "Silverstone 2001",
+      "en": "Silverstone 2001"
+    },
+    "tracks.Silverstone_2001_International.label": {
+      "de": "Silverstone 2001 international",
+      "en": "Silverstone 2001 international"
+    },
+    "tracks.Silverstone_2001_National.label": {
+      "de": "Silverstone 2001 national",
+      "en": "Silverstone 2001 national"
+    },
+    "tracks.Silverstone_GP.label": {
+      "de": "Silverstone gp",
+      "en": "Silverstone gp"
+    },
+    "tracks.Silverstone_Intl_2019.label": {
+      "de": "Silverstone intl 2019",
+      "en": "Silverstone intl 2019"
+    },
+    "tracks.Silverstone_Natl_2019.label": {
+      "de": "Silverstone natl 2019",
+      "en": "Silverstone natl 2019"
+    },
+    "tracks.Snetterton_100.label": {
+      "de": "Snetterton 100",
+      "en": "Snetterton 100"
+    },
+    "tracks.Snetterton_200.label": {
+      "de": "Snetterton 200",
+      "en": "Snetterton 200"
+    },
+    "tracks.Snetterton_300.label": {
+      "de": "Snetterton 300",
+      "en": "Snetterton 300"
+    },
+    "tracks.Spa_Francorchamps_1970.label": {
+      "de": "Spa francorchamps 1970",
+      "en": "Spa francorchamps 1970"
+    },
+    "tracks.Spa_Francorchamps_1970_1000km.label": {
+      "de": "Spa francorchamps 1970 1000km",
+      "en": "Spa francorchamps 1970 1000km"
+    },
+    "tracks.Spa_Francorchamps_1993.label": {
+      "de": "Spa francorchamps 1993",
+      "en": "Spa francorchamps 1993"
+    },
+    "tracks.Spa_Francorchamps_2005.label": {
+      "de": "Spa francorchamps 2005",
+      "en": "Spa francorchamps 2005"
+    },
+    "tracks.Spa_Francorchamps_2005_EC.label": {
+      "de": "Spa francorchamps 2005 ec",
+      "en": "Spa francorchamps 2005 ec"
+    },
+    "tracks.Spa_Francorchamps_2020.label": {
+      "de": "Spa francorchamps 2020",
+      "en": "Spa francorchamps 2020"
+    },
+    "tracks.Spa_Francorchamps_2022.label": {
+      "de": "Spa francorchamps 2022",
+      "en": "Spa francorchamps 2022"
+    },
+    "tracks.Spa_Francorchamps_2022_RX.label": {
+      "de": "Spa francorchamps 2022 rx",
+      "en": "Spa francorchamps 2022 rx"
+    },
+    "tracks.Speedland1.label": {
+      "de": "Speedland1",
+      "en": "Speedland1"
+    },
+    "tracks.Speedland2.label": {
+      "de": "Speedland2",
+      "en": "Speedland2"
+    },
+    "tracks.Speedland3.label": {
+      "de": "Speedland3",
+      "en": "Speedland3"
+    },
+    "tracks.Speedland4.label": {
+      "de": "Speedland4",
+      "en": "Speedland4"
+    },
+    "tracks.Spielberg_Historic.label": {
+      "de": "Spielberg historic",
+      "en": "Spielberg historic"
+    },
+    "tracks.Spielberg_Vintage.label": {
+      "de": "Spielberg vintage",
+      "en": "Spielberg vintage"
+    },
+    "tracks.Spielberg_Modern.label": {
+      "de": "Spielberg modern",
+      "en": "Spielberg modern"
+    },
+    "tracks.Spielberg_Short.label": {
+      "de": "Spielberg short",
+      "en": "Spielberg short"
+    },
+    "tracks.Taruma_Internacional.label": {
+      "de": "Taruma internacional",
+      "en": "Taruma internacional"
+    },
+    "tracks.Taruma_Chicane.label": {
+      "de": "Taruma chicane",
+      "en": "Taruma chicane"
+    },
+    "tracks.Termas_Rio_Hondo.label": {
+      "de": "Termas rio hondo",
+      "en": "Termas rio hondo"
+    },
+    "tracks.VeloCitta1.label": {
+      "de": "Velo citta1",
+      "en": "Velo citta1"
+    },
+    "tracks.VeloCittaTD.label": {
+      "de": "Velo citta td",
+      "en": "Velo citta td"
+    },
+    "tracks.VeloCittaClubDay.label": {
+      "de": "Velo citta club day",
+      "en": "Velo citta club day"
+    },
+    "tracks.Velopark_2010.label": {
+      "de": "Velopark 2010",
+      "en": "Velopark 2010"
+    },
+    "tracks.Velopark_2017.label": {
+      "de": "Velopark 2017",
+      "en": "Velopark 2017"
+    },
+    "tracks.Virginia_Full.label": {
+      "de": "Virginia full",
+      "en": "Virginia full"
+    },
+    "tracks.Virginia_Grand.label": {
+      "de": "Virginia grand",
+      "en": "Virginia grand"
+    },
+    "tracks.Virginia_North.label": {
+      "de": "Virginia north",
+      "en": "Virginia north"
+    },
+    "tracks.Virginia_Patriot.label": {
+      "de": "Virginia patriot",
+      "en": "Virginia patriot"
+    },
+    "tracks.Virginia_South.label": {
+      "de": "Virginia south",
+      "en": "Virginia south"
+    },
+    "tracks.Tykki_DIRT1.label": {
+      "de": "Tykki dirt1",
+      "en": "Tykki dirt1"
+    },
+    "tracks.Tykki_DIRT2.label": {
+      "de": "Tykki dirt2",
+      "en": "Tykki dirt2"
+    },
+    "tracks.Tykki_RX.label": {
+      "de": "Tykki rx",
+      "en": "Tykki rx"
+    },
+    "tracks.Tykki_Tarmac.label": {
+      "de": "Tykki tarmac",
+      "en": "Tykki tarmac"
+    },
+    "tracks.Watkins_Glen_GP.label": {
+      "de": "Watkins glen gp",
+      "en": "Watkins glen gp"
+    },
+    "tracks.Watkins_Glen_GPIL.label": {
+      "de": "Watkins glen gpil",
+      "en": "Watkins glen gpil"
+    },
+    "tracks.Watkins_Glen_S.label": {
+      "de": "Watkins glen s",
+      "en": "Watkins glen s"
+    },
+    "tracks.Watkins_Glen_SIL.label": {
+      "de": "Watkins glen sil",
+      "en": "Watkins glen sil"
+    },
+    "tracks.Hockenheim_RX.label": {
+      "de": "Hockenheim rx",
+      "en": "Hockenheim rx"
+    },
+    "tracks.Circuit_de_Catalunya_RX.label": {
+      "de": "Circuit de catalunya rx",
+      "en": "Circuit de catalunya rx"
+    },
+    "tracks.Adelaide_Modern_STT.label": {
+      "de": "Adelaide modern stt",
+      "en": "Adelaide modern stt"
+    },
+    "tracks.Long_Beach_STT.label": {
+      "de": "Long beach stt",
+      "en": "Long beach stt"
+    },
+    "tracks.Velopark_2017_STT.label": {
+      "de": "Velopark 2017 stt",
+      "en": "Velopark 2017 stt"
+    },
+    "tracks.Guapore_STT.label": {
+      "de": "Guapore stt",
+      "en": "Guapore stt"
+    },
+    "tracks.Ibarra_STT.label": {
+      "de": "Ibarra stt",
+      "en": "Ibarra stt"
+    },
+    "tracks.Hockenheim_STT.label": {
+      "de": "Hockenheim stt",
+      "en": "Hockenheim stt"
+    },
+    "tracks.Monza_2020_STT.label": {
+      "de": "Monza 2020 stt",
+      "en": "Monza 2020 stt"
+    },
+    "tracks.Road_America_STT.label": {
+      "de": "Road america stt",
+      "en": "Road america stt"
+    },
+    "tracks.Sebring_STT.label": {
+      "de": "Sebring stt",
+      "en": "Sebring stt"
+    },
+    "tracks.Spielberg_STT.label": {
+      "de": "Spielberg stt",
+      "en": "Spielberg stt"
+    },
+    "tracks.Cleveland_STT.label": {
+      "de": "Cleveland stt",
+      "en": "Cleveland stt"
+    },
+    "tracks.Watkins_Glen_STT.label": {
+      "de": "Watkins glen stt",
+      "en": "Watkins glen stt"
+    },
+    "enums.damage.description": {
+      "de": "Werte verschiedener Schadensarten",
+      "en": "Enum describing various damage types"
+    },
+    "enums.damage.OFF.label": {
+      "de": "Aus",
+      "en": "Off"
+    },
+    "enums.damage.VISUAL_ONLY.label": {
+      "de": "Nur visuell",
+      "en": "Visual only"
+    },
+    "enums.damage.PERFORMANCEIMPACTING.label": {
+      "de": "Leistungsbeeinträchtigend",
+      "en": "Performanceimpacting"
+    },
+    "enums.damage.FULL.label": {
+      "de": "Vollständig",
+      "en": "Full"
+    },
+    "enums.damage_scale.description": {
+      "de": "Werte verschiedener Schadensskalierungen",
+      "en": "Enum describing damage scale levels"
+    },
+    "enums.damage_scale.LOW.label": {
+      "de": "Niedrig",
+      "en": "Low"
+    },
+    "enums.damage_scale.MEDIUM.label": {
+      "de": "Mittel",
+      "en": "Medium"
+    },
+    "enums.damage_scale.HIGH.label": {
+      "de": "Hoch",
+      "en": "High"
+    },
+    "enums.damage_scale.MAX.label": {
+      "de": "Maximal",
+      "en": "Max"
+    },
+    "enums.random_failures.description": {
+      "de": "Werte verschiedener zufälliger Ausfallniveaus",
+      "en": "Enum describing random failure levels"
+    },
+    "enums.random_failures.OFF.label": {
+      "de": "Aus",
+      "en": "Off"
+    },
+    "enums.random_failures.STANDARD.label": {
+      "de": "Standard",
+      "en": "Standard"
+    },
+    "enums.random_failures.SYNC_TO_RACE.label": {
+      "de": "Synchronisiert mit dem Rennen",
+      "en": "Sync to race"
+    },
+    "enums.random_failures.X2.label": {
+      "de": "X2",
+      "en": "X2"
+    },
+    "enums.random_failures.X3.label": {
+      "de": "X3",
+      "en": "X3"
+    },
+    "enums.random_failures.X4.label": {
+      "de": "X4",
+      "en": "X4"
+    },
+    "enums.random_failures.X5.label": {
+      "de": "X5",
+      "en": "X5"
+    },
+    "enums.random_failures.X10.label": {
+      "de": "X10",
+      "en": "X10"
+    },
+    "enums.tire_wear.description": {
+      "de": "Werte zur Beschreibung verschiedener Reifenverschleißoptionen",
+      "en": "Enum describing various tier wear options"
+    },
+    "enums.tire_wear.X5.label": {
+      "de": "X5",
+      "en": "X5"
+    },
+    "enums.tire_wear.X4.label": {
+      "de": "X4",
+      "en": "X4"
+    },
+    "enums.tire_wear.X3.label": {
+      "de": "X3",
+      "en": "X3"
+    },
+    "enums.tire_wear.X2.label": {
+      "de": "X2",
+      "en": "X2"
+    },
+    "enums.tire_wear.STANDARD.label": {
+      "de": "Standard",
+      "en": "Standard"
+    },
+    "enums.tire_wear.OFF.label": {
+      "de": "Aus",
+      "en": "Off"
+    },
+    "enums.fuel_usage.description": {
+      "de": "Werte verschiedener Kraftstoffverbrauchsoptionen",
+      "en": "Enum describing various fuel usage options"
+    },
+    "enums.fuel_usage.STANDARD.label": {
+      "de": "Standard",
+      "en": "Standard"
+    },
+    "enums.fuel_usage.OFF.label": {
+      "de": "Aus",
+      "en": "Off"
+    },
+    "enums.fuel_usage.X5.label": {
+      "de": "X5",
+      "en": "X5"
+    },
+    "enums.fuel_usage.X4.label": {
+      "de": "X4",
+      "en": "X4"
+    },
+    "enums.fuel_usage.X3.label": {
+      "de": "X3",
+      "en": "X3"
+    },
+    "enums.fuel_usage.X2.label": {
+      "de": "X2",
+      "en": "X2"
+    },
+    "enums.penalties.description": {
+      "de": "Werte der Strafoptionen",
+      "en": "Enum describing various penalty options"
+    },
+    "enums.penalties.NONE.label": {
+      "de": "Keine",
+      "en": "None"
+    },
+    "enums.penalties.FULL.label": {
+      "de": "Vollständig",
+      "en": "Full"
+    },
+    "enums.allowed_view.description": {
+      "de": "Werte der Kameraoptionen",
+      "en": "Enum describing all allowed view settings"
+    },
+    "enums.allowed_view.Any.label": {
+      "de": "Beliebig",
+      "en": "Any"
+    },
+    "enums.allowed_view.CockpitHelmet.label": {
+      "de": "Kabine Helm",
+      "en": "Cockpit helmet"
+    },
+    "enums.weather.description": {
+      "de": "Werte aller Wetterbedingungen",
+      "en": "Enum describing all weather conditions"
+    },
+    "enums.weather.Clear.label": {
+      "de": "Klar",
+      "en": "Clear"
+    },
+    "enums.weather.LightCloud.label": {
+      "de": "Leicht bewölkt",
+      "en": "Light cloud"
+    },
+    "enums.weather.MediumCloud.label": {
+      "de": "Mittel bewölkt",
+      "en": "Medium cloud"
+    },
+    "enums.weather.HeavyCloud.label": {
+      "de": "Stark bewölkt",
+      "en": "Heavy cloud"
+    },
+    "enums.weather.Overcast.label": {
+      "de": "Bewölkt",
+      "en": "Overcast"
+    },
+    "enums.weather.LightRain.label": {
+      "de": "Leichter Regen",
+      "en": "Light rain"
+    },
+    "enums.weather.Rain.label": {
+      "de": "Regen",
+      "en": "Rain"
+    },
+    "enums.weather.Storm.label": {
+      "de": "Sturm",
+      "en": "Storm"
+    },
+    "enums.weather.ThunderStorm.label": {
+      "de": "Gewitter",
+      "en": "Thunder storm"
+    },
+    "enums.weather.Foggy.label": {
+      "de": "Nebel",
+      "en": "Foggy"
+    },
+    "enums.weather.FogWithRain.label": {
+      "de": "Nebel mit Regen",
+      "en": "Fog with rain"
+    },
+    "enums.weather.HeavyFog.label": {
+      "de": "Dichter Nebel",
+      "en": "Heavy fog"
+    },
+    "enums.weather.HeavyFogWithRain.label": {
+      "de": "Dichter Nebel mit Regen",
+      "en": "Heavy fog with rain"
+    },
+    "enums.weather.Hazy.label": {
+      "de": "Trüb",
+      "en": "Hazy"
+    },
+    "enums.weather.Random.label": {
+      "de": "Zufällig",
+      "en": "Random"
+    },
+    "enums.scheduledfcy.description": {
+      "de": "Werte der Streckenzustand-Voreinstellungen",
+      "en": "Enum describing live track presets"
+    },
+    "enums.scheduledfcy.Off.label": {
+      "de": "Aus",
+      "en": "Off"
+    },
+    "enums.scheduledfcy.25%.label": {
+      "de": "25%",
+      "en": "25%"
+    },
+    "enums.scheduledfcy.50%.label": {
+      "de": "50%",
+      "en": "50%"
+    },
+    "enums.scheduledfcy.75%.label": {
+      "de": "75%",
+      "en": "75%"
+    },
+    "enums.scheduledfcy.Random.label": {
+      "de": "Zufällig",
+      "en": "Random"
+    },
+    "livetrack_preset.description": {
+      "de": "Werte zur Beschreibung der geplanten Gelbphasen für den gesamten Kurs",
+      "en": "Enum describing scheduled full course yellow settings"
+    },
+    "livetrack_preset.Default Progressing.label": {
+      "de": "Standard (Session-Fortschritt)",
+      "en": "Default progressing"
+    },
+    "livetrack_preset.Wet.label": {
+      "de": "Nass",
+      "en": "Wet"
+    },
+    "livetrack_preset.Damp.label": {
+      "de": "Feucht",
+      "en": "Damp"
+    },
+    "livetrack_preset.Green.label": {
+      "de": "Grün",
+      "en": "Green"
+    },
+    "livetrack_preset.Light Rubber.label": {
+      "de": "Leichtes Gummi",
+      "en": "Light rubber"
+    },
+    "livetrack_preset.Medium Rubber.label": {
+      "de": "Mittleres Gummi",
+      "en": "Medium rubber"
+    },
+    "livetrack_preset.Heavy Rubber.label": {
+      "de": "Starkes Gummi",
+      "en": "Heavy rubber"
+    },
+    "flags.session.description": {
+      "de": "Schalter für die Sitzungseinstellungen",
+      "en": "Flags from session settings"
+    },
+    "flags.session.FORCE_IDENTICAL_VEHICLES.label": {
+      "de": "Identische Fahrzeuge erzwingen",
+      "en": "Force identical vehicles"
+    },
+    "flags.session.FORCE_IDENTICAL_VEHICLES.description": {
+      "de": "Wenn aktiviert, nutzen alle das selbe Fahrzeug (Fahrzeug ist anzugeben).",
+      "en": "If enabled, everyone uses the same vehicle (vehicle must be specified)."
+    },
+    "flags.session.ALLOW_CUSTOM_VEHICLE_SETUP.label": {
+      "de": "Benutzerdefinierte Fahrzeugkonfiguration erlauben",
+      "en": "Allow custom vehicle setup"
+    },
+    "flags.session.ALLOW_CUSTOM_VEHICLE_SETUP.description": {
+      "de": "Wenn aktiviert, können Spieler ihr eigenes Setup anpassen.",
+      "en": "When enabled, players can customize their own setup."
+    },
+    "flags.session.FORCE_REALISTIC_DRIVING_AIDS.label": {
+      "de": "Realistische Fahrhilfen erzwingen",
+      "en": "Force realistic driving aids"
+    },
+    "flags.session.FORCE_REALISTIC_DRIVING_AIDS.description": {
+      "de": "Wenn aktiviert, werden können nur realistische Fahrhilfen genutzt werden.",
+      "en": "When enabled, only realistic driving aids can be used."
+    },
+    "flags.session.ABS_ALLOWED.label": {
+      "de": "ABS erlaubt",
+      "en": "Abs allowed"
+    },
+    "flags.session.ABS_ALLOWED.description": {
+      "de": "Wenn aktiviert, ist die Nutzung von ABS (Antiblockiersystem) erlaubt.",
+      "en": "When enabled, the use of ABS (anti-lock braking system) is permitted."
+    },
+    "flags.session.SC_ALLOWED.label": {
+      "de": "SC erlaubt",
+      "en": "Sc allowed"
+    },
+    "flags.session.SC_ALLOWED.description": {
+      "de": "Wenn aktiviert, ist die Nutzung von SC (Stabilitätskontrolle) erlaubt.",
+      "en": "When enabled, the use of SC (Stability Control) is permitted."
+    },
+    "flags.session.TCS_ALLOWED.label": {
+      "de": "TCS erlaubt",
+      "en": "Tcs allowed"
+    },
+    "flags.session.TCS_ALLOWED.description": {
+      "de": "Wenn aktiviert, ist die Nutzung von TCS (Traktionskontrollsystem) erlaubt.",
+      "en": "When enabled, the use of TCS (traction control system) is permitted."
+    },
+    "flags.session.FORCE_MANUAL.label": {
+      "de": "Manuelle Schaltung erzwingen",
+      "en": "Force manual"
+    },
+    "flags.session.FORCE_MANUAL.description": {
+      "de": "Wenn aktiviert, kann keine automatische Gangschaltung genutzt werden.",
+      "en": "If enabled, automatic gear shifting cannot be used."
+    },
+    "flags.session.FORCE_SAME_VEHICLE_CLASS.label": {
+      "de": "Gleiche Fahrzeugklasse erzwingen",
+      "en": "Force same vehicle class"
+    },
+    "flags.session.FORCE_SAME_VEHICLE_CLASS.description": {
+      "de": "Wenn aktiviert, können nur Fahrzeuge einer Fahrzeugklasse genutzt werden (Fahrzeugklasse ist anzugeben).",
+      "en": "If enabled, only vehicles in a specific vehicle class may be used (the vehicle class must be specified)."
+    },
+    "flags.session.FORCE_MULTI_VEHICLE_CLASS.label": {
+      "de": "Mehrere Fahrzeugklassen erzwingen",
+      "en": "Force multi vehicle class"
+    },
+    "flags.session.FORCE_MULTI_VEHICLE_CLASS.description": {
+      "de": "Wenn aktiviert, können nur Fahrzeuge der ausgewählten Fahrzeugklassen genutzt werden (Fahrzeugklassen sind anzugeben).",
+      "en": "If enabled, only vehicles in the selected vehicle classes may be used (vehicle classes must be specified)."
+    },
+    "flags.session.DISABLE_TRACKSIDE_OBJECT_COLLISIONS.label": {
+      "de": "Kollision mit Streckenobjekten deaktivieren",
+      "en": "Disable trackside object collisions"
+    },
+    "flags.session.DISABLE_TRACKSIDE_OBJECT_COLLISIONS.description": {
+      "de": "Wenn aktiviert, gibt es keine Kollisionen mit Streckenobjekte (z. B. Schildern).",
+      "en": "When enabled, there are no collisions with road objects (e.g., signs)."
+    },
+    "flags.session.FILL_SESSION_WITH_AI.label": {
+      "de": "Sitzung mit KI füllen",
+      "en": "Fill session with ai"
+    },
+    "flags.session.FILL_SESSION_WITH_AI.description": {
+      "de": "Wenn aktiviert, wird die Differenz von 'GridSize' und 'MaxPlayers' mit KI-Fahrern gefüllt.",
+      "en": "When enabled, the difference between 'GridSize' and 'MaxPlayers' is filled with AI drivers."
+    },
+    "flags.session.MECHANICAL_FAILURES.label": {
+      "de": "Mechanische Ausfälle",
+      "en": "Mechanical failures"
+    },
+    "flags.session.MECHANICAL_FAILURES.description": {
+      "de": "Wenn aktiviert, können mechanische Ausfälle auftreten.",
+      "en": "If enabled, mechanical failures may occur."
+    },
+    "flags.session.AUTO_START_ENGINE.label": {
+      "de": "Automatischer Motor-Start",
+      "en": "Auto start engine"
+    },
+    "flags.session.AUTO_START_ENGINE.description": {
+      "de": "Wenn aktiviert, starten alle Fahrer mit laufendem Motor.",
+      "en": "When enabled, all drivers start with the engine running."
+    },
+    "flags.session.TIMED_RACE.label": {
+      "de": "Zeitgesteuerte Rennen",
+      "en": "Timed race"
+    },
+    "flags.session.TIMED_RACE.description": {
+      "de": "Wenn aktiviert, wird das Rennen von Rundenbasiert auf Zeitrennen umgestellt (Renndauer ist anzugeben).",
+      "en": "If enabled, the race will switch from a lap-based format to a time trial (the race duration must be specified)."
+    },
+    "flags.session.ALLOW_VEHICLE_RESET.label": {
+      "de": "Fahrzeugreset erlauben",
+      "en": "Allow vehicle reset"
+    },
+    "flags.session.ALLOW_VEHICLE_RESET.description": {
+      "de": "Wenn aktiviert, ist das zurücksetzen des Fahrzeugs auf die Strecke erlaubt.",
+      "en": "When enabled, the vehicle is allowed to return to the track."
+    },
+    "flags.session.PASSWORD_PROTECTED.label": {
+      "de": "Passwortgeschützt",
+      "en": "Password protected"
+    },
+    "flags.session.PASSWORD_PROTECTED.description": {
+      "de": "Wenn aktiviert, ist die Session passwortgeschützt (wird durch die vergabe eines Passwortes gesetzt).",
+      "en": "When enabled, the session is password-protected (set by assigning a password)."
+    },
+    "flags.session.ONLINE_REPUTATION_ENABLED.label": {
+      "de": "Online-Reputation aktiviert",
+      "en": "Online reputation enabled"
+    },
+    "flags.session.ONLINE_REPUTATION_ENABLED.description": {
+      "de": "Wenn aktiviert, können die Daten des Online-Profils verwendet werden.",
+      "en": "If enabled, the data from the online profile can be used."
+    },
+    "flags.session.WAIT_FOR_RACE_READY_INPUT.label": {
+      "de": "Warten auf Rennbereitschaftseingabe",
+      "en": "Wait for race ready input"
+    },
+    "flags.session.WAIT_FOR_RACE_READY_INPUT.description": {
+      "de": "Wenn aktiviert, startet das Rennen erst wenn alle Spieler ihre Rennbereitschafts angegeben haben.",
+      "en": "If enabled, the race will not start until all players have indicated that they are ready to race."
+    },
+    "flags.session.HAS_RACE_DIRECTOR.label": {
+      "de": "Hat Rennleitung",
+      "en": "Has race director"
+    },
+    "flags.session.HAS_RACE_DIRECTOR.description": {
+      "de": "Wenn aktiviert, kann sich ein Spieler in die Rolle der Rennleitung versetzen.",
+      "en": "When enabled, a player can take on the role of race director."
+    },
+    "flags.session.HAS_BROADCASTER.label": {
+      "de": "Hat Regie/Übertragung",
+      "en": "Has broadcaster"
+    },
+    "flags.session.HAS_BROADCASTER.description": {
+      "de": "Wenn aktiviert, kann sich ein Spieler in die Rolle der Regie/Übertragung versetzen, um das geschehen für Zuschauer auf Platformen wie Twitch aufzubereiten.",
+      "en": "When enabled, a player can take on the role of director/broadcaster to curate the action for viewers on platforms like Twitch."
+    },
+    "flags.session.PIT_SPEED_LIMITER.label": {
+      "de": "Boxenstopp-Limiter",
+      "en": "Pit speed limiter"
+    },
+    "flags.session.PIT_SPEED_LIMITER.description": {
+      "de": "Wenn aktiviert, haben alle Spieler automatisch den Boxen-Limiter aktiviert.",
+      "en": "When enabled, all players automatically have the box limiter enabled."
+    },
+    "flags.session.PIT_STOP_ERRORS_ALLOWED.label": {
+      "de": "Pit-Stop-Fehler erlaubt",
+      "en": "Pit stop errors allowed"
+    },
+    "flags.session.PIT_STOP_ERRORS_ALLOWED.description": {
+      "de": "Wenn aktiviert, können Fehler bei einem Boxenstop passieren, welche die Wartezeit verlängern.",
+      "en": "If enabled, errors may occur during a pit stop, which can extend the wait time."
+    },
+    "flags.session.DISABLE_DRIVING_LINE.label": {
+      "de": "Fahrhilfelinie deaktivieren",
+      "en": "Disable driving line"
+    },
+    "flags.session.DISABLE_DRIVING_LINE.description": {
+      "de": "Wenn aktiviert, kann die Fahrhilfelinie nicht genutzt werden.",
+      "en": "If enabled, the lane-keeping assist feature cannot be used."
+    },
+    "flags.session.ANTI_GRIEFING_COLLISIONS.label": {
+      "de": "Anti Griefing-Kollisionen",
+      "en": "Anti griefing collisions"
+    },
+    "flags.session.ANTI_GRIEFING_COLLISIONS.description": {
+      "de": "Wenn aktiviert, werden Fahrer, welche viel zu langsam oder in die falsche Richtung fahren, zu 'Geisterfahrern' und können keine Kollision verursachen.",
+      "en": "When enabled, drivers who are traveling much too slowly or in the wrong direction become 'ghost drivers' and cannot cause a collision."
+    },
+    "flags.session.COOLDOWNLAP.label": {
+      "de": "Auslaufrunde",
+      "en": "Cooldownlap"
+    },
+    "flags.session.COOLDOWNLAP.description": {
+      "de": "Wenn aktiviert, wird am ende eines Rennens eine Auslaufrunde gefahren.",
+      "en": "When enabled, a cool-down lap is driven at the end of a race."
+    }
+  }
+}

@@ -1,0 +1,143 @@
+.app {
+  width: min(1400px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.app-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  margin: 0 0 12px;
+}
+
+.app-header p {
+  max-width: 100%;
+}
+
+.language-select {
+  display: grid;
+  gap: 6px;
+  min-width: 150px;
+}
+
+.language-select select {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 2fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.settings-panel,
+.preview-panel {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+}
+
+.tab:hover,
+.tab.is-active {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.settings-content {
+  padding: 24px;
+  min-height: 400px;
+}
+
+.settings-content h2 {
+  margin-top: 0;
+}
+
+.preview-panel {
+  position: sticky;
+  top: 24px;
+  overflow: hidden;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-header h2 {
+  margin: 0;
+}
+
+.preview-header span {
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.preview-panel pre {
+  margin: 0;
+  padding: 20px;
+  overflow: auto;
+  min-height: 5000px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.5;
+  
+}
+#server-config-preview {
+  font-family: Consolas, "Courier New", monospace;
+  max-height: 250px;
+}
+@media (max-width: 800px) {
+  .app {
+    padding: 20px;
+  }
+
+  .app-header {
+    flex-direction: column;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    position: static;
+  }
+}
