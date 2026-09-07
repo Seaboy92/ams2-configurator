@@ -1,4 +1,3 @@
-import apiIds from '/src/data/api_ids.json'
 import { tabRegistry, fieldTabOverrides, booleanLikeFields, customFields, enumLikeFields } from './configFields'
 import { validationMap } from './validationService'
 
@@ -63,7 +62,7 @@ function getTabForObject(objectKey) {
 }
 
 // Funktion, welche die Flag-Felder aus der API erstellt
-function getFlagFields() {
+function getFlagFields(apiIds = {}) {
     const flagFields = []
 
     const flagData = apiIds['flags/session']
@@ -94,7 +93,7 @@ function getFlagFields() {
 }
 
 // Funktion, welche die Konfiegurationsfelder aus der API erstellt
-function getApiFields(){
+function getApiFields(apiIds = {}){
   
   const apiFields = []
   // Sammle informationen zu den Feldern aus der API
@@ -142,8 +141,11 @@ function getApiFields(){
   return apiFields
 }
 
-// Erstellt eine export-Variable welche alle Felder gesammelt zurück gibt 
-export const allFields = getApiFields()
-allFields.push(...getFlagFields())
-allFields.push(...(customFields ?? []))
-  
+// Funktion,welche alle Felder gesammelt zurück gibt 
+export function createAllFields(apiIds = {}) {
+  return [
+    ...getApiFields(apiIds),
+    ...getFlagFields(apiIds),
+    ...(customFields ?? []),
+  ]
+}

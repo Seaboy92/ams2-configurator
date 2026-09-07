@@ -1,9 +1,9 @@
-import apiIds from '/src/data/api_ids.json'
 import { sortConfigSection } from "./fieldDisplay"
 
 // Datei zum Lesen und Ändern der Configuration
 // Konfiguration laden
-export const getConfigValue = (config, field) => {
+export const getConfigValue = (config, fieldOrName) => {
+    const field = typeof fieldOrName === 'string' ? { name: fieldOrName } : fieldOrName
     // wenn das Feld ein Flag-Feld ist
     if (field.flagGroup === 'sessionFlags') {
 
@@ -19,12 +19,12 @@ export const getConfigValue = (config, field) => {
         .find(value => value !== undefined) ?? ''
 }
 
-const getDefaultWeatherValue = () => {
-    return apiIds["enums/weather"]?.list?.[0]?.value
+const getDefaultWeatherValue = (optionsBySource) => {
+  return optionsBySource['enums.weather']?.[0]?.value
 }
 
 //Konfiguration anpassen
-export const updateConfigValue = (config, field, newValue) => {
+export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     const newConfig = { ...config }
 
     const section = field.section
@@ -99,7 +99,7 @@ export const updateConfigValue = (config, field, newValue) => {
 
             // Nur anlegen, wenn noch kein Wert existiert
             if (newConfig[section][slotName] === undefined) {
-                newConfig[section][slotName] = getDefaultWeatherValue()
+                newConfig[section][slotName] = getDefaultWeatherValue(optionsBySource)
             }
         }
     }

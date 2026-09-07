@@ -13,7 +13,6 @@
 // order    → bestimmt die Reihenfolge
 ////////////////////////////////////////////////////////////
 import { getConfigValue } from './configService'
-import { allFields } from './fieldMapper'
 
 /*Felder die angezeigt werden sollen, werden auskommentiert*/
 const hiddenFields = [
@@ -376,25 +375,12 @@ export function getFieldOrder(field) {
 }
 
 export const sortConfigSection = (section) => {
+  return Object.fromEntries(
+    Object.entries(section).sort(([nameA], [nameB]) => {
+      const orderA = getFieldOrder({ name: nameA })
+      const orderB = getFieldOrder({ name: nameB })
 
-    const fieldOrder = new Map(
-        allFields.map(field => [
-            field.name,
-            getFieldOrder(field)
-        ])
-    )
-
-    return Object.fromEntries(
-        Object.entries(section)
-            .sort(([nameA], [nameB]) => {
-
-                const orderA =
-                    fieldOrder.get(nameA) ?? 9999
-
-                const orderB =
-                    fieldOrder.get(nameB) ?? 9999
-
-                return orderA - orderB
-            })
-    )
+      return orderA - orderB
+    })
+  )
 }
