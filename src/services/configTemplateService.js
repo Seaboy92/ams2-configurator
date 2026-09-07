@@ -17,6 +17,7 @@ export const defaultSettings = {
         "PracticeLength" : 10,
         "QualifyLength" : 10,
         "RaceLength" : 10,
+        "Flags" : 4194304
     },
 }
 

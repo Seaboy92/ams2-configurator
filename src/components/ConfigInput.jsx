@@ -3,6 +3,7 @@ import { getConfigValue, updateConfigValue } from '../services/configService'
 import { translate } from "../services/translate"
 import { getFieldOptions } from "../services/optionsService"
 import { getValidationValue } from '../services/validationService'
+import { isFieldDisabled } from '../services/fieldDisplay'
 
 export function ConfigInput({field, config, setConfig, language, optionsBySource, optionsLoading}) {
 
@@ -27,6 +28,8 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
 
         return translate(`${field.optionsSource}.${option.name}.label`, language)    
     }
+
+    const disabled = field.access === 'ReadOnly' || isFieldDisabled(field, config)
 
     return (
         <label
@@ -54,7 +57,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                         style={{ marginLeft: 'auto' }}
                         {...inputProps}
                         value={value ?? ''}
-                        disabled={optionsLoading}
+                        disabled={disabled || optionsLoading}
                         >
                         {optionsLoading ? (
                             <option>Optionen werden geladen …</option>
@@ -76,7 +79,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                         type={field.inputType}
                         {...inputProps}
                         readOnly={field.access === 'ReadOnly'}
-                        disabled={field.access === 'ReadOnly'}
+                        disabled={disabled}
                         min={min}
                         max={max}
                         step={field.validation?.step}

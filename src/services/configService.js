@@ -21,6 +21,14 @@ const syncFillSessionWithAi = (sessionAttributes) => {
     sessionAttributes.Flags = setSessionFlag(flags, FILL_SESSION_WITH_AI, Number(MaxPlayers) < Number(GridSize))
 }
 
+const PASSWORD_PROTECTED = 4194304
+const syncPasswordProtected = (config) => {
+    const password = String(config.server?.password ?? '').trim()
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+
+    config.sessionAttributes.Flags = setSessionFlag(flags, PASSWORD_PROTECTED, password.length > 0)
+}
+
 // Datei zum Lesen und Ändern der Configuration
 // Konfiguration laden
 export const getConfigValue = (config, fieldOrName) => {
@@ -73,6 +81,13 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             newConfig[section].MaxPlayers = newConfig[section].GridSize
         }
 
+        if (field.name === 'PASSWORD_PROTECTED' && wasEnabled && newValue === false) {
+            newConfig.server = {
+                ...newConfig.server,
+                password: ''
+            }
+        }
+
         return newConfig
     }
 
@@ -83,6 +98,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     }
 
     // Abhängige Werte synchron halten
+    // GridSize und MaxPlayers
     if (field.name === 'maxPlayerCount') {
         if (!newConfig.sessionAttributes) {
             newConfig.sessionAttributes = {}
@@ -93,6 +109,15 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
 
     if (field.name === 'maxPlayerCount' || field.name === 'GridSize' || field.name === 'MaxPlayers') {
         syncFillSessionWithAi(newConfig.sessionAttributes)
+    }
+
+    // Passwort-Flag
+    if (field.name === 'password') {
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+
+        syncPasswordProtected(newConfig)
     }
 
     // Wetter-Slots bereinigen

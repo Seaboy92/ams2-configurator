@@ -166,6 +166,13 @@ const fieldDisplay = {
         order: 29,
     },
 
+    // Password-Flag
+    PASSWORD_PROTECTED: {
+        disabled: (config) => {
+            return String(getConfigValue(config, 'password')).trim().length === 0
+        },
+    },
+
     // Wetter
     PracticeWeatherSlots: {
         order: 10,
@@ -361,6 +368,21 @@ export function isFieldVisible(field, config) {
     return settings.visible
 }
 
+/**
+ * Prüft ob ein Feld deaktiviert ist.
+ *
+ * Wenn für das Feld keine Regel existiert,
+ * wird es automatisch aktiviert.
+ */
+export function isFieldDisabled(field, config) {
+    const settings = fieldDisplay[field.name]
+
+    if (typeof settings?.disabled === 'function') {
+        return settings.disabled(config)
+    }
+
+    return settings?.disabled === true
+}
 
 /**
  * Gibt die Reihenfolge eines Feldes zurück.
