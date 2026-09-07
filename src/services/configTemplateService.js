@@ -13,6 +13,7 @@ export const defaultSettings = {
     sessionAttributes: {
         "TrackId" : 827815091,
         "GridSize" : 16,
+        "MaxPlayers" : 16,
         "PracticeLength" : 10,
         "QualifyLength" : 10,
         "RaceLength" : 10,

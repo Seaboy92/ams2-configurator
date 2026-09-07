@@ -1,5 +1,26 @@
 import { sortConfigSection } from "./fieldDisplay"
 
+const FILL_SESSION_WITH_AI = 131072
+
+// Hilfsfunktionen
+const hasUsableNumber = (value) =>
+    value !== '' && value !== null && value !== undefined && Number.isFinite(Number(value))
+
+const setSessionFlag = (flags, flagValue, enabled) =>
+    enabled ? flags | flagValue : flags & ~flagValue
+
+// Abhängigkeit des KI-Flags von GridSize und MaxPlayers
+const syncFillSessionWithAi = (sessionAttributes) => {
+    const { GridSize, MaxPlayers } = sessionAttributes
+
+    if (!hasUsableNumber(GridSize) || !hasUsableNumber(MaxPlayers)) {
+        return
+    }
+
+    const flags = Number(sessionAttributes.Flags ?? 0)
+    sessionAttributes.Flags = setSessionFlag(flags, FILL_SESSION_WITH_AI, Number(MaxPlayers) < Number(GridSize))
+}
+
 // Datei zum Lesen und Ändern der Configuration
 // Konfiguration laden
 export const getConfigValue = (config, fieldOrName) => {
@@ -40,13 +61,16 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         const currentFlags = Number(
             newConfig[section].Flags ?? 0
         )
+        const wasEnabled = (currentFlags & field.flagValue) !== 0
 
-        if (newValue === true) {
-            newConfig[section].Flags =
-                currentFlags | field.flagValue
-        } else {
-            newConfig[section].Flags =
-                currentFlags & ~field.flagValue
+        newConfig[section] = {
+            ...newConfig[section],
+            Flags: setSessionFlag(currentFlags, field.flagValue, newValue === true)
+        }
+
+        // Wird FILL_SESSION_WITH_AI deaktiviert, dann MaxPlayers auf GridSize setzen
+        if (field.name === 'FILL_SESSION_WITH_AI' && wasEnabled && newValue === false) {
+            newConfig[section].MaxPlayers = newConfig[section].GridSize
         }
 
         return newConfig
@@ -65,6 +89,10 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         }
 
         newConfig.sessionAttributes.GridSize = newValue
+    }
+
+    if (field.name === 'maxPlayerCount' || field.name === 'GridSize' || field.name === 'MaxPlayers') {
+        syncFillSessionWithAi(newConfig.sessionAttributes)
     }
 
     // Wetter-Slots bereinigen
