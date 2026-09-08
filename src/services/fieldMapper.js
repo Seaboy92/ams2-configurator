@@ -48,6 +48,12 @@ export function mapEnumToType(field, inputType) {
   if (field.name.includes("Track")) {
     return 'tracks'
   }
+  if (field.name.includes("VehicleClassId") || field.name.includes("MultiClassSlot")) {
+    return 'vehicle_classes'
+  }
+  if (field.name.includes("VehicleModelId")) {
+    return 'vehicles'
+  }
 }
 
 // Funktion welche die Zuordnung der Felder zu den Tabs ausführt

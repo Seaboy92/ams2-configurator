@@ -264,8 +264,6 @@ export const tabRegistry = {
 // Ausnahmen für die Feld-Tab-Zuordnung
 export const fieldTabOverrides = {
   ServerControlsSetup: 'general',
-  VehicleModelId: 'vehicles',
-  VehicleClassId: 'vehicles',
   
   // Strecke
   ServerControlsTrack: 'track',
@@ -289,6 +287,16 @@ export const fieldTabOverrides = {
   RaceWeatherSlot2: 'track',
   RaceWeatherSlot3: 'track',
   RaceWeatherSlot4: 'track',
+
+  // Fahrzeuge
+  VehicleModelId: 'vehicles',
+  VehicleClassId: 'vehicles',
+  ServerControlsVehicleClass: 'vehicles',
+  ServerControlsVehicle: 'vehicles',
+  MultiClassSlots: 'vehicles',
+  MultiClassSlot1: 'vehicles',
+  MultiClassSlot2: 'vehicles',
+  MultiClassSlot3: 'vehicles',
 
   // Regeln
   PenaltiesType: 'rules',
@@ -332,5 +340,10 @@ export const enumLikeFields = new Set([
   'RaceWeatherSlot4',
 
   'TrackId',
-  'PenaltiesType'
+  'PenaltiesType',
+  'VehicleClassId',
+  'VehicleModelId',
+  'MultiClassSlot1',
+  'MultiClassSlot2',
+  'MultiClassSlot3',
 ])

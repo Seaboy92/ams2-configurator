@@ -18,8 +18,8 @@ import { getConfigValue } from './configService'
 const hiddenFields = [
     'ServerControlsSetup',
     //'ServerControlsTrack',
-    'ServerControlsVehicleClass',
-    'ServerControlsVehicle',
+    //'ServerControlsVehicleClass',
+    //'ServerControlsVehicle',
     'GridSize',
     'GridLayout',
     //'MaxPlayers',
@@ -41,18 +41,18 @@ const hiddenFields = [
     'AllowedViews',
     'FullCourseYellows',
     //'TrackId',
-    'VehicleClassId',
-    'MultiClassSlots',
-    'MultiClassSlot1',
-    'MultiClassSlot2',
-    'MultiClassSlot3',
+    //'VehicleClassId',
+    //'MultiClassSlots',
+    //'MultiClassSlot1',
+    //'MultiClassSlot2',
+    //'MultiClassSlot3',
     'MultiClassSlot4',
     'MultiClassSlot5',
     'MultiClassSlot6',
     'MultiClassSlot7',
     'MultiClassSlot8',
     'MultiClassSlot9',
-    'VehicleModelId',
+    //'VehicleModelId',
     'MinimumOnlineRank',
     'MinimumOnlineStrength',
     //'PracticeLength',
@@ -295,20 +295,35 @@ const fieldDisplay = {
     },
 
     // Fahrzeuge
+    ServerControlsVehicleClass: {
+        order: 35,
+    },
+    VehicleClassId: {
+        order: 36,
+    },
+    ServerControlsVehicle: {
+        order: 37,
+    },
+    VehicleModelId: {
+        order: 38,
+    },
     MultiClassSlots: {
-
+        order: 40,
     },
     MultiClassSlot1: {
+        order: 41,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 1
         },
     },
     MultiClassSlot2: {
+        order: 42,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 2
         },
     },
     MultiClassSlot3: {
+        order: 43,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 3
         },
