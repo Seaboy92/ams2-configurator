@@ -86,7 +86,7 @@ function getFlagFields(apiIds = {}) {
             flagValue: flag.value,
             flagGroup: 'sessionFlags',
 
-            tab: 'session',
+            tab: fieldTabOverrides[flag.name] ?? 'session',
             translationKey: `flags.session.${flag.name}`,
 
             section: 'sessionAttributes',

@@ -129,14 +129,21 @@ const fieldDisplay = {
     name: {
         order: 0,
     },
-    password: {
+    // Password-Flag
+    PASSWORD_PROTECTED: {
         order: 1,
+        disabled: (config) => {
+            return String(getConfigValue(config, 'password')).trim().length === 0
+        },
     },
-    secure: {
+    password: {
         order: 2,
     },
-    maxPlayerCount: {
+    secure: {
         order: 3,
+    },
+    maxPlayerCount: {
+        order: 4,
     },
 
     // Strecke
@@ -164,13 +171,6 @@ const fieldDisplay = {
     },
     RaceLength: {
         order: 29,
-    },
-
-    // Password-Flag
-    PASSWORD_PROTECTED: {
-        disabled: (config) => {
-            return String(getConfigValue(config, 'password')).trim().length === 0
-        },
     },
 
     // Wetter

@@ -264,6 +264,7 @@ export const tabRegistry = {
 // Ausnahmen für die Feld-Tab-Zuordnung
 export const fieldTabOverrides = {
   ServerControlsSetup: 'general',
+  PASSWORD_PROTECTED: 'general',
   
   // Strecke
   ServerControlsTrack: 'track',
