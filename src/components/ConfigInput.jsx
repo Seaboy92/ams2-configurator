@@ -23,7 +23,11 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
             ? ` · DLC: ${option.dlc}`
             : ''
 
-            return `${option.track} – ${option.variant}${dlcLabel}`
+            const gridSizeLabel = Number.isInteger(option.gridSize)
+            ? ` (${option.gridSize})`
+            : ''
+
+            return `${option.track} – ${option.variant}${dlcLabel}${gridSizeLabel}`
         }
 
         return translate(`${field.optionsSource}.${option.name}.label`, language)    

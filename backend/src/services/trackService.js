@@ -1,5 +1,10 @@
 import { readFileSync } from 'node:fs'
 import { parse } from 'csv-parse/sync'
+import apiIds from '../data/api_ids.json' with { type: 'json' }
+
+const gridSizeByTrackId = new Map(
+  apiIds.tracks.list.map((track) => [track.id, track.gridsize])
+)
 
 const tracksFileUrl = new URL(
   '../data/tracks_with_ids.csv',
@@ -8,6 +13,7 @@ const tracksFileUrl = new URL(
 
 function toTrack(row) {
   const id = Number(row.NumericID)
+  const gridSize = gridSizeByTrackId.get(id)
 
   if (!Number.isInteger(id)) {
     throw new Error(
@@ -22,6 +28,7 @@ function toTrack(row) {
     variant: row.Variante,
     dlc: row['Game-DLCc'],
     isDlc: row['Game-DLCc'] !== 'Standard',
+    gridSize,
   }
 }
 
