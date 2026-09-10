@@ -9,6 +9,7 @@ const optionSources = {
   'enums.damage_scale': 'enums/damage_scale',
   'enums.penalties': 'enums/penalties',
   'vehicle_classes': 'vehicle_classes',
+  'enums.fuel_usage': 'enums/fuel_usage',
 }
 
 router.get('/', (request, response) => {

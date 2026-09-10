@@ -42,6 +42,9 @@ export function mapEnumToType(field, inputType) {
   if (field.name.includes("Penalties")) {
     return 'enums.penalties'
   }
+  if (field.name.includes("FuelUsageType")) {
+    return 'enums.fuel_usage'
+  }
   if (field.name === "DamageScale") {
     return 'enums.damage_scale'
   }

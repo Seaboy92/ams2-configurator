@@ -25,6 +25,7 @@ function App() {
       'enums.damage_scale',
       'enums.penalties',
       'vehicle_classes',
+      'enums.fuel_usage',
     ]
 
     async function loadOptions() {
