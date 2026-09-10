@@ -669,11 +669,11 @@
       "en": "Length of practice session in minutes."
     },
     "attributes.session.PracticeDateHour.label": {
-      "de": "Trainingsdatum Stunde",
+      "de": "Trainings Uhrzeit - Stunde",
       "en": "Practice date hour"
     },
     "attributes.session.PracticeDateHour.description": {
-      "de": "Das Startdatum der Trainings session - Stunde des Tages.",
+      "de": "Startuhrzeit des Trainings.",
       "en": "Starting practice session date - hour of day."
     },
     "attributes.session.PracticeDateProgression.label": {
@@ -749,11 +749,11 @@
       "en": "Length of qualification session in minutes."
     },
     "attributes.session.QualifyDateHour.label": {
-      "de": "Qualifying-Datum und Uhrzeit",
+      "de": "Qualifying Uhrzeit - Stunde",
       "en": "Qualify date hour"
     },
     "attributes.session.QualifyDateHour.description": {
-      "de": "Startdatum und -uhrzeit der Qualifying-Sitzung.",
+      "de": "Startuhrzeit des Qualifyings.",
       "en": "Starting qualifying session date - hour of day."
     },
     "attributes.session.QualifyDateProgression.label": {
@@ -869,11 +869,11 @@
       "en": "Starting race date - day of month."
     },
     "attributes.session.RaceDateHour.label": {
-      "de": "Renndatum - Stunde",
+      "de": "Renn-Uhrzeit - Stunde",
       "en": "Race date hour"
     },
     "attributes.session.RaceDateHour.description": {
-      "de": "Stunde des Rennens.",
+      "de": "Startuhrzeit des Rennens.",
       "en": "Starting race date - hour of day."
     },
     "attributes.session.RaceDateProgression.label": {

@@ -56,7 +56,7 @@ const hiddenFields = [
     'MinimumOnlineRank',
     'MinimumOnlineStrength',
     //'PracticeLength',
-    'PracticeDateHour',
+    //'PracticeDateHour',
     'PracticeDateProgression',
     'PracticeWeatherProgression',
     //'PracticeWeatherSlots',
@@ -66,7 +66,7 @@ const hiddenFields = [
     //'PracticeWeatherSlot4',
     'PracticeLiveTrackPreset',
     //'QualifyLength',
-    'QualifyDateHour',
+    //'QualifyDateHour',
     'QualifyDateProgression',
     'QualifyWeatherProgression',
     //'QualifyWeatherSlots',
@@ -81,7 +81,7 @@ const hiddenFields = [
     'RaceDateYear',
     'RaceDateMonth',
     'RaceDateDay',
-    'RaceDateHour',
+    //'RaceDateHour',
     'RaceDateProgression',
     'RaceWeatherProgression',
     //'RaceWeatherSlots', 
@@ -180,17 +180,38 @@ const fieldDisplay = {
     PracticeLength: {
         order: 9,
     },
+    PracticeDateHour: {
+        order: 10,
+        
+        visible: (config) => {
+            return Number(getConfigValue(config, 'PracticeLength')) >= 1
+        }
+    },
     QualifyLength: {
         order: 19,
+    },
+    QualifyDateHour: {
+        order: 20,
+        
+        visible: (config) => {
+            return Number(getConfigValue(config, 'QualifyLength')) >= 1
+        }
     },
     RaceLength: {
         order: 29,
     },
-    TIMED_RACE: {
+    RaceDateHour: {
         order: 30,
+        
+        visible: (config) => {
+            return Number(getConfigValue(config, 'RaceLength')) >= 1
+        }
+    },
+    TIMED_RACE: {
+        order: 31,
     },
     RaceExtraLap: {
-        order: 31,
+        order: 32,
         
         visible: (config) => {
             const TIMED_RACE_FLAG = 1048576
@@ -202,13 +223,13 @@ const fieldDisplay = {
         },
     },
     COOLDOWNLAP: {
-        order: 32,
-    },
-    DamageType: {
         order: 33,
     },
-    DamageScale: {
+    DamageType: {
         order: 34,
+    },
+    DamageScale: {
+        order: 35,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'DamageType')) >= 1
