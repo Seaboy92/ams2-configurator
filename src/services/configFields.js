@@ -349,4 +349,7 @@ export const enumLikeFields = new Set([
   'MultiClassSlot1',
   'MultiClassSlot2',
   'MultiClassSlot3',
+
+  'DamageType',
+  'DamageScale',
 ])

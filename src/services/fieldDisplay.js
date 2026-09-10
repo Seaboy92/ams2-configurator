@@ -26,8 +26,8 @@ const hiddenFields = [
     'OpponentDifficulty',
     'Flags',
     'AutoAdvanceSession',
-    'DamageType',
-    'DamageScale',
+    //'DamageType',
+    //'DamageScale',
     'DamageRandomFailures',
     'TireWearType',
     'FuelUsageType',
@@ -192,6 +192,19 @@ const fieldDisplay = {
                 flagGroup: 'sessionFlags',
                 flagValue: TIMED_RACE_FLAG,
             })
+        },
+    },
+    COOLDOWNLAP: {
+        order: 32,
+    },
+    DamageType: {
+        order: 33,
+    },
+    DamageScale: {
+        order: 34,
+
+        visible: (config) => {
+            return Number(getConfigValue(config, 'DamageType')) >= 1
         },
     },
 

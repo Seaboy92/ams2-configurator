@@ -22,6 +22,7 @@ function App() {
     const sources = [
       'enums.weather',
       'enums.damage',
+      'enums.damage_scale',
       'enums.penalties',
       'vehicle_classes',
     ]

@@ -162,7 +162,11 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
 
         syncPasswordProtected(newConfig)
     }
-
+    if (field.name === 'DamageType'){
+        if (newValue === 0) {
+            delete newConfig[section].DamageScale
+        }
+    }
     // FORCE_SAME_VEHICLE_CLASS-Flag
     if (field.name === 'ServerControlsVehicleClass') {
         // Wenn der neue Wert true ist, obwohl MultiClassSlots > 0 ist, dann ServerControlsVehicleClass auf false setzen
