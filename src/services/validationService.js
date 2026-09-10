@@ -20,7 +20,7 @@ export const validationMap = {
     MultiClassSlots: {min:0, max: 3, integer: true},
     RaceScheduledFullCourseYellow: {min: 0, max: 4, integer: true},
     
-    OpponentDifficulty: { min: 0, max: 100, integer: true },
+    OpponentDifficulty: { min: 70, max: 120, integer: true },
     GridSize: { min: 1, max: 32, integer: true },
     PitSpeedLimit: { min: 40, max: 200, step: 5, integer: true },
     AllowedCutsBeforePenalty: { min: 0, max: 50, integer: true },

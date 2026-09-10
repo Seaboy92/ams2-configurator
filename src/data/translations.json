@@ -337,8 +337,8 @@
       "en": "AI opponent difficulty"
     },
     "cfg.sessionAttributes.OpponentDifficulty.description": {
-      "de": "Schwierigkeitsgrad der KI-Gegner, von 0 bis 100. Gilt nur beim Laden, wenn „GridSize“ größer als „MaxPlayers“ ist und das Flag „FILL_SESSION_WITH_AI“ aktiviert ist.",
-      "en": "AI opponent difficulty, from 0 to 100. Applies only on loading if GridSize is larger than MaxPlayers, and the FILL_SESSION_WITH_AI flag is enabled."
+      "de": "Schwierigkeitsgrad der KI-Gegner, von 70 (Anfänger) bis 120 (Profi). Gilt nur beim Laden, wenn „GridSize“ größer als „MaxPlayers“ ist und das Flag „FILL_SESSION_WITH_AI“ aktiviert ist.",
+      "en": "AI opponent difficulty, from 70 (Beginner) to 120 (Expert). Applies only on loading if GridSize is larger than MaxPlayers, and the FILL_SESSION_WITH_AI flag is enabled."
     },
     "attributes.session.title": {
       "de": "Sitzungseinstellungen",

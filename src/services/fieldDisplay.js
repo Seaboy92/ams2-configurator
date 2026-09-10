@@ -23,7 +23,7 @@ const hiddenFields = [
     'GridSize',
     'GridLayout',
     //'MaxPlayers',
-    'OpponentDifficulty',
+    //'OpponentDifficulty',
     'Flags',
     'AutoAdvanceSession',
     //'DamageType',
@@ -167,6 +167,13 @@ const fieldDisplay = {
     },
     FILL_SESSION_WITH_AI: {
         order: 5,
+    },
+    OpponentDifficulty: {
+        order: 6,
+
+        visible: (config) => {
+            return Number(getConfigValue(config, 'GridSize')) > Number(getConfigValue(config, 'MaxPlayers'))
+        }
     },
 
     // Rennlänge

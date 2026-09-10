@@ -124,6 +124,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         // Wird FILL_SESSION_WITH_AI deaktiviert, dann MaxPlayers auf GridSize setzen
         if (field.name === 'FILL_SESSION_WITH_AI' && wasEnabled && newValue === false) {
             newConfig[section].MaxPlayers = newConfig[section].GridSize
+            delete newConfig[section].OpponentDifficulty
         }
 
         if (field.name === 'PASSWORD_PROTECTED' && wasEnabled && newValue === false) {
@@ -147,7 +148,8 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     }
 
     // Abhängige Werte synchron halten
-    // GridSize und MaxPlayers
+    // GridSize und MaxPlayers und KI
+    // Stezt Gritzize wenn MaxPlayers verändert wird 
     if (field.name === 'maxPlayerCount') {
         if (!newConfig.sessionAttributes) {
             newConfig.sessionAttributes = {}
@@ -156,6 +158,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         newConfig.sessionAttributes.GridSize = newValue
     }
 
+    // Wenn GridSize oder MaxPlayers verändert wird, dann FILL_SESSION_WITH_AI synchronisieren
     if (field.name === 'maxPlayerCount' || field.name === 'GridSize' || field.name === 'MaxPlayers') {
         syncFillSessionWithAi(newConfig.sessionAttributes)
     }
