@@ -143,7 +143,6 @@ function getApiFields(apiIds = {}){
       })
     })
   })
-  //console.log("API-Felder komplett:", apiFields)
   return apiFields
 }
 

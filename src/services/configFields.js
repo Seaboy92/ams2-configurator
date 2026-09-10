@@ -290,6 +290,8 @@ export const fieldTabOverrides = {
   RaceWeatherSlot4: 'track',
 
   // Fahrzeuge
+  FORCE_SAME_VEHICLE_CLASS: 'vehicles',
+  FORCE_MULTI_VEHICLE_CLASS: 'vehicles',
   VehicleModelId: 'vehicles',
   VehicleClassId: 'vehicles',
   ServerControlsVehicleClass: 'vehicles',

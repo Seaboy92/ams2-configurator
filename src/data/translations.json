@@ -833,8 +833,8 @@
       "en": "Race length"
     },
     "attributes.session.RaceLength.description": {
-      "de": "Länge des Rennens in Runden.",
-      "en": "Race 1 length in lap count."
+      "de": "Länge des Rennens in Runden oder Minuten.",
+      "en": "Race length in laps or minutes."
     },
     "attributes.session.RaceExtraLap.label": {
       "de": "Extra-Runde",
@@ -4753,8 +4753,8 @@
       "en": "Timed race"
     },
     "flags.session.TIMED_RACE.description": {
-      "de": "Wenn aktiviert, wird das Rennen von Rundenbasiert auf Zeitrennen umgestellt (Renndauer ist anzugeben).",
-      "en": "If enabled, the race will switch from a lap-based format to a time trial (the race duration must be specified)."
+      "de": "Wenn aktiviert, wird das Rennen von Rundenbasiert auf Zeitrennen umgestellt (Rundenzahl wird zu Renndauer).",
+      "en": "If enabled, the race will switch from a lap-based format to a time trial (Number of laps equals race duration)."
     },
     "flags.session.ALLOW_VEHICLE_RESET.label": {
       "de": "Fahrzeugreset erlauben",

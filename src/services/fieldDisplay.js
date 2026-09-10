@@ -77,7 +77,7 @@ const hiddenFields = [
     'QualifyLiveTrackPreset',
     'QualifyPrivateSession',
     //'RaceLength',
-    'RaceExtraLap',
+    //'RaceExtraLap',
     'RaceDateYear',
     'RaceDateMonth',
     'RaceDateDay',
@@ -121,6 +121,10 @@ const hiddenFields = [
     'enableLuaApi',
     //'allowEmptyJoin',
     //'controlGameSetup'
+    'PASSWORD_PROTECTED',
+    'FORCE_SAME_VEHICLE_CLASS',
+    'FORCE_MULTI_VEHICLE_CLASS',
+    'FORCE_IDENTICAL_VEHICLES',
 ]
 
 
@@ -161,6 +165,9 @@ const fieldDisplay = {
     MaxPlayers: {
         order: 4,
     },
+    FILL_SESSION_WITH_AI: {
+        order: 5,
+    },
 
     // Rennlänge
     PracticeLength: {
@@ -171,6 +178,9 @@ const fieldDisplay = {
     },
     RaceLength: {
         order: 29,
+    },
+    TIMED_RACE: {
+        order: 30,
     },
 
     // Wetter
@@ -296,34 +306,42 @@ const fieldDisplay = {
 
     // Fahrzeuge
     ServerControlsVehicleClass: {
-        order: 35,
-    },
-    VehicleClassId: {
-        order: 36,
-    },
-    ServerControlsVehicle: {
-        order: 37,
-    },
-    VehicleModelId: {
-        order: 38,
-    },
-    MultiClassSlots: {
         order: 40,
     },
-    MultiClassSlot1: {
+    VehicleClassId: {
         order: 41,
+
+        visible: (config) => {
+            return getConfigValue(config, 'ServerControlsVehicleClass') === true
+        },
+    },
+    ServerControlsVehicle: {
+        order: 42,
+    },
+    VehicleModelId: {
+        order: 43,
+
+        visible: (config) => {
+            return getConfigValue(config, 'ServerControlsVehicle') === true
+        },
+    },
+    MultiClassSlots: {
+        order: 44,
+    },
+    MultiClassSlot1: {
+        order: 45,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 1
         },
     },
     MultiClassSlot2: {
-        order: 42,
+        order: 46,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 2
         },
     },
     MultiClassSlot3: {
-        order: 43,
+        order: 47,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 3
         },

@@ -71,7 +71,6 @@ function renderConfigSection(key, value, kind = 'simple') {
   }
   
   if (kind === 'object') {
-    //console.log("Value:", value)
     if (Object.keys(value).length === 0) {
       return ''
     }

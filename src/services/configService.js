@@ -1,7 +1,5 @@
 import { sortConfigSection } from "./fieldDisplay"
 
-const FILL_SESSION_WITH_AI = 131072
-
 // Hilfsfunktionen
 const hasUsableNumber = (value) =>
     value !== '' && value !== null && value !== undefined && Number.isFinite(Number(value))
@@ -10,6 +8,7 @@ const setSessionFlag = (flags, flagValue, enabled) =>
     enabled ? flags | flagValue : flags & ~flagValue
 
 // Abhängigkeit des KI-Flags von GridSize und MaxPlayers
+const FILL_SESSION_WITH_AI = 131072
 const syncFillSessionWithAi = (sessionAttributes) => {
     const { GridSize, MaxPlayers } = sessionAttributes
 
@@ -21,12 +20,44 @@ const syncFillSessionWithAi = (sessionAttributes) => {
     sessionAttributes.Flags = setSessionFlag(flags, FILL_SESSION_WITH_AI, Number(MaxPlayers) < Number(GridSize))
 }
 
+// Abhängigkeit des Passwort-Flags zum Passwort
 const PASSWORD_PROTECTED = 4194304
 const syncPasswordProtected = (config) => {
     const password = String(config.server?.password ?? '').trim()
     const flags = Number(config.sessionAttributes?.Flags ?? 0)
 
     config.sessionAttributes.Flags = setSessionFlag(flags, PASSWORD_PROTECTED, password.length > 0)
+}
+
+// Abhängigkeit des Same-Vehicle-Class-Flag zur Vehicle-Class
+const FORCE_SAME_VEHICLE_CLASS = 512
+const syncForceSameVehicleClass = (config) => {
+    const controlsClass = Number(config.sessionAttributes?.ServerControlsVehicleClass) !== 0
+    const vehicleClassId = Number(config.sessionAttributes?.VehicleClassId)
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+    const enableSameClass = controlsClass && hasUsableNumber(vehicleClassId)
+    
+    config.sessionAttributes.Flags = setSessionFlag(flags, FORCE_SAME_VEHICLE_CLASS, enableSameClass)
+}
+
+// Abhängigkleit des Identical-Vehicles-Flag zum Vehicle
+const FORCE_IDENTICAL_VEHICLES = 2
+const syncForceIdenticalVehicles = (config) => {
+    const controlsVehicle = Number(config.sessionAttributes?.ServerControlsVehicle) !== 0
+    const VehicleModelId = Number(config.sessionAttributes?.VehicleModelId)
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+    const enableIdenticalVehicles = controlsVehicle && hasUsableNumber(VehicleModelId)
+
+    config.sessionAttributes.Flags = setSessionFlag(flags, FORCE_IDENTICAL_VEHICLES, enableIdenticalVehicles)
+}
+
+// Abhängigkeit des Multi-Vehicle-Class-Flag zur Multi-Vehicle-Class
+const FORCE_MULTI_VEHICLE_CLASS = 1024
+const syncForceMultiVehicleClass = (config) => {
+    const MultiClassSlots = Number(config.sessionAttributes?.MultiClassSlots)
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+
+    config.sessionAttributes.Flags = setSessionFlag(flags, FORCE_MULTI_VEHICLE_CLASS, MultiClassSlots > 0)
 }
 
 // Datei zum Lesen und Ändern der Configuration
@@ -50,6 +81,14 @@ export const getConfigValue = (config, fieldOrName) => {
 
 const getDefaultWeatherValue = (optionsBySource) => {
   return optionsBySource['enums.weather']?.[0]?.value
+}
+
+const getDefaultVehicleClassValue = (optionsBySource) => {
+  return optionsBySource['vehicle_classes']?.[0]?.value
+}
+
+const getDefaultVehicleValue = (optionsBySource) => {
+  return optionsBySource['vehicles']?.[0]?.id
 }
 
 //Konfiguration anpassen
@@ -118,6 +157,73 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         }
 
         syncPasswordProtected(newConfig)
+    }
+
+    // FORCE_SAME_VEHICLE_CLASS-Flag
+    if (field.name === 'ServerControlsVehicleClass') {
+        if(getConfigValue(config, 'ServerControlsVehicleClass') === true) {
+            Object.keys(newConfig[section]).forEach(key => {
+                if(key.match('VehicleClassId')) {
+                    delete newConfig[section][key]
+                }
+            })
+        }else {
+            // Nur anlegen, wenn noch kein Wert existiert
+            if (newConfig[section]['VehicleClassId'] === undefined) {
+                newConfig[section]['VehicleClassId'] = getDefaultVehicleClassValue(optionsBySource)
+            }
+        }
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+        syncForceSameVehicleClass(newConfig)
+    }
+
+    // FORCE_IDENTICAL_VEHICLES-Flag
+    if (field.name === 'ServerControlsVehicle') {
+        if(getConfigValue(config, 'ServerControlsVehicle') === true) {
+            Object.keys(newConfig[section]).forEach(key => {
+                if(key.match('VehicleModelId')) {
+                    delete newConfig[section][key]
+                }
+            })
+        }else {
+            // Nur anlegen, wenn noch kein Wert existiert
+            if (newConfig[section]['VehicleModelId'] === undefined) {
+                newConfig[section]['VehicleModelId'] = getDefaultVehicleValue(optionsBySource)
+            }
+        }
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+        syncForceIdenticalVehicles(newConfig)
+    }
+
+    // Multi-Vehicle-Class-Flag
+    if (field.name === 'MultiClassSlots') {
+        const slotCount = Number(newValue)
+        const slotPattern = new RegExp(
+            `MultiClassSlot(\\d+)$`
+        )
+
+        Object.keys(newConfig[section]).forEach(key => {
+            const slotMatch = key.match(slotPattern)
+
+            if (slotMatch) {
+                const slotNumber = Number(slotMatch[1])
+
+                if (slotNumber > slotCount) {
+                    delete newConfig[section][key]
+                }
+            }
+        })
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+
+        syncForceMultiVehicleClass(newConfig)
     }
 
     // Wetter-Slots bereinigen

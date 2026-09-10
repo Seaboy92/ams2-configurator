@@ -30,6 +30,14 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
             return `${option.track} – ${option.variant}${dlcLabel}${gridSizeLabel}`
         }
 
+        if (field.name === 'VehicleModelId') {
+            const dlcLabel = option.isDlc
+            ? ` · DLC: ${option.dlc}`
+            : ''
+
+            return `${option.cars} – ${option.class}${dlcLabel}`
+        }
+
         return translate(`${field.optionsSource}.${option.name}.label`, language)    
     }
 
