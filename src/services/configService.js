@@ -141,12 +141,17 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         return newConfig
     }
 
-    // Wert setzen
-    newConfig[section] = {
-        ...newConfig[section],
-        [field.name]: newValue
+    // Leere Werte nicht in der Konfiguration speichern
+    if (newValue === '' || newValue === null || newValue === undefined) {
+        delete newConfig[section][field.name]
+    } else {
+        // Wert setzen
+        newConfig[section] = {
+            ...newConfig[section],
+            [field.name]: newValue
+        }
     }
-
+    
     // Abhängige Werte synchron halten
     // GridSize und MaxPlayers und KI
     // Stezt Gritzize wenn MaxPlayers verändert wird 

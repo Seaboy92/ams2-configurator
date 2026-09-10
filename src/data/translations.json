@@ -32,6 +32,10 @@
       "de": "Allgemein",
       "en": "General"
     },
+    "ui.tabs.raceWeekend": {
+      "de": "Rennwochenende",
+      "en": "Race Weekend"
+    },
     "ui.tabs.session": {
       "de": "Sitzung",
       "en": "Session"

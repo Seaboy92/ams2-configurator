@@ -231,6 +231,7 @@ export const customFields = [
 // Konfigurationstabs
 export const tabs = [
   { id: 'general', label: 'ui.tabs.general' },
+  { id: 'raceWeekend', label: 'ui.tabs.raceWeekend' },
   { id: 'session', label: 'ui.tabs.session'},
   { id: 'track', label: 'ui.tabs.track'},
   { id: 'vehicles', label: 'ui.tabs.vehicles' },
@@ -265,6 +266,17 @@ export const tabRegistry = {
 export const fieldTabOverrides = {
   ServerControlsSetup: 'general',
   PASSWORD_PROTECTED: 'general',
+  
+  //Rennwochenende
+  PracticeLength: 'raceWeekend',
+  PracticeDateHour: 'raceWeekend',
+  QualifyLength: 'raceWeekend',
+  QualifyDateHour: 'raceWeekend',
+  RaceLength: 'raceWeekend',
+  RaceDateHour: 'raceWeekend',
+  TIMED_RACE: 'raceWeekend',
+  RaceExtraLap: 'raceWeekend',
+  COOLDOWNLAP: 'raceWeekend',
   
   // Strecke
   ServerControlsTrack: 'track',
