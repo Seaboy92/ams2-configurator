@@ -2,7 +2,7 @@ import { getInputProps } from '../services/inputService'
 import { getConfigValue, updateConfigValue } from '../services/configService'
 import { translate } from "../services/translate"
 import { getFieldOptions } from "../services/optionsService"
-import { getValidationValue } from '../services/validationService'
+import { getValidationValue, validateField } from '../services/validationService'
 import { isFieldDisabled } from '../services/fieldDisplay'
 
 export function ConfigInput({field, config, setConfig, language, optionsBySource, optionsLoading}) {
@@ -15,7 +15,18 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
     const value = field.name === 'TireWearType' && (configValue === '' || configValue === undefined) ? defaultTireWearValue : configValue
     const min = getValidationValue(field.validation, 'min', config)
     const max = getValidationValue(field.validation, 'max', config)
+    const validationRules = field.validation ? {
+        ...field.validation,
+        min,
+        max,
+    } : null
+
     const inputProps = getInputProps(field, value, (newValue) => {
+        const result = validateField(field.name, newValue, validationRules)
+
+        if (!result.valid) {
+            return
+        }
         setConfig(prev =>
             updateConfigValue(prev, field, newValue, optionsBySource)
         )

@@ -7,7 +7,7 @@ export const customFields = [
     tab: 'general',
     translationKey: 'cfg.name',
     access: 'ReadWrite',
-    validation: null,
+    validation: validationMap['name'],
     section: 'server',
   },
   {

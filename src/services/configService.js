@@ -1,4 +1,5 @@
 import { sortConfigSection } from "./fieldDisplay"
+import { defaultSettings } from './configTemplateService'
 
 // Hilfsfunktionen
 const hasUsableNumber = (value) =>
@@ -141,15 +142,10 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         return newConfig
     }
 
-    // Leere Werte nicht in der Konfiguration speichern
-    if (newValue === '' || newValue === null || newValue === undefined) {
-        delete newConfig[section][field.name]
-    } else {
-        // Wert setzen
-        newConfig[section] = {
-            ...newConfig[section],
-            [field.name]: newValue
-        }
+    // Wert setzen
+    newConfig[section] = {
+        ...newConfig[section],
+        [field.name]: newValue
     }
     
     // Abhängige Werte synchron halten
