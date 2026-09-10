@@ -307,6 +307,10 @@ const fieldDisplay = {
     // Fahrzeuge
     ServerControlsVehicleClass: {
         order: 40,
+
+        disabled: (config) => {
+            return (getConfigValue(config, 'ServerControlsVehicle') === true) || (getConfigValue(config, 'MultiClassSlots') >= 1)
+        },
     },
     VehicleClassId: {
         order: 41,
@@ -317,6 +321,10 @@ const fieldDisplay = {
     },
     ServerControlsVehicle: {
         order: 42,
+
+        disabled: (config) => {
+            return (getConfigValue(config, 'ServerControlsVehicleClass') === true) || (getConfigValue(config, 'MultiClassSlots') >= 1)
+        },
     },
     VehicleModelId: {
         order: 43,
@@ -327,6 +335,10 @@ const fieldDisplay = {
     },
     MultiClassSlots: {
         order: 44,
+
+        disabled: (config) => {
+            return (getConfigValue(config, 'ServerControlsVehicleClass') === true) || (getConfigValue(config, 'ServerControlsVehicle') === true)
+        },
     },
     MultiClassSlot1: {
         order: 45,

@@ -161,13 +161,24 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
 
     // FORCE_SAME_VEHICLE_CLASS-Flag
     if (field.name === 'ServerControlsVehicleClass') {
+        // Wenn der neue Wert true ist, obwohl MultiClassSlots > 0 ist, dann ServerControlsVehicleClass auf false setzen
+        if (newValue === true && Number(newConfig[section].MultiClassSlots) > 0) {
+            newConfig[section].ServerControlsVehicleClass = false
+            return newConfig
+        }
         if(getConfigValue(config, 'ServerControlsVehicleClass') === true) {
+            // Wenn der neue wert false ist, dann alle VehicleClassId-Felder entfernen
+            // deaktivieren der Fahrzeugwahl
+            newConfig[section].ServerControlsVehicle = false
+            delete newConfig[section].VehicleModelId
+
             Object.keys(newConfig[section]).forEach(key => {
                 if(key.match('VehicleClassId')) {
                     delete newConfig[section][key]
                 }
             })
         }else {
+            // Wenn der neue Wert true ist, dann das erste VehicleClassId-Feld anlegen
             // Nur anlegen, wenn noch kein Wert existiert
             if (newConfig[section]['VehicleClassId'] === undefined) {
                 newConfig[section]['VehicleClassId'] = getDefaultVehicleClassValue(optionsBySource)
@@ -178,17 +189,30 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             ...newConfig.sessionAttributes
         }
         syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
     }
 
     // FORCE_IDENTICAL_VEHICLES-Flag
     if (field.name === 'ServerControlsVehicle') {
+        // Wenn der neue Wert true ist, obwohl MultiClassSlots > 0 ist, dann ServerControlsVehicle auf false setzen
+        if (newValue === true && Number(newConfig[section].MultiClassSlots) > 0) {
+            newConfig[section].ServerControlsVehicle = false
+            return newConfig
+        }
+
         if(getConfigValue(config, 'ServerControlsVehicle') === true) {
+            // Wenn der neue Wert false ist, dann alle VehicleModelId-Felder entfernen
+            // deaktivieren der Fahrzeug-Klassen-Wahl
+            newConfig[section].ServerControlsVehicleClass = false
+            delete newConfig[section].VehicleClassId
+            
             Object.keys(newConfig[section]).forEach(key => {
                 if(key.match('VehicleModelId')) {
                     delete newConfig[section][key]
                 }
             })
         }else {
+            // Wenn der neue Wert true ist, dann das erste VehicleModelId-Feld anlegen
             // Nur anlegen, wenn noch kein Wert existiert
             if (newConfig[section]['VehicleModelId'] === undefined) {
                 newConfig[section]['VehicleModelId'] = getDefaultVehicleValue(optionsBySource)
@@ -198,6 +222,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         newConfig.sessionAttributes = {
             ...newConfig.sessionAttributes
         }
+        syncForceSameVehicleClass(newConfig)
         syncForceIdenticalVehicles(newConfig)
     }
 
@@ -223,6 +248,17 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             ...newConfig.sessionAttributes
         }
 
+        // Wenn MultiClassSlots > 0, dann ServerControlsVehicleClass und ServerControlsVehicle auf false setzen
+        if (slotCount > 0) {
+            newConfig[section].ServerControlsVehicleClass = false
+            newConfig[section].ServerControlsVehicle = false
+
+            delete newConfig[section].VehicleClassId
+            delete newConfig[section].VehicleModelId
+        }
+        
+        syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
         syncForceMultiVehicleClass(newConfig)
     }
 
