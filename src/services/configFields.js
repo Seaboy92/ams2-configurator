@@ -353,4 +353,5 @@ export const enumLikeFields = new Set([
   'DamageType',
   'DamageScale',
   'FuelUsageType',
+  'TireWearType',
 ])

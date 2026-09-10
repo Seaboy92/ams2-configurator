@@ -91,6 +91,12 @@ const getDefaultVehicleValue = (optionsBySource) => {
   return optionsBySource['vehicles']?.[0]?.id
 }
 
+const getDefaultTireWearValue = (optionsBySource) => {
+    return optionsBySource['enums.tire_wear']
+        ?.find(option => option.name === 'OFF')
+        ?.value
+}
+
 //Konfiguration anpassen
 export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     const newConfig = { ...config }

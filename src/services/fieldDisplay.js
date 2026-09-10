@@ -29,7 +29,7 @@ const hiddenFields = [
     //'DamageType',
     //'DamageScale',
     'DamageRandomFailures',
-    'TireWearType',
+    //'TireWearType',
     //'FuelUsageType',
     //'PenaltiesType',
     //'PitWhiteLinePenalty',

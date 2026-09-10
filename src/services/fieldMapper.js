@@ -60,6 +60,9 @@ export function mapEnumToType(field, inputType) {
   if (field.name.includes("VehicleModelId")) {
     return 'vehicles'
   }
+  if (field.name.includes("TireWearType")) {
+    return 'enums.tire_wear'
+  }
 }
 
 // Funktion welche die Zuordnung der Felder zu den Tabs ausführt

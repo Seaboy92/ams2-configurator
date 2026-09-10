@@ -7,7 +7,12 @@ import { isFieldDisabled } from '../services/fieldDisplay'
 
 export function ConfigInput({field, config, setConfig, language, optionsBySource, optionsLoading}) {
 
-    const value = getConfigValue(config, field)
+    const configValue = getConfigValue(config, field)
+    const options = getFieldOptions(field, optionsBySource)
+    // Anzeige für Reifenverschleiß-Optionen, wenn der Wert leer ist, wird der Standardwert "OFF" verwendet
+    const defaultTireWearValue = options.find(option => option.name === 'OFF')?.value
+
+    const value = field.name === 'TireWearType' && (configValue === '' || configValue === undefined) ? defaultTireWearValue : configValue
     const min = getValidationValue(field.validation, 'min', config)
     const max = getValidationValue(field.validation, 'max', config)
     const inputProps = getInputProps(field, value, (newValue) => {
@@ -15,7 +20,6 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
             updateConfigValue(prev, field, newValue, optionsBySource)
         )
     })
-    const options = getFieldOptions(field, optionsBySource)
 
     function getOptionLabel(field, option, language) {
         if (field.name === 'TrackId') {

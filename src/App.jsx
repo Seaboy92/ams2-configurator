@@ -26,6 +26,7 @@ function App() {
       'enums.penalties',
       'vehicle_classes',
       'enums.fuel_usage',
+      'enums.tire_wear',
     ]
 
     async function loadOptions() {

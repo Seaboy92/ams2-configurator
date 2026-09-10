@@ -10,6 +10,7 @@ const optionSources = {
   'enums.penalties': 'enums/penalties',
   'vehicle_classes': 'vehicle_classes',
   'enums.fuel_usage': 'enums/fuel_usage',
+  'enums.tire_wear': 'enums/tire_wear',
 }
 
 router.get('/', (request, response) => {
