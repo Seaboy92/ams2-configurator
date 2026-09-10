@@ -182,6 +182,18 @@ const fieldDisplay = {
     TIMED_RACE: {
         order: 30,
     },
+    RaceExtraLap: {
+        order: 31,
+        
+        visible: (config) => {
+            const TIMED_RACE_FLAG = 1048576
+            return getConfigValue(config, {
+                name: 'TIMED_RACE',
+                flagGroup: 'sessionFlags',
+                flagValue: TIMED_RACE_FLAG,
+            })
+        },
+    },
 
     // Wetter
     PracticeWeatherSlots: {

@@ -127,6 +127,10 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             }
         }
 
+        if (field.name === 'TIMED_RACE' && wasEnabled && newValue === false) {
+            newConfig[section].RaceExtraLap = false
+            delete newConfig[section].RaceExtraLap
+        }
         return newConfig
     }
 
