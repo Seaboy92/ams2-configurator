@@ -151,7 +151,7 @@ const fieldDisplay = {
         order: 21,
         
         visible: (config) => {
-            return Number(getConfigValue(config, 'PracticeLength')) >= 1
+            return Number(getSessionValue(config, 'PracticeLength')) >= 1
         }
     },
     QualifyLength: {
@@ -161,7 +161,7 @@ const fieldDisplay = {
         order: 31,
         
         visible: (config) => {
-            return Number(getConfigValue(config, 'QualifyLength')) >= 1
+            return Number(getSessionValue(config, 'QualifyLength')) >= 1
         }
     },
     RaceLength: {
@@ -171,7 +171,7 @@ const fieldDisplay = {
         order: 41,
         
         visible: (config) => {
-            return Number(getConfigValue(config, 'RaceLength')) >= 1
+            return Number(getSessionValue(config, 'RaceLength')) >= 1
         }
     },
     TIMED_RACE: {
@@ -207,7 +207,7 @@ const fieldDisplay = {
         order: 7,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'GridSize')) > Number(getConfigValue(config, 'MaxPlayers'))
+            return Number(getSessionValue(config, 'GridSize')) > Number(getSessionValue(config, 'MaxPlayers'))
         }
     },
     DamageType: {
@@ -217,7 +217,7 @@ const fieldDisplay = {
         order: 51,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'DamageType')) >= 1
+            return Number(getSessionValue(config, 'DamageType')) >= 1
         },
     },
 
@@ -233,35 +233,35 @@ const fieldDisplay = {
         order: 60,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'PracticeLength')) >= 1
+            return Number(getSessionValue(config, 'PracticeLength')) >= 1
         },
     },
     PracticeWeatherSlot1: {
         order: 61,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 1
+            return Number(getSessionValue(config, 'PracticeWeatherSlots')) >= 1
         },
     },
     PracticeWeatherSlot2: {
         order: 62,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 2
+            return Number(getSessionValue(config, 'PracticeWeatherSlots')) >= 2
         },
     },
     PracticeWeatherSlot3: {
         order: 63,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 3
+            return Number(getSessionValue(config, 'PracticeWeatherSlots')) >= 3
         },
     },
     PracticeWeatherSlot4: {
         order: 64,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 4
+            return Number(getSessionValue(config, 'PracticeWeatherSlots')) >= 4
         },
     },
 
@@ -269,35 +269,35 @@ const fieldDisplay = {
         order: 70,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'QualifyLength')) >= 1
+            return Number(getSessionValue(config, 'QualifyLength')) >= 1
         },
     },
     QualifyWeatherSlot1: {
         order: 71,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 1
+            return Number(getSessionValue(config, 'QualifyWeatherSlots')) >= 1
         },
     },
     QualifyWeatherSlot2: {
         order: 72,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 2
+            return Number(getSessionValue(config, 'QualifyWeatherSlots')) >= 2
         },
     },
     QualifyWeatherSlot3: {
         order: 73,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 3
+            return Number(getSessionValue(config, 'QualifyWeatherSlots')) >= 3
         },
     },
     QualifyWeatherSlot4: {
         order: 74,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 4
+            return Number(getSessionValue(config, 'QualifyWeatherSlots')) >= 4
         },
     },
 
@@ -305,7 +305,7 @@ const fieldDisplay = {
         order: 80,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'RaceLength')) >= 4
+            return Number(getSessionValue(config, 'RaceLength')) >= 4
         },
     },
 
@@ -313,28 +313,28 @@ const fieldDisplay = {
         order: 81,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 1
+            return Number(getSessionValue(config, 'RaceWeatherSlots')) >= 1
         },
     },
     RaceWeatherSlot2: {
         order: 82,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 2
+            return Number(getSessionValue(config, 'RaceWeatherSlots')) >= 2
         },
     },
     RaceWeatherSlot3: {
         order: 83,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 3
+            return Number(getSessionValue(config, 'RaceWeatherSlots')) >= 3
         },
     },
     RaceWeatherSlot4: {
         order: 84,
 
         visible: (config) => {
-            return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 4
+            return Number(getSessionValue(config, 'RaceWeatherSlots')) >= 4
         },
     },
 
@@ -343,53 +343,53 @@ const fieldDisplay = {
         order: 90,
 
         disabled: (config) => {
-            return (getConfigValue(config, 'ServerControlsVehicle') === true) || (getConfigValue(config, 'MultiClassSlots') >= 1)
+            return (getSessionValue(config, 'ServerControlsVehicle') === true) || (getSessionValue(config, 'MultiClassSlots') >= 1)
         },
     },
     VehicleClassId: {
         order: 91,
 
         visible: (config) => {
-            return getConfigValue(config, 'ServerControlsVehicleClass') === true
+            return getSessionValue(config, 'ServerControlsVehicleClass') === true
         },
     },
     ServerControlsVehicle: {
         order: 92,
 
         disabled: (config) => {
-            return (getConfigValue(config, 'ServerControlsVehicleClass') === true) || (getConfigValue(config, 'MultiClassSlots') >= 1)
+            return (getSessionValue(config, 'ServerControlsVehicleClass') === true) || (getSessionValue(config, 'MultiClassSlots') >= 1)
         },
     },
     VehicleModelId: {
         order: 93,
 
         visible: (config) => {
-            return getConfigValue(config, 'ServerControlsVehicle') === true
+            return getSessionValue(config, 'ServerControlsVehicle') === true
         },
     },
     MultiClassSlots: {
         order: 94,
 
         disabled: (config) => {
-            return (getConfigValue(config, 'ServerControlsVehicleClass') === true) || (getConfigValue(config, 'ServerControlsVehicle') === true)
+            return (getSessionValue(config, 'ServerControlsVehicleClass') === true) || (getSessionValue(config, 'ServerControlsVehicle') === true)
         },
     },
     MultiClassSlot1: {
         order: 95,
         visible: (config) => {
-            return Number(getConfigValue(config, 'MultiClassSlots')) >= 1
+            return Number(getSessionValue(config, 'MultiClassSlots')) >= 1
         },
     },
     MultiClassSlot2: {
         order: 96,
         visible: (config) => {
-            return Number(getConfigValue(config, 'MultiClassSlots')) >= 2
+            return Number(getSessionValue(config, 'MultiClassSlots')) >= 2
         },
     },
     MultiClassSlot3: {
         order: 97,
         visible: (config) => {
-            return Number(getConfigValue(config, 'MultiClassSlots')) >= 3
+            return Number(getSessionValue(config, 'MultiClassSlots')) >= 3
         },
     },
 
@@ -400,44 +400,44 @@ const fieldDisplay = {
     PitWhiteLinePenalty: {
         order: 101,
         visible: (config) => {
-            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+            return Number(getSessionValue(config, 'PenaltiesType')) == 1
         }
     },
     DriveThroughPenalty: {
         order: 102,
         visible: (config) => {
-            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+            return Number(getSessionValue(config, 'PenaltiesType')) == 1
         }
     },
     AllowedCutsBeforePenalty: {
         order: 103,
         visible: (config) => {
-            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+            return Number(getSessionValue(config, 'PenaltiesType')) == 1
         }
     },
     PitSpeedLimit: {
         order: 104,
         visible: (config) => {
-            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+            return Number(getSessionValue(config, 'PenaltiesType')) == 1
         }
     },
 
     // httpAPI einstellungen 
     httpApiPort: {
         visible: (config) => {
-            return getConfigValue(config, 'enableHttpApi === true')
+            return getConfigValue(config, 'enableHttpApi') === true
         },
     },
 
     httpApiLogLevel: {
         visible: (config) => {
-            return getConfigValue(config, 'enableHttpApi === true')
+            return getConfigValue(config, 'enableHttpApi') === true
         },
     },
 
     httpApiInterface: {
         visible: (config) => {
-            return getConfigValue(config, 'enableHttpApi === true')
+            return getConfigValue(config, 'enableHttpApi') === true
         },
     },
     // Flags am ende der Kongfiguration
@@ -522,3 +522,9 @@ export const sortConfigSection = (section) => {
     })
   )
 }
+
+const getSessionValue = (config, fieldName) =>
+    getConfigValue(config, {
+        name: fieldName,
+        section: 'sessionAttributes',
+    })

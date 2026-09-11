@@ -75,9 +75,11 @@ export const getConfigValue = (config, fieldOrName) => {
         return (flags & field.flagValue) !== 0
     }
     
-    return Object.values(config)
-        .map(section => section?.[field.name])
-        .find(value => value !== undefined) ?? ''
+    if (field.section) {
+        return config[field.section]?.[field.name] ?? ''
+    }
+
+    return config[field.name] ?? ''
 }
 
 const getDefaultWeatherValue = (optionsBySource) => {
@@ -148,20 +150,35 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     }
 
     // Wert setzen
-    newConfig[section] = {
-        ...newConfig[section],
-        [field.name]: newValue
+    if (section) {
+        newConfig[section] = {
+            ...newConfig[section],
+            [field.name]: newValue
+        }
+    } else {
+        newConfig[field.name] = newValue
     }
     
     // Abhängige Werte synchron halten
     // GridSize und MaxPlayers und KI
-    // Stezt Gritzize wenn MaxPlayers verändert wird 
+    // Ändert GridSize und MaxPlayers wenn MaxPlayerCount verändert wird 
     if (field.name === 'maxPlayerCount') {
-        if (!newConfig.sessionAttributes) {
-            newConfig.sessionAttributes = {}
+        const previousMaxPlayerCount = Number(config.maxPlayerCount)
+        const nextMaxPlayerCount = Number(newValue)
+        const currentMaxPlayers = Number(newConfig.sessionAttributes?.MaxPlayers ?? nextMaxPlayerCount)
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes,
+            GridSize: nextMaxPlayerCount,
         }
 
-        newConfig.sessionAttributes.GridSize = newValue
+        if (nextMaxPlayerCount < previousMaxPlayerCount) {
+            newConfig.sessionAttributes.MaxPlayers = Math.min(currentMaxPlayers, nextMaxPlayerCount)
+        }
+
+        if (nextMaxPlayerCount > previousMaxPlayerCount && newConfig.controlGameSetup !== true) {
+            newConfig.sessionAttributes.MaxPlayers = nextMaxPlayerCount
+        }
     }
 
     // Wenn GridSize oder MaxPlayers verändert wird, dann FILL_SESSION_WITH_AI synchronisieren
@@ -383,7 +400,6 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     }
 
     // HIER sortieren
-    newConfig.server = sortConfigSection(newConfig.server)
     newConfig.sessionAttributes = sortConfigSection(newConfig.sessionAttributes)
 
     return newConfig

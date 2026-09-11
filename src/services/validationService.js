@@ -17,7 +17,7 @@ function toApiNumber(fieldName, value) {
 export const validationMap = {
     name: { required: true },
     maxPlayerCount: {min:2, max: 32, integer: true},
-    MaxPlayers: {min:2, max: (config) => config.server?.maxPlayerCount, integer: true},
+    MaxPlayers: {min:2, max: (config) => config.sessionAttributes?.GridSize, integer: true},
     MultiClassSlots: {min:0, max: 3, integer: true},
     RaceScheduledFullCourseYellow: {min: 0, max: 4, integer: true},
     
