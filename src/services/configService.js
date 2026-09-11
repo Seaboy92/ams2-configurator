@@ -1,6 +1,5 @@
 import { sortConfigSection } from "./fieldDisplay"
-
-const FILL_SESSION_WITH_AI = 131072
+import { defaultSettings } from './configTemplateService'
 
 // Hilfsfunktionen
 const hasUsableNumber = (value) =>
@@ -10,6 +9,7 @@ const setSessionFlag = (flags, flagValue, enabled) =>
     enabled ? flags | flagValue : flags & ~flagValue
 
 // Abhängigkeit des KI-Flags von GridSize und MaxPlayers
+const FILL_SESSION_WITH_AI = 131072
 const syncFillSessionWithAi = (sessionAttributes) => {
     const { GridSize, MaxPlayers } = sessionAttributes
 
@@ -19,6 +19,46 @@ const syncFillSessionWithAi = (sessionAttributes) => {
 
     const flags = Number(sessionAttributes.Flags ?? 0)
     sessionAttributes.Flags = setSessionFlag(flags, FILL_SESSION_WITH_AI, Number(MaxPlayers) < Number(GridSize))
+}
+
+// Abhängigkeit des Passwort-Flags zum Passwort
+const PASSWORD_PROTECTED = 4194304
+const syncPasswordProtected = (config) => {
+    const password = String(config.server?.password ?? '').trim()
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+
+    config.sessionAttributes.Flags = setSessionFlag(flags, PASSWORD_PROTECTED, password.length > 0)
+}
+
+// Abhängigkeit des Same-Vehicle-Class-Flag zur Vehicle-Class
+const FORCE_SAME_VEHICLE_CLASS = 512
+const syncForceSameVehicleClass = (config) => {
+    const controlsClass = Number(config.sessionAttributes?.ServerControlsVehicleClass) !== 0
+    const vehicleClassId = Number(config.sessionAttributes?.VehicleClassId)
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+    const enableSameClass = controlsClass && hasUsableNumber(vehicleClassId)
+    
+    config.sessionAttributes.Flags = setSessionFlag(flags, FORCE_SAME_VEHICLE_CLASS, enableSameClass)
+}
+
+// Abhängigkleit des Identical-Vehicles-Flag zum Vehicle
+const FORCE_IDENTICAL_VEHICLES = 2
+const syncForceIdenticalVehicles = (config) => {
+    const controlsVehicle = Number(config.sessionAttributes?.ServerControlsVehicle) !== 0
+    const VehicleModelId = Number(config.sessionAttributes?.VehicleModelId)
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+    const enableIdenticalVehicles = controlsVehicle && hasUsableNumber(VehicleModelId)
+
+    config.sessionAttributes.Flags = setSessionFlag(flags, FORCE_IDENTICAL_VEHICLES, enableIdenticalVehicles)
+}
+
+// Abhängigkeit des Multi-Vehicle-Class-Flag zur Multi-Vehicle-Class
+const FORCE_MULTI_VEHICLE_CLASS = 1024
+const syncForceMultiVehicleClass = (config) => {
+    const MultiClassSlots = Number(config.sessionAttributes?.MultiClassSlots)
+    const flags = Number(config.sessionAttributes?.Flags ?? 0)
+
+    config.sessionAttributes.Flags = setSessionFlag(flags, FORCE_MULTI_VEHICLE_CLASS, MultiClassSlots > 0)
 }
 
 // Datei zum Lesen und Ändern der Configuration
@@ -35,15 +75,36 @@ export const getConfigValue = (config, fieldOrName) => {
         return (flags & field.flagValue) !== 0
     }
     
-    return Object.values(config)
-        .map(section => section?.[field.name])
-        .find(value => value !== undefined) ?? ''
+    if (field.section) {
+        return config[field.section]?.[field.name] ?? ''
+    }
+
+    return config[field.name] ?? ''
 }
 
 const getDefaultWeatherValue = (optionsBySource) => {
   return optionsBySource['enums.weather']?.[0]?.value
 }
 
+const getDefaultVehicleClassValue = (optionsBySource) => {
+  return optionsBySource['vehicle_classes']?.[0]?.value
+}
+
+const getDefaultVehicleValue = (optionsBySource) => {
+  return optionsBySource['vehicles']?.[0]?.id
+}
+
+const getDefaultTireWearValue = (optionsBySource) => {
+    return optionsBySource['enums.tire_wear']
+        ?.find(option => option.name === 'OFF')
+        ?.value
+}
+
+export const getDefaultRules = (optionsBySource) => {
+    return optionsBySource['enums.penalties']
+        ?.find(option => option.name === 'NONE')
+        ?.value
+}
 //Konfiguration anpassen
 export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     const newConfig = { ...config }
@@ -71,28 +132,174 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         // Wird FILL_SESSION_WITH_AI deaktiviert, dann MaxPlayers auf GridSize setzen
         if (field.name === 'FILL_SESSION_WITH_AI' && wasEnabled && newValue === false) {
             newConfig[section].MaxPlayers = newConfig[section].GridSize
+            delete newConfig[section].OpponentDifficulty
         }
 
+        if (field.name === 'PASSWORD_PROTECTED' && wasEnabled && newValue === false) {
+            newConfig.server = {
+                ...newConfig.server,
+                password: ''
+            }
+        }
+
+        if (field.name === 'TIMED_RACE' && wasEnabled && newValue === false) {
+            newConfig[section].RaceExtraLap = false
+            delete newConfig[section].RaceExtraLap
+        }
         return newConfig
     }
 
     // Wert setzen
-    newConfig[section] = {
-        ...newConfig[section],
-        [field.name]: newValue
+    if (section) {
+        newConfig[section] = {
+            ...newConfig[section],
+            [field.name]: newValue
+        }
+    } else {
+        newConfig[field.name] = newValue
     }
-
+    
     // Abhängige Werte synchron halten
+    // GridSize und MaxPlayers und KI
+    // Ändert GridSize und MaxPlayers wenn MaxPlayerCount verändert wird 
     if (field.name === 'maxPlayerCount') {
-        if (!newConfig.sessionAttributes) {
-            newConfig.sessionAttributes = {}
+        const previousMaxPlayerCount = Number(config.maxPlayerCount)
+        const nextMaxPlayerCount = Number(newValue)
+        const currentMaxPlayers = Number(newConfig.sessionAttributes?.MaxPlayers ?? nextMaxPlayerCount)
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes,
+            GridSize: nextMaxPlayerCount,
         }
 
-        newConfig.sessionAttributes.GridSize = newValue
+        if (nextMaxPlayerCount < previousMaxPlayerCount) {
+            newConfig.sessionAttributes.MaxPlayers = Math.min(currentMaxPlayers, nextMaxPlayerCount)
+        }
+
+        if (nextMaxPlayerCount > previousMaxPlayerCount && newConfig.controlGameSetup !== true) {
+            newConfig.sessionAttributes.MaxPlayers = nextMaxPlayerCount
+        }
     }
 
+    // Wenn GridSize oder MaxPlayers verändert wird, dann FILL_SESSION_WITH_AI synchronisieren
     if (field.name === 'maxPlayerCount' || field.name === 'GridSize' || field.name === 'MaxPlayers') {
         syncFillSessionWithAi(newConfig.sessionAttributes)
+    }
+
+    // Passwort-Flag
+    if (field.name === 'password') {
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+
+        syncPasswordProtected(newConfig)
+    }
+    if (field.name === 'DamageType'){
+        if (newValue === 0) {
+            delete newConfig[section].DamageScale
+        }
+    }
+    // FORCE_SAME_VEHICLE_CLASS-Flag
+    if (field.name === 'ServerControlsVehicleClass') {
+        // Wenn der neue Wert true ist, obwohl MultiClassSlots > 0 ist, dann ServerControlsVehicleClass auf false setzen
+        if (newValue === true && Number(newConfig[section].MultiClassSlots) > 0) {
+            newConfig[section].ServerControlsVehicleClass = false
+            return newConfig
+        }
+        if(getConfigValue(config, 'ServerControlsVehicleClass') === true) {
+            // Wenn der neue wert false ist, dann alle VehicleClassId-Felder entfernen
+            // deaktivieren der Fahrzeugwahl
+            newConfig[section].ServerControlsVehicle = false
+            delete newConfig[section].VehicleModelId
+
+            Object.keys(newConfig[section]).forEach(key => {
+                if(key.match('VehicleClassId')) {
+                    delete newConfig[section][key]
+                }
+            })
+        }else {
+            // Wenn der neue Wert true ist, dann das erste VehicleClassId-Feld anlegen
+            // Nur anlegen, wenn noch kein Wert existiert
+            if (newConfig[section]['VehicleClassId'] === undefined) {
+                newConfig[section]['VehicleClassId'] = getDefaultVehicleClassValue(optionsBySource)
+            }
+        }
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+        syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
+    }
+
+    // FORCE_IDENTICAL_VEHICLES-Flag
+    if (field.name === 'ServerControlsVehicle') {
+        // Wenn der neue Wert true ist, obwohl MultiClassSlots > 0 ist, dann ServerControlsVehicle auf false setzen
+        if (newValue === true && Number(newConfig[section].MultiClassSlots) > 0) {
+            newConfig[section].ServerControlsVehicle = false
+            return newConfig
+        }
+
+        if(getConfigValue(config, 'ServerControlsVehicle') === true) {
+            // Wenn der neue Wert false ist, dann alle VehicleModelId-Felder entfernen
+            // deaktivieren der Fahrzeug-Klassen-Wahl
+            newConfig[section].ServerControlsVehicleClass = false
+            delete newConfig[section].VehicleClassId
+            
+            Object.keys(newConfig[section]).forEach(key => {
+                if(key.match('VehicleModelId')) {
+                    delete newConfig[section][key]
+                }
+            })
+        }else {
+            // Wenn der neue Wert true ist, dann das erste VehicleModelId-Feld anlegen
+            // Nur anlegen, wenn noch kein Wert existiert
+            if (newConfig[section]['VehicleModelId'] === undefined) {
+                newConfig[section]['VehicleModelId'] = getDefaultVehicleValue(optionsBySource)
+            }
+        }
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+        syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
+    }
+
+    // Multi-Vehicle-Class-Flag
+    if (field.name === 'MultiClassSlots') {
+        const slotCount = Number(newValue)
+        const slotPattern = new RegExp(
+            `MultiClassSlot(\\d+)$`
+        )
+
+        Object.keys(newConfig[section]).forEach(key => {
+            const slotMatch = key.match(slotPattern)
+
+            if (slotMatch) {
+                const slotNumber = Number(slotMatch[1])
+
+                if (slotNumber > slotCount) {
+                    delete newConfig[section][key]
+                }
+            }
+        })
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+
+        // Wenn MultiClassSlots > 0, dann ServerControlsVehicleClass und ServerControlsVehicle auf false setzen
+        if (slotCount > 0) {
+            newConfig[section].ServerControlsVehicleClass = false
+            newConfig[section].ServerControlsVehicle = false
+
+            delete newConfig[section].VehicleClassId
+            delete newConfig[section].VehicleModelId
+        }
+        
+        syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
+        syncForceMultiVehicleClass(newConfig)
     }
 
     // Wetter-Slots bereinigen
@@ -154,11 +361,46 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         // ggf. weitere abhängige Einstellungen hier entfernen
     }
 
+    // Regeln entfernen, wenn deaktiviert
+    if (field.name === 'PenaltiesType' && newValue === 0){
+        delete newConfig[section].PitWhiteLinePenalty
+        delete newConfig[section].DriveThroughPenalty
+        delete newConfig[section].AllowedCutsBeforePenalty
+        delete newConfig[section].PitSpeedLimit
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+    }
+
+    // ControlGameSetup - funktionsbedingte Abhängigkeiten entfernen, wenn deaktiviert
+    if (field.name === 'controlGameSetup') {
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+        if (newValue === true){
+            newConfig.sessionAttributes.ServerControlsTrack = true
+        }
+        if (newValue === false) {
+            delete newConfig.sessionAttributes.ServerControlsTrack
+            delete newConfig.sessionAttributes.MultiClassSlots
+            delete newConfig.sessionAttributes.MultiClassSlot1
+            delete newConfig.sessionAttributes.MultiClassSlot2
+            delete newConfig.sessionAttributes.MultiClassSlot3
+            delete newConfig.sessionAttributes.ServerControlsVehicleClass
+            delete newConfig.sessionAttributes.VehicleClassId
+            delete newConfig.sessionAttributes.ServerControlsVehicle
+            delete newConfig.sessionAttributes.VehicleModelId
+
+        }
+        syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
+        syncForceMultiVehicleClass(newConfig)
+            
+    }
 
     // HIER sortieren
-    newConfig[section] = sortConfigSection(
-        newConfig[section]
-    )
+    newConfig.sessionAttributes = sortConfigSection(newConfig.sessionAttributes)
 
     return newConfig
 }

@@ -42,11 +42,26 @@ export function mapEnumToType(field, inputType) {
   if (field.name.includes("Penalties")) {
     return 'enums.penalties'
   }
+  if (field.name.includes("FuelUsageType")) {
+    return 'enums.fuel_usage'
+  }
+  if (field.name === "DamageScale") {
+    return 'enums.damage_scale'
+  }
   if (field.name.includes("Damage")) {
     return 'enums.damage'
   }
   if (field.name.includes("Track")) {
     return 'tracks'
+  }
+  if (field.name.includes("VehicleClassId") || field.name.includes("MultiClassSlot")) {
+    return 'vehicle_classes'
+  }
+  if (field.name.includes("VehicleModelId")) {
+    return 'vehicles'
+  }
+  if (field.name.includes("TireWearType")) {
+    return 'enums.tire_wear'
   }
 }
 
@@ -80,7 +95,7 @@ function getFlagFields(apiIds = {}) {
             flagValue: flag.value,
             flagGroup: 'sessionFlags',
 
-            tab: 'session',
+            tab: fieldTabOverrides[flag.name] ?? 'session',
             translationKey: `flags.session.${flag.name}`,
 
             section: 'sessionAttributes',
@@ -137,7 +152,6 @@ function getApiFields(apiIds = {}){
       })
     })
   })
-  //console.log("API-Felder komplett:", apiFields)
   return apiFields
 }
 

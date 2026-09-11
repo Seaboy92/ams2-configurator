@@ -32,6 +32,10 @@
       "de": "Allgemein",
       "en": "General"
     },
+    "ui.tabs.raceWeekend": {
+      "de": "Rennwochenende",
+      "en": "Race Weekend"
+    },
     "ui.tabs.session": {
       "de": "Sitzung",
       "en": "Session"
@@ -47,6 +51,10 @@
     "ui.tabs.rules": {
       "de": "Regeln",
       "en": "Rules"
+    },
+    "ui.requiredControlGameSetup": {
+      "de": "Einstellung nur mit aktivierter Serverkontrolle möglich.",
+      "en": "This setting is available only when server control is enabled."
     },
     "cfg.logLevel.label": {
       "de": "Log-Level",
@@ -337,8 +345,8 @@
       "en": "AI opponent difficulty"
     },
     "cfg.sessionAttributes.OpponentDifficulty.description": {
-      "de": "Schwierigkeitsgrad der KI-Gegner, von 0 bis 100. Gilt nur beim Laden, wenn „GridSize“ größer als „MaxPlayers“ ist und das Flag „FILL_SESSION_WITH_AI“ aktiviert ist.",
-      "en": "AI opponent difficulty, from 0 to 100. Applies only on loading if GridSize is larger than MaxPlayers, and the FILL_SESSION_WITH_AI flag is enabled."
+      "de": "Schwierigkeitsgrad der KI-Gegner, von 70 (Anfänger) bis 120 (Profi). Gilt nur beim Laden, wenn „GridSize“ größer als „MaxPlayers“ ist und das Flag „FILL_SESSION_WITH_AI“ aktiviert ist.",
+      "en": "AI opponent difficulty, from 70 (Beginner) to 120 (Expert). Applies only on loading if GridSize is larger than MaxPlayers, and the FILL_SESSION_WITH_AI flag is enabled."
     },
     "attributes.session.title": {
       "de": "Sitzungseinstellungen",
@@ -469,12 +477,12 @@
       "en": "Fuel usage type. The enum values are available also via HTTP API at /api/list/enums/fuel_usage or in Lua global tables lists.enums.fuel_usage, FuelUsage and value_to_fuel_usage."
     },
     "attributes.session.PenaltiesType.label": {
-      "de": "Strafart",
-      "en": "Penalties type"
+      "de": "Strafen",
+      "en": "Penalties"
     },
     "attributes.session.PenaltiesType.description": {
-      "de": "Typ der Strafen. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/penalties oder in den globalen Lua-Tabellen lists.enums.penalties, Penalties und value_to_penalties verfügbar.",
-      "en": "Penalties type. The enum values are available also via HTTP API at /api/list/enums/penalties or in Lua global tables lists.enums.penalties, Penalties and value_to_penalties."
+      "de": "Wenn aktiviert sind Strafen aktiv. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/penalties oder in den globalen Lua-Tabellen lists.enums.penalties, Penalties und value_to_penalties verfügbar.",
+      "en": "When enabled, penalties are in effect. The enum values are available also via HTTP API at /api/list/enums/penalties or in Lua global tables lists.enums.penalties, Penalties and value_to_penalties."
     },
     "attributes.session.PitWhiteLinePenalty.label": {
       "de": "Strafe wegen Überfahren der weißen Linie in der Boxengasse",
@@ -669,11 +677,11 @@
       "en": "Length of practice session in minutes."
     },
     "attributes.session.PracticeDateHour.label": {
-      "de": "Trainingsdatum Stunde",
+      "de": "Trainings Uhrzeit - Stunde",
       "en": "Practice date hour"
     },
     "attributes.session.PracticeDateHour.description": {
-      "de": "Das Startdatum der Trainings session - Stunde des Tages.",
+      "de": "Startuhrzeit des Trainings.",
       "en": "Starting practice session date - hour of day."
     },
     "attributes.session.PracticeDateProgression.label": {
@@ -749,11 +757,11 @@
       "en": "Length of qualification session in minutes."
     },
     "attributes.session.QualifyDateHour.label": {
-      "de": "Qualifying-Datum und Uhrzeit",
+      "de": "Qualifying Uhrzeit - Stunde",
       "en": "Qualify date hour"
     },
     "attributes.session.QualifyDateHour.description": {
-      "de": "Startdatum und -uhrzeit der Qualifying-Sitzung.",
+      "de": "Startuhrzeit des Qualifyings.",
       "en": "Starting qualifying session date - hour of day."
     },
     "attributes.session.QualifyDateProgression.label": {
@@ -833,8 +841,8 @@
       "en": "Race length"
     },
     "attributes.session.RaceLength.description": {
-      "de": "Länge des Rennens in Runden.",
-      "en": "Race 1 length in lap count."
+      "de": "Länge des Rennens in Runden oder Minuten.",
+      "en": "Race length in laps or minutes."
     },
     "attributes.session.RaceExtraLap.label": {
       "de": "Extra-Runde",
@@ -869,11 +877,11 @@
       "en": "Starting race date - day of month."
     },
     "attributes.session.RaceDateHour.label": {
-      "de": "Renndatum - Stunde",
+      "de": "Renn-Uhrzeit - Stunde",
       "en": "Race date hour"
     },
     "attributes.session.RaceDateHour.description": {
-      "de": "Stunde des Rennens.",
+      "de": "Startuhrzeit des Rennens.",
       "en": "Starting race date - hour of day."
     },
     "attributes.session.RaceDateProgression.label": {
@@ -1407,6 +1415,30 @@
     "vehicle_classes.Group C.label": {
       "de": "Group C",
       "en": "Group C"
+    },
+    "vehicle_classes.F-Ultimate_Gen1.label": {
+      "de": "Formula Ultimate Gen1",
+      "en": "Formula Ultimate Gen1"
+    },
+    "vehicle_classes.F-V10_Gen3.label": {
+      "de": "Formula V10 Gen3",
+      "en": "Formula V10 Gen3"
+    },
+    "vehicle_classes.F-V8_Gen1.label": {
+      "de": "Formula V8 Gen1",
+      "en": "Formula V8 Gen1"
+    },
+    "vehicle_classes.F-V8_Gen2.label": {
+      "de": "Formula V8 Gen2",
+      "en": "Formula V8 Gen2"
+    },
+    "vehicle_classes.FE-G1.label": {
+      "de": "Formula Edge Generation 1",
+      "en": "Formula Edge Generation 1"
+    },
+    "vehicle_classes.Trofeo_2005.label": {
+      "de": "Trofeo 2005",
+      "en": "Trofeo 2005"
     },
     "vehicles.description": {
       "de": "Alle bekannten Fahrzeuge. Jede Struktur enthält die Fahrzeug-ID, den Namen und (optional) die Klasse des Fahrzeugs.",
@@ -4501,12 +4533,12 @@
       "en": "Enum describing various penalty options"
     },
     "enums.penalties.NONE.label": {
-      "de": "Keine",
-      "en": "None"
+      "de": "Aus",
+      "en": "Off"
     },
     "enums.penalties.FULL.label": {
-      "de": "Vollständig",
-      "en": "Full"
+      "de": "An",
+      "en": "On"
     },
     "enums.allowed_view.description": {
       "de": "Werte der Kameraoptionen",
@@ -4753,8 +4785,8 @@
       "en": "Timed race"
     },
     "flags.session.TIMED_RACE.description": {
-      "de": "Wenn aktiviert, wird das Rennen von Rundenbasiert auf Zeitrennen umgestellt (Renndauer ist anzugeben).",
-      "en": "If enabled, the race will switch from a lap-based format to a time trial (the race duration must be specified)."
+      "de": "Wenn aktiviert, wird das Rennen von Rundenbasiert auf Zeitrennen umgestellt (Rundenzahl wird zu Renndauer).",
+      "en": "If enabled, the race will switch from a lap-based format to a time trial (Number of laps equals race duration)."
     },
     "flags.session.ALLOW_VEHICLE_RESET.label": {
       "de": "Fahrzeugreset erlauben",

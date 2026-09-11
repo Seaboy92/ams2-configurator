@@ -7,8 +7,7 @@ export const customFields = [
     tab: 'general',
     translationKey: 'cfg.name',
     access: 'ReadWrite',
-    validation: null,
-    section: 'server',
+    validation: validationMap['name'],
   },
   {
     name: 'password',
@@ -17,7 +16,6 @@ export const customFields = [
     translationKey: 'cfg.password',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'secure',
@@ -26,7 +24,6 @@ export const customFields = [
     translationKey: 'cfg.secure',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'maxPlayerCount',
@@ -35,7 +32,6 @@ export const customFields = [
     translationKey: 'cfg.maxPlayerCount',
     access: 'ReadWrite',
     validation: validationMap['maxPlayerCount'],
-    section: 'server',
   },
   {
     name: 'bindIP',
@@ -44,7 +40,6 @@ export const customFields = [
     translationKey: 'cfg.bindIP',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'steamPort',
@@ -53,7 +48,6 @@ export const customFields = [
     translationKey: 'cfg.steamPort',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'hostPort',
@@ -62,7 +56,6 @@ export const customFields = [
     translationKey: 'cfg.hostPort',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'queryPort',
@@ -71,7 +64,6 @@ export const customFields = [
     translationKey: 'cfg.queryPort',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'delay',
@@ -80,7 +72,6 @@ export const customFields = [
     translationKey: 'cfg.delay',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'sportsPlay',
@@ -89,7 +80,6 @@ export const customFields = [
     translationKey: 'cfg.sportsPlay',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'enableHttpApi',
@@ -98,7 +88,6 @@ export const customFields = [
     translationKey: 'cfg.enableHttpApi',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiLogLevel',
@@ -107,7 +96,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiLogLevel',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiInterface',
@@ -116,7 +104,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiInterface',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiPort',
@@ -125,7 +112,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiPort',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiExtraHeaders',
@@ -134,7 +120,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiExtraHeaders',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiAccessLevels',
@@ -143,7 +128,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiAccessLevels',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiAccessFilters.public',
@@ -152,7 +136,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiAccessFilters.public',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiAccessFilters.private',
@@ -161,7 +144,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiAccessFilters.private',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiAccessFilters.admin',
@@ -170,7 +152,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiAccessFilters.admin',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiUsers',
@@ -179,7 +160,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiUsers',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'httpApiGroups',
@@ -188,7 +168,6 @@ export const customFields = [
     translationKey: 'cfg.httpApiGroups',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'staticWebFiles',
@@ -197,7 +176,6 @@ export const customFields = [
     translationKey: 'cfg.staticWebFiles',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'enableLuaApi',
@@ -206,7 +184,6 @@ export const customFields = [
     translationKey: 'cfg.enableLuaApi',
     access: 'ReadOnly',
     validation: null,
-    section: 'server',
   },
   {
     name: 'allowEmptyJoin',
@@ -215,7 +192,6 @@ export const customFields = [
     translationKey: 'cfg.allowEmptyJoin',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
   {
     name: 'controlGameSetup',
@@ -224,13 +200,13 @@ export const customFields = [
     translationKey: 'cfg.controlGameSetup',
     access: 'ReadWrite',
     validation: null,
-    section: 'server',
   },
 ]
 
 // Konfigurationstabs
 export const tabs = [
   { id: 'general', label: 'ui.tabs.general' },
+  { id: 'raceWeekend', label: 'ui.tabs.raceWeekend' },
   { id: 'session', label: 'ui.tabs.session'},
   { id: 'track', label: 'ui.tabs.track'},
   { id: 'vehicles', label: 'ui.tabs.vehicles' },
@@ -264,8 +240,18 @@ export const tabRegistry = {
 // Ausnahmen für die Feld-Tab-Zuordnung
 export const fieldTabOverrides = {
   ServerControlsSetup: 'general',
-  VehicleModelId: 'vehicles',
-  VehicleClassId: 'vehicles',
+  PASSWORD_PROTECTED: 'general',
+  
+  //Rennwochenende
+  PracticeLength: 'raceWeekend',
+  PracticeDateHour: 'raceWeekend',
+  QualifyLength: 'raceWeekend',
+  QualifyDateHour: 'raceWeekend',
+  RaceLength: 'raceWeekend',
+  RaceDateHour: 'raceWeekend',
+  TIMED_RACE: 'raceWeekend',
+  RaceExtraLap: 'raceWeekend',
+  COOLDOWNLAP: 'raceWeekend',
   
   // Strecke
   ServerControlsTrack: 'track',
@@ -289,6 +275,18 @@ export const fieldTabOverrides = {
   RaceWeatherSlot2: 'track',
   RaceWeatherSlot3: 'track',
   RaceWeatherSlot4: 'track',
+
+  // Fahrzeuge
+  FORCE_SAME_VEHICLE_CLASS: 'vehicles',
+  FORCE_MULTI_VEHICLE_CLASS: 'vehicles',
+  VehicleModelId: 'vehicles',
+  VehicleClassId: 'vehicles',
+  ServerControlsVehicleClass: 'vehicles',
+  ServerControlsVehicle: 'vehicles',
+  MultiClassSlots: 'vehicles',
+  MultiClassSlot1: 'vehicles',
+  MultiClassSlot2: 'vehicles',
+  MultiClassSlot3: 'vehicles',
 
   // Regeln
   PenaltiesType: 'rules',
@@ -332,5 +330,29 @@ export const enumLikeFields = new Set([
   'RaceWeatherSlot4',
 
   'TrackId',
-  'PenaltiesType'
+  'PenaltiesType',
+  'VehicleClassId',
+  'VehicleModelId',
+  'MultiClassSlot1',
+  'MultiClassSlot2',
+  'MultiClassSlot3',
+
+  'DamageType',
+  'DamageScale',
+  'FuelUsageType',
+  'TireWearType',
+])
+
+export const fieldRequiresControlGameSetup = new Set([
+    'ServerControlsTrack',
+    'MaxPlayers',
+    //'FILL_SESSION_WITH_AI',
+    'MultiClassSlots',
+    'MultiClassSlot1',
+    'MultiClassSlot2',
+    'MultiClassSlot3',
+    'VehicleClassId',
+    'VehicleModelId',
+    'ServerControlsVehicleClass',
+    'ServerControlsVehicle',
 ])

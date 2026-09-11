@@ -15,12 +15,13 @@ function toApiNumber(fieldName, value) {
 }
 
 export const validationMap = {
+    name: { required: true },
     maxPlayerCount: {min:2, max: 32, integer: true},
-    MaxPlayers: {min:2, max: (config) => config.server?.maxPlayerCount, integer: true},
+    MaxPlayers: {min:2, max: (config) => config.sessionAttributes?.GridSize, integer: true},
     MultiClassSlots: {min:0, max: 3, integer: true},
     RaceScheduledFullCourseYellow: {min: 0, max: 4, integer: true},
     
-    OpponentDifficulty: { min: 0, max: 100, integer: true },
+    OpponentDifficulty: { min: 70, max: 120, integer: true },
     GridSize: { min: 1, max: 32, integer: true },
     PitSpeedLimit: { min: 40, max: 200, step: 5, integer: true },
     AllowedCutsBeforePenalty: { min: 0, max: 50, integer: true },
@@ -77,7 +78,12 @@ export function validateField(name, value, rules) {
     if (!rules) {
         return { valid: true }
     }
-
+    if (rules.required && (value === '' || value === null || value === undefined || String(value).trim() === '')) {
+        return {
+            valid: false,
+            message: 'Der Servername darf nicht leer sein.',
+        }
+    }
     if (value === '' || value === null || value === undefined) {
         return { valid: true }
     }

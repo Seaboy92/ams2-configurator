@@ -6,9 +6,11 @@ const router = Router()
 const optionSources = {
   'enums.weather': 'enums/weather',
   'enums.damage': 'enums/damage',
+  'enums.damage_scale': 'enums/damage_scale',
   'enums.penalties': 'enums/penalties',
   'vehicle_classes': 'vehicle_classes',
-  'vehicles': 'vehicles'
+  'enums.fuel_usage': 'enums/fuel_usage',
+  'enums.tire_wear': 'enums/tire_wear',
 }
 
 router.get('/', (request, response) => {

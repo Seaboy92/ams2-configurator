@@ -1,20 +1,42 @@
 import { getInputProps } from '../services/inputService'
-import { getConfigValue, updateConfigValue } from '../services/configService'
+import { getConfigValue, updateConfigValue, getDefaultRules } from '../services/configService'
 import { translate } from "../services/translate"
 import { getFieldOptions } from "../services/optionsService"
-import { getValidationValue } from '../services/validationService'
+import { getValidationValue, validateField } from '../services/validationService'
+import { isFieldDisabled } from '../services/fieldDisplay'
+import { fieldRequiresControlGameSetup } from '../services/configFields'
 
 export function ConfigInput({field, config, setConfig, language, optionsBySource, optionsLoading}) {
 
-    const value = getConfigValue(config, field)
+    const configValue = getConfigValue(config, field)
+    const options = getFieldOptions(field, optionsBySource)
+    // Anzeige für Reifenverschleiß-Optionen, wenn der Wert leer ist, wird der Standardwert "OFF" verwendet
+    const defaultTireWearValue = options.find(option => option.name === 'OFF')?.value
+
+    const value =
+        field.name === 'TireWearType' && (configValue === '' || configValue === undefined)
+            ? defaultTireWearValue
+            : field.name === 'PenaltiesType' && (configValue === '' || configValue === undefined)
+                ? getDefaultRules(optionsBySource)
+                : configValue
     const min = getValidationValue(field.validation, 'min', config)
     const max = getValidationValue(field.validation, 'max', config)
+    const validationRules = field.validation ? {
+        ...field.validation,
+        min,
+        max,
+    } : null
+
     const inputProps = getInputProps(field, value, (newValue) => {
+        const result = validateField(field.name, newValue, validationRules)
+
+        if (!result.valid) {
+            return
+        }
         setConfig(prev =>
             updateConfigValue(prev, field, newValue, optionsBySource)
         )
     })
-    const options = getFieldOptions(field, optionsBySource)
 
     function getOptionLabel(field, option, language) {
         if (field.name === 'TrackId') {
@@ -22,11 +44,34 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
             ? ` · DLC: ${option.dlc}`
             : ''
 
-            return `${option.track} – ${option.variant}${dlcLabel}`
+            const gridSizeLabel = Number.isInteger(option.gridSize)
+            ? ` (${option.gridSize})`
+            : ''
+
+            return `${option.track} – ${option.variant}${dlcLabel}${gridSizeLabel}`
+        }
+
+        if (field.name === 'VehicleModelId') {
+            const dlcLabel = option.isDlc
+            ? ` · DLC: ${option.dlc}`
+            : ''
+
+            return `${option.cars} – ${option.class}${dlcLabel}`
         }
 
         return translate(`${field.optionsSource}.${option.name}.label`, language)    
     }
+
+    const sortedOptions = [...options].sort((optionA, optionB) =>
+        getOptionLabel(field, optionA, language).localeCompare(
+            getOptionLabel(field, optionB, language),
+            language,
+            { sensitivity: 'base' }
+        )
+    )
+
+    const disabled = field.access === 'ReadOnly' || isFieldDisabled(field, config)
+    const controlGameSetupRequired = fieldRequiresControlGameSetup.has(field.name) && getConfigValue(config, 'controlGameSetup') !== true
 
     return (
         <label
@@ -37,7 +82,11 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                 marginBottom: '0.75rem'
             }}
         >
-
+        {controlGameSetupRequired && (
+            <small style={{ color: '#b00020' }}>
+                {translate('ui.requiredControlGameSetup', language)}
+            </small>
+        )}
             <div
                 style={{
                     display: 'flex',
@@ -54,12 +103,12 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                         style={{ marginLeft: 'auto' }}
                         {...inputProps}
                         value={value ?? ''}
-                        disabled={optionsLoading}
+                        disabled={disabled || optionsLoading}
                         >
                         {optionsLoading ? (
                             <option>Optionen werden geladen …</option>
                         ) : (
-                            options.map(option => (
+                            sortedOptions.map(option => (
                             <option
                                 key={option.value ?? option.id}
                                 value={option.value ?? option.id}
@@ -76,7 +125,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                         type={field.inputType}
                         {...inputProps}
                         readOnly={field.access === 'ReadOnly'}
-                        disabled={field.access === 'ReadOnly'}
+                        disabled={disabled}
                         min={min}
                         max={max}
                         step={field.validation?.step}

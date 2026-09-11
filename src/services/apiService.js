@@ -31,6 +31,15 @@ export async function fetchTracks() {
   if (!response.ok) {
     throw new Error('Streckendaten konnten nicht geladen werden.')
   }
+  return response.json()
+}
 
+// Funktion zum herunterladen der Fahrzeugdaten von der API
+export async function fetchCars() {
+  const response = await fetch(`${API_URL}/VehicleModelId`)
+
+  if (!response.ok) {
+    throw new Error('Fahrzeugdaten konnten nicht geladen werden.')
+  }
   return response.json()
 }

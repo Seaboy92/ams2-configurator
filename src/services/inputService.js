@@ -31,7 +31,29 @@ export const getInputProps = (field, value, onChange) => {
                 } else {
                     onChange(Number(inputValue))
                 }
-            }
+            },
+            onKeyDown: (event) => {
+                const allowedControlKeys = [
+                    'Backspace',
+                    'Delete',
+                    'ArrowLeft',
+                    'ArrowRight',
+                    'Tab',
+                    'Home',
+                    'End',
+                ]
+
+                if (allowedControlKeys.includes(event.key)) {
+                    return
+                }
+
+                if (
+                    event.key.length === 1 &&
+                    !/[0-9.,-]/.test(event.key)
+                ) {
+                    event.preventDefault()
+                }
+            },
         }
     }
     // alles Andere
