@@ -367,3 +367,17 @@ export const enumLikeFields = new Set([
   'FuelUsageType',
   'TireWearType',
 ])
+
+export const fieldRequiresControlGameSetup = new Set([
+    'ServerControlsTrack',
+    'MaxPlayers',
+    'FILL_SESSION_WITH_AI',
+    'MultiClassSlots',
+    'MultiClassSlot1',
+    'MultiClassSlot2',
+    'MultiClassSlot3',
+    'VehicleClassId',
+    'VehicleModelId',
+    'ServerControlsVehicleClass',
+    'ServerControlsVehicle',
+])

@@ -11,6 +11,7 @@ export const defaultSettings = {
       controlGameSetup: true,
     },
     sessionAttributes: {
+        "ServerControlsTrack" : true,
         "TrackId" : 827815091,
         "GridSize" : 16,
         "MaxPlayers" : 16,

@@ -13,6 +13,7 @@
 // order    → bestimmt die Reihenfolge
 ////////////////////////////////////////////////////////////
 import { getConfigValue } from './configService'
+import { fieldRequiresControlGameSetup } from './configFields'
 
 /*Felder die angezeigt werden sollen, werden auskommentiert*/
 const hiddenFields = [
@@ -35,7 +36,7 @@ const hiddenFields = [
     //'PitWhiteLinePenalty',
     //'DriveThroughPenalty',
     //'AllowedCutsBeforePenalty',
-    //'PitSpeedLimit',
+    'PitSpeedLimit',
     'ManualPitStops',
     'ManualRollingStarts', 
     'AllowedViews',
@@ -127,91 +128,57 @@ const hiddenFields = [
     'FORCE_IDENTICAL_VEHICLES',
 ]
 
-
+// Definition der Feldpositionen - gilt für Konfigurations- und Anzeige-Bereich
 const fieldDisplay = {
-    // Allgemeine Einstellungen
+    // Tab Allgemein
     name: {
         order: 0,
     },
-    // Password-Flag
-    PASSWORD_PROTECTED: {
-        order: 1,
-        disabled: (config) => {
-            return String(getConfigValue(config, 'password')).trim().length === 0
-        },
-    },
     password: {
-        order: 2,
+        order: 1,
     },
     secure: {
-        order: 3,
-    },
-    maxPlayerCount: {
-        order: 4,
-    },
-
-    // Strecke
-    ServerControlsTrack: {
-        order: 1,
-    },
-    TrackId: {
         order: 2,
     },
-
-    // Spielerzahl
-    GridSize: {
+    maxPlayerCount: {
         order: 3,
     },
-    MaxPlayers: {
-        order: 4,
-    },
-    FILL_SESSION_WITH_AI: {
-        order: 5,
-    },
-    OpponentDifficulty: {
-        order: 6,
-
-        visible: (config) => {
-            return Number(getConfigValue(config, 'GridSize')) > Number(getConfigValue(config, 'MaxPlayers'))
-        }
-    },
-
-    // Rennlänge
+    // Tab Rennwochenedne
     PracticeLength: {
-        order: 9,
+        order: 20,
     },
     PracticeDateHour: {
-        order: 10,
+        order: 21,
         
         visible: (config) => {
             return Number(getConfigValue(config, 'PracticeLength')) >= 1
         }
     },
     QualifyLength: {
-        order: 19,
+        order: 30,
     },
     QualifyDateHour: {
-        order: 20,
+        order: 31,
         
         visible: (config) => {
             return Number(getConfigValue(config, 'QualifyLength')) >= 1
         }
     },
     RaceLength: {
-        order: 29,
+        order: 40,
     },
     RaceDateHour: {
-        order: 30,
+        order: 41,
         
         visible: (config) => {
             return Number(getConfigValue(config, 'RaceLength')) >= 1
         }
     },
     TIMED_RACE: {
-        order: 31,
+        order: 42,
     },
     RaceExtraLap: {
-        order: 32,
+        order: 43,
         
         visible: (config) => {
             const TIMED_RACE_FLAG = 1048576
@@ -223,94 +190,111 @@ const fieldDisplay = {
         },
     },
     COOLDOWNLAP: {
-        order: 33,
+        order: 44,
+    },
+
+    // Tab Sitzung
+    GridSize: {
+        order: 4,
+    },
+    MaxPlayers: {
+        order: 5,
+    },
+    FILL_SESSION_WITH_AI: {
+        order: 6,
+    },
+    OpponentDifficulty: {
+        order: 7,
+
+        visible: (config) => {
+            return Number(getConfigValue(config, 'GridSize')) > Number(getConfigValue(config, 'MaxPlayers'))
+        }
     },
     DamageType: {
-        order: 34,
+        order: 50,
     },
     DamageScale: {
-        order: 35,
+        order: 51,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'DamageType')) >= 1
         },
     },
 
-    // Wetter
+    // Tab Strecke und Wetter
+    ServerControlsTrack: {
+        order: 1,
+        visible: () => {return false},
+    },
+    TrackId: {
+        order: 2,
+    },
     PracticeWeatherSlots: {
-        order: 10,
+        order: 60,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'PracticeLength')) >= 1
         },
     },
-
     PracticeWeatherSlot1: {
-        order: 11,
+        order: 61,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 1
         },
     },
-
     PracticeWeatherSlot2: {
-        order: 12,
+        order: 62,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 2
         },
     },
-
     PracticeWeatherSlot3: {
-        order: 13,
+        order: 63,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 3
         },
     },
-
     PracticeWeatherSlot4: {
-        order: 14,
+        order: 64,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'PracticeWeatherSlots')) >= 4
         },
     },
-    
+
     QualifyWeatherSlots: {
-        order: 20,
+        order: 70,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'QualifyLength')) >= 1
         },
     },
-
     QualifyWeatherSlot1: {
-        order: 21,
+        order: 71,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 1
         },
     },
-
     QualifyWeatherSlot2: {
-        order: 22,
+        order: 72,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 2
         },
     },
-
     QualifyWeatherSlot3: {
-        order: 23,
+        order: 73,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 3
         },
     },
-
     QualifyWeatherSlot4: {
-        order: 24,
+        order: 74,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'QualifyWeatherSlots')) >= 4
@@ -318,7 +302,7 @@ const fieldDisplay = {
     },
 
     RaceWeatherSlots: {
-        order: 30,
+        order: 80,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'RaceLength')) >= 4
@@ -326,31 +310,28 @@ const fieldDisplay = {
     },
 
     RaceWeatherSlot1: {
-        order: 31,
+        order: 81,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 1
         },
     },
-
     RaceWeatherSlot2: {
-        order: 32,
+        order: 82,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 2
         },
     },
-
     RaceWeatherSlot3: {
-        order: 33,
+        order: 83,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 3
         },
     },
-
     RaceWeatherSlot4: {
-        order: 34,
+        order: 84,
 
         visible: (config) => {
             return Number(getConfigValue(config, 'RaceWeatherSlots')) >= 4
@@ -359,58 +340,88 @@ const fieldDisplay = {
 
     // Fahrzeuge
     ServerControlsVehicleClass: {
-        order: 40,
+        order: 90,
 
         disabled: (config) => {
             return (getConfigValue(config, 'ServerControlsVehicle') === true) || (getConfigValue(config, 'MultiClassSlots') >= 1)
         },
     },
     VehicleClassId: {
-        order: 41,
+        order: 91,
 
         visible: (config) => {
             return getConfigValue(config, 'ServerControlsVehicleClass') === true
         },
     },
     ServerControlsVehicle: {
-        order: 42,
+        order: 92,
 
         disabled: (config) => {
             return (getConfigValue(config, 'ServerControlsVehicleClass') === true) || (getConfigValue(config, 'MultiClassSlots') >= 1)
         },
     },
     VehicleModelId: {
-        order: 43,
+        order: 93,
 
         visible: (config) => {
             return getConfigValue(config, 'ServerControlsVehicle') === true
         },
     },
     MultiClassSlots: {
-        order: 44,
+        order: 94,
 
         disabled: (config) => {
             return (getConfigValue(config, 'ServerControlsVehicleClass') === true) || (getConfigValue(config, 'ServerControlsVehicle') === true)
         },
     },
     MultiClassSlot1: {
-        order: 45,
+        order: 95,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 1
         },
     },
     MultiClassSlot2: {
-        order: 46,
+        order: 96,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 2
         },
     },
     MultiClassSlot3: {
-        order: 47,
+        order: 97,
         visible: (config) => {
             return Number(getConfigValue(config, 'MultiClassSlots')) >= 3
         },
     },
+
+    // Regeln
+    PenaltiesType: {
+        order: 100,
+    },
+    PitWhiteLinePenalty: {
+        order: 101,
+        visible: (config) => {
+            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+        }
+    },
+    DriveThroughPenalty: {
+        order: 102,
+        visible: (config) => {
+            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+        }
+    },
+    AllowedCutsBeforePenalty: {
+        order: 103,
+        visible: (config) => {
+            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+        }
+    },
+    PitSpeedLimit: {
+        order: 104,
+        visible: (config) => {
+            return Number(getConfigValue(config, 'PenaltiesType')) == 1
+        }
+    },
+
     // httpAPI einstellungen 
     httpApiPort: {
         visible: (config) => {
@@ -429,7 +440,10 @@ const fieldDisplay = {
             return getConfigValue(config, 'enableHttpApi === true')
         },
     },
-
+    // Flags am ende der Kongfiguration
+    Flags: {
+        order: 9999,
+    }
 }
 
 
@@ -473,6 +487,10 @@ export function isFieldVisible(field, config) {
  * wird es automatisch aktiviert.
  */
 export function isFieldDisabled(field, config) {
+    if (fieldRequiresControlGameSetup.has(field.name) && getConfigValue(config, 'controlGameSetup') !== true ) {
+        return true
+    }
+
     const settings = fieldDisplay[field.name]
 
     if (typeof settings?.disabled === 'function') {

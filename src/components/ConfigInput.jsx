@@ -1,9 +1,10 @@
 import { getInputProps } from '../services/inputService'
-import { getConfigValue, updateConfigValue } from '../services/configService'
+import { getConfigValue, updateConfigValue, getDefaultRules } from '../services/configService'
 import { translate } from "../services/translate"
 import { getFieldOptions } from "../services/optionsService"
 import { getValidationValue, validateField } from '../services/validationService'
 import { isFieldDisabled } from '../services/fieldDisplay'
+import { fieldRequiresControlGameSetup } from '../services/configFields'
 
 export function ConfigInput({field, config, setConfig, language, optionsBySource, optionsLoading}) {
 
@@ -12,7 +13,12 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
     // Anzeige für Reifenverschleiß-Optionen, wenn der Wert leer ist, wird der Standardwert "OFF" verwendet
     const defaultTireWearValue = options.find(option => option.name === 'OFF')?.value
 
-    const value = field.name === 'TireWearType' && (configValue === '' || configValue === undefined) ? defaultTireWearValue : configValue
+    const value =
+        field.name === 'TireWearType' && (configValue === '' || configValue === undefined)
+            ? defaultTireWearValue
+            : field.name === 'PenaltiesType' && (configValue === '' || configValue === undefined)
+                ? getDefaultRules(optionsBySource)
+                : configValue
     const min = getValidationValue(field.validation, 'min', config)
     const max = getValidationValue(field.validation, 'max', config)
     const validationRules = field.validation ? {
@@ -65,6 +71,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
     )
 
     const disabled = field.access === 'ReadOnly' || isFieldDisabled(field, config)
+    const controlGameSetupRequired = fieldRequiresControlGameSetup.has(field.name) && getConfigValue(config, 'controlGameSetup') !== true
 
     return (
         <label
@@ -75,7 +82,11 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                 marginBottom: '0.75rem'
             }}
         >
-
+        {controlGameSetupRequired && (
+            <small style={{ color: '#b00020' }}>
+                {translate('ui.requiredControlGameSetup', language)}
+            </small>
+        )}
             <div
                 style={{
                     display: 'flex',

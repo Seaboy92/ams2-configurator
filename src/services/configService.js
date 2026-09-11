@@ -98,6 +98,11 @@ const getDefaultTireWearValue = (optionsBySource) => {
         ?.value
 }
 
+export const getDefaultRules = (optionsBySource) => {
+    return optionsBySource['enums.penalties']
+        ?.find(option => option.name === 'NONE')
+        ?.value
+}
 //Konfiguration anpassen
 export const updateConfigValue = (config, field, newValue, optionsBySource) => {
     const newConfig = { ...config }
@@ -339,11 +344,47 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         // ggf. weitere abhängige Einstellungen hier entfernen
     }
 
+    // Regeln entfernen, wenn deaktiviert
+    if (field.name === 'PenaltiesType' && newValue === 0){
+        delete newConfig[section].PitWhiteLinePenalty
+        delete newConfig[section].DriveThroughPenalty
+        delete newConfig[section].AllowedCutsBeforePenalty
+        delete newConfig[section].PitSpeedLimit
+
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+    }
+
+    // ControlGameSetup - funktionsbedingte Abhängigkeiten entfernen, wenn deaktiviert
+    if (field.name === 'controlGameSetup') {
+        newConfig.sessionAttributes = {
+            ...newConfig.sessionAttributes
+        }
+        if (newValue === true){
+            newConfig.sessionAttributes.ServerControlsTrack = true
+        }
+        if (newValue === false) {
+            delete newConfig.sessionAttributes.ServerControlsTrack
+            delete newConfig.sessionAttributes.MultiClassSlots
+            delete newConfig.sessionAttributes.MultiClassSlot1
+            delete newConfig.sessionAttributes.MultiClassSlot2
+            delete newConfig.sessionAttributes.MultiClassSlot3
+            delete newConfig.sessionAttributes.ServerControlsVehicleClass
+            delete newConfig.sessionAttributes.VehicleClassId
+            delete newConfig.sessionAttributes.ServerControlsVehicle
+            delete newConfig.sessionAttributes.VehicleModelId
+
+        }
+        syncForceSameVehicleClass(newConfig)
+        syncForceIdenticalVehicles(newConfig)
+        syncForceMultiVehicleClass(newConfig)
+            
+    }
 
     // HIER sortieren
-    newConfig[section] = sortConfigSection(
-        newConfig[section]
-    )
+    newConfig.server = sortConfigSection(newConfig.server)
+    newConfig.sessionAttributes = sortConfigSection(newConfig.sessionAttributes)
 
     return newConfig
 }
