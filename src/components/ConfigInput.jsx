@@ -56,6 +56,14 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
         return translate(`${field.optionsSource}.${option.name}.label`, language)    
     }
 
+    const sortedOptions = [...options].sort((optionA, optionB) =>
+        getOptionLabel(field, optionA, language).localeCompare(
+            getOptionLabel(field, optionB, language),
+            language,
+            { sensitivity: 'base' }
+        )
+    )
+
     const disabled = field.access === 'ReadOnly' || isFieldDisabled(field, config)
 
     return (
@@ -89,7 +97,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                         {optionsLoading ? (
                             <option>Optionen werden geladen …</option>
                         ) : (
-                            options.map(option => (
+                            sortedOptions.map(option => (
                             <option
                                 key={option.value ?? option.id}
                                 value={option.value ?? option.id}
