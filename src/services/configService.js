@@ -1,5 +1,4 @@
 import { sortConfigSection } from "./fieldDisplay"
-import { defaultSettings } from './configTemplateService'
 
 // Hilfsfunktionen
 const hasUsableNumber = (value) =>
@@ -194,11 +193,19 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
 
         syncPasswordProtected(newConfig)
     }
+    
+    // Schaden
     if (field.name === 'DamageType'){
         if (newValue === 0) {
             delete newConfig[section].DamageScale
         }
     }
+
+    // Startart
+    if (field.name === 'RaceRollingStart' && newValue === false){
+        delete newConfig[section].RaceFormationLap
+    }
+
     // FORCE_SAME_VEHICLE_CLASS-Flag
     if (field.name === 'ServerControlsVehicleClass') {
         // Wenn der neue Wert true ist, obwohl MultiClassSlots > 0 ist, dann ServerControlsVehicleClass auf false setzen

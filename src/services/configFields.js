@@ -252,6 +252,8 @@ export const fieldTabOverrides = {
   TIMED_RACE: 'raceWeekend',
   RaceExtraLap: 'raceWeekend',
   COOLDOWNLAP: 'raceWeekend',
+  RaceRollingStart: 'raceWeekend',
+  RaceFormationLap: 'raceWeekend',
   
   // Strecke
   ServerControlsTrack: 'track',
