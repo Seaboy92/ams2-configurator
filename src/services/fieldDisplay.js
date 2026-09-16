@@ -90,10 +90,10 @@ const hiddenFields = [
     //'RaceWeatherSlot2',
     //'RaceWeatherSlot3',
     //'RaceWeatherSlot4',
-    'RaceRollingStart',
+    //'RaceRollingStart',
     'RaceMandatoryPitStops',
     'RaceMandatoryPitStopsMinTyres',
-    'RaceFormationLap',
+    //'RaceFormationLap',
     'RaceLiveTrackPreset',
     'RaceScheduledFullCourseYellow',
     'DisablePitstopRefuelling',
@@ -167,18 +167,11 @@ const fieldDisplay = {
     RaceLength: {
         order: 40,
     },
-    RaceDateHour: {
-        order: 41,
-        
-        visible: (config) => {
-            return Number(getSessionValue(config, 'RaceLength')) >= 1
-        }
-    },
     TIMED_RACE: {
-        order: 42,
+        order: 41,
     },
     RaceExtraLap: {
-        order: 43,
+        order: 42,
         
         visible: (config) => {
             const TIMED_RACE_FLAG = 1048576
@@ -189,8 +182,24 @@ const fieldDisplay = {
             })
         },
     },
-    COOLDOWNLAP: {
+    RaceDateHour: {
+        order: 43,
+        
+        visible: (config) => {
+            return Number(getSessionValue(config, 'RaceLength')) >= 1
+        }
+    },
+    RaceRollingStart: {
         order: 44,
+    },
+    RaceFormationLap:{
+        order: 45,
+        visible: (config) => {
+            return (getSessionValue(config, 'RaceRollingStart') === true)
+        }
+    },
+    COOLDOWNLAP: {
+        order: 46,
     },
 
     // Tab Sitzung

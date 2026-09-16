@@ -1,8 +1,64 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #dce7f5;
+
+
+  --bg-page: #0b1220;
+  --bg: #111c2e;
+  --bg-elevated: #18263a;
+  --code-bg: #08101d;
+
+  --text: #b9c8dc;
+  --text-h: #f8fafc;
+  --text-muted: #7f93ad;
+
+  --border: #2a3b55;
+
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-bg: rgba(56, 189, 248, 0.14);
+
+  --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text);
+}
+
+button,
+select,
+input {
+  font: inherit;
 }
 
 #root {
   min-height: 100vh;
+}
+
+body[data-theme="light"] {
+  color: #1e293b;
+  background: #f4f8fc;
+
+  --bg-page: #f4f8fc;
+  --bg: #ffffff;
+  --bg-elevated: #eaf1f8;
+  --code-bg: #edf4fa;
+
+  --text: #64748b;
+  --text-h: #0f172a;
+  --text-muted: #64748b;
+
+  --border: #cbd9e8;
+
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-bg: rgba(2, 132, 199, 0.12);
 }

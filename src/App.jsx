@@ -9,6 +9,10 @@ import './App.css'
 
 function App() {
   const [language, setLanguage] = useState('de')
+  const [theme, setTheme] = useState('dark')
+  useEffect(() => {
+    document.body.dataset.theme = theme
+  }, [theme])
   const [activeTab, setActiveTab] = useState('general')
 
   // State für die Optionsdaten, die von der API geladen werden
@@ -65,7 +69,7 @@ function App() {
 
   return (
     <main className="app">
-      <Header language={language} setLanguage={setLanguage}/>
+      <Header language={language} setLanguage={setLanguage} theme={theme} setTheme={setTheme}/>
       {/* Anzeige von Lade- und Fehlerzuständen für die Optionsdaten */}
       {optionsError && (
         <p role="alert">

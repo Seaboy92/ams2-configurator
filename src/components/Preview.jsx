@@ -7,7 +7,7 @@ export function Preview({ preview, language }) {
             {/* Vorschaubereich */}
             <div className="preview-header">
                 <h2>{translate('ui.headingRight', language)}</h2>
-                <button type="button" onClick={() => downloadServerConfig(preview)}>{translate('ui.downloade', language)}</button>
+                <button className="action-button" type="button" onClick={() => downloadServerConfig(preview)}>{translate('ui.downloade', language)}</button>
             </div>
             <pre id="server-config-preview">{preview}</pre>
         </aside>
