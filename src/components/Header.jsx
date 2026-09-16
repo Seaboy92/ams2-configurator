@@ -1,6 +1,6 @@
 import { translate } from "../services/translate"
 
-export function Header({language, setLanguage}) {
+export function Header({language, setLanguage, theme, setTheme}) {
     return(
         <header className="app-header">
             {/* Überschrift und Wilkommensnachricht */}
@@ -8,9 +8,20 @@ export function Header({language, setLanguage}) {
                 <h1>{translate('ui.title', language)}</h1>
                 <p style={{width: "100%"}}>{translate('ui.welcomtext', language)}</p>
             </div>
+            
+            <div className="header-controls">
+                {/* Theme-Wahl */}
+                <button
+                    className="action-button"
+                    type="button"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    aria-label="Farbschema wechseln"
+                >
+                    {theme === 'dark' ? '☀ Light Mode' : '🌙 Dark Mode'}
+                </button>
 
-            {/* Sprachauswahl */}
-            <label className="language-select">
+                {/* Sprachauswahl */}
+                <label className="language-select">
                 <span>{translate('ui.language', language)}</span>
                 <select
                     value={language}
@@ -19,7 +30,8 @@ export function Header({language, setLanguage}) {
                 <option value="de">Deutsch</option>
                 <option value="en">English</option>
                 </select>
-            </label>
+                </label>
+            </div>
         </header>
     )
 }
