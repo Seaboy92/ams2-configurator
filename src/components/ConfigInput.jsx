@@ -72,6 +72,9 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
 
     const disabled = field.access === 'ReadOnly' || isFieldDisabled(field, config)
     const controlGameSetupRequired = fieldRequiresControlGameSetup.has(field.name) && getConfigValue(config, 'controlGameSetup') !== true
+    const disabledHint = controlGameSetupRequired
+        ? translate('ui.requiredControlGameSetup', language)
+        : undefined
 
     return (
         <label
@@ -97,10 +100,18 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                     {translate(`${field.translationKey}.label`, language)}
                 </span>
 
+                <span
+                    className={disabledHint ? 'disabled-field-tooltip' : undefined}
+                    style={{ marginLeft: 'auto', cursor: disabledHint ? 'not-allowed' : undefined }}
+                >
+                {disabledHint && (
+                    <span className="disabled-field-tooltip__message" role="tooltip">
+                        {disabledHint}
+                    </span>
+                )}
                 {field.inputType === 'select' ? (
                     // Wenn es ein select-Feld ist
                     <select
-                        style={{ marginLeft: 'auto' }}
                         {...inputProps}
                         value={value ?? ''}
                         disabled={disabled || optionsLoading}
@@ -121,7 +132,6 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                 ) : (
                     // Wenn es alles andere ist
                     <input
-                        style={{marginLeft: 'auto'}}
                         type={field.inputType}
                         {...inputProps}
                         readOnly={field.access === 'ReadOnly'}
@@ -131,6 +141,7 @@ export function ConfigInput({field, config, setConfig, language, optionsBySource
                         step={field.validation?.step}
                     />
                 )}
+                </span>
             </div>
 
             <small style={{opacity: 0.7}}>

@@ -103,10 +103,15 @@ function renderTemplate(template, bindings) {
 // Funktion zur Erstellung der Konfigurationsdatei
 // hier wird die Konfiguration erstellt
 export function createServerConfigFromTemplate(config) {
+    const serverName = typeof config.name === 'string' && config.name.trim() !== ''
+        ? config.name
+        : defaultSettings.name
+
     const configBindings = {
         logLevel: { kind: 'simple', value: config.logLevel},
         eventsLogSize: { kind: 'simple', value: config.eventsLogSize },
-        name: { kind: 'simple', value: config.name },
+        // Ein leeres Eingabefeld darf den Standardnamen nicht überschreiben.
+        name: { kind: 'simple', value: serverName },
         secure: { kind: 'simple', value: config.secure },
         password: { kind: 'simple', value: config.password },
         maxPlayerCount: { kind: 'simple', value: config.maxPlayerCount },

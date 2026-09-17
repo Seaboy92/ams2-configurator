@@ -15,7 +15,8 @@ function toApiNumber(fieldName, value) {
 }
 
 export const validationMap = {
-    name: { required: true },
+    // Der Servername darf im Eingabefeld leer sein. Beim Erzeugen der Konfiguration wird ein leerer Name ausgelassen.
+    name: null,
     maxPlayerCount: {min:2, max: 32, integer: true},
     MaxPlayers: {min:2, max: (config) => config.sessionAttributes?.GridSize, integer: true},
     MultiClassSlots: {min:0, max: 3, integer: true},
