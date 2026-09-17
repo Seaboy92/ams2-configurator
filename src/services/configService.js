@@ -389,6 +389,18 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             newConfig.sessionAttributes.ServerControlsTrack = true
         }
         if (newValue === false) {
+            const flags = Number(newConfig.sessionAttributes.Flags ?? 0)
+            const fillSessionWithAi = (flags & FILL_SESSION_WITH_AI) !== 0
+            const { GridSize, MaxPlayers } = newConfig.sessionAttributes
+
+            // Ohne Serverkontrolle darf eine zuvor durch KI aufgefüllte
+            // Sitzung keine abweichende Spielerzahl behalten.
+            if (fillSessionWithAi && hasUsableNumber(GridSize) && hasUsableNumber(MaxPlayers) && Number(GridSize) !== Number(MaxPlayers)) {
+                newConfig.sessionAttributes.MaxPlayers = GridSize
+                delete newConfig.sessionAttributes.OpponentDifficulty
+                syncFillSessionWithAi(newConfig.sessionAttributes)
+            }
+
             delete newConfig.sessionAttributes.ServerControlsTrack
             delete newConfig.sessionAttributes.MultiClassSlots
             delete newConfig.sessionAttributes.MultiClassSlot1
