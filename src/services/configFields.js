@@ -28,7 +28,7 @@ export const customFields = [
   {
     name: 'maxPlayerCount',
     inputType: 'number',
-    tab: 'general',
+    tab: 'session',
     translationKey: 'cfg.maxPlayerCount',
     access: 'ReadWrite',
     validation: validationMap['maxPlayerCount'],
@@ -348,7 +348,7 @@ export const enumLikeFields = new Set([
 export const fieldRequiresControlGameSetup = new Set([
     'ServerControlsTrack',
     'MaxPlayers',
-    //'FILL_SESSION_WITH_AI',
+    'FILL_SESSION_WITH_AI',
     'MultiClassSlots',
     'MultiClassSlot1',
     'MultiClassSlot2',
