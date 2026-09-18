@@ -481,16 +481,16 @@
       "en": "Pit white line penalty"
     },
     "attributes.session.PitWhiteLinePenalty.description": {
-      "de": "Strafe wegen Überfahren der weißen Linie in der Boxengasse. Setzen Sie 1, um sie zu aktivieren.",
-      "en": "White line penalty on pit exit. Set 1 to enable."
+      "de": "Wenn es aktiviert wird, wird das Überfahren der weißen Linie in der Boxengasse bestraft.",
+      "en": "When this rule is in effect, crossing the white line in the pit lane is penalized."
     },
     "attributes.session.DriveThroughPenalty.label": {
       "de": "Durchfahrtsstrafe",
       "en": "Drive through penalty"
     },
     "attributes.session.DriveThroughPenalty.description": {
-      "de": "Durchfahrtsstrafe. Setzen Sie 1, um sie zu aktivieren.",
-      "en": "Drive through penalty. Set 1 to enable."
+      "de": "Wenn es aktiviert wird, kann eine Durchfahrtsstrafe verhängt werden. Wenn Es deaktiviert wird, werden nur Zeitstrafe verhängt.",
+      "en": "If it is enabled, a drive-through penalty may be imposed. If it is disabled, only time penalties will be imposed."
     },
     "attributes.session.AllowedCutsBeforePenalty.label": {
       "de": "Erlaubte Schnitte vor Strafe",
