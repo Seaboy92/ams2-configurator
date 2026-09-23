@@ -93,12 +93,6 @@ const getDefaultVehicleValue = (optionsBySource) => {
   return optionsBySource['vehicles']?.[0]?.id
 }
 
-const getDefaultTireWearValue = (optionsBySource) => {
-    return optionsBySource['enums.tire_wear']
-        ?.find(option => option.name === 'OFF')
-        ?.value
-}
-
 export const getDefaultRules = (optionsBySource) => {
     return optionsBySource['enums.penalties']
         ?.find(option => option.name === 'NONE')
