@@ -17,6 +17,10 @@ export const defaultSettings = {
         "PracticeLength" : 10,
         "QualifyLength" : 10,
         "RaceLength" : 10,
+        "DamageType" : 0,
+        "PenaltiesType" : 0,
+        "TireWearType" : 8,
+        "FuelUsageType" : 2,
         "Flags" : 4194304
     },
 }
