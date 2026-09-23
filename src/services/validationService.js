@@ -1,19 +1,3 @@
-function toUiBoolean(fieldName, value) {
-  if (!booleanLikeFields.has(fieldName)) {
-    return value
-  }
-
-  return value === 1 || value === true
-}
-
-function toApiNumber(fieldName, value) {
-  if (!booleanLikeFields.has(fieldName)) {
-    return value
-  }
-
-  return value ? 1 : 0
-}
-
 export const validationMap = {
     // Der Servername darf im Eingabefeld leer sein. Beim Erzeugen der Konfiguration wird ein leerer Name ausgelassen.
     name: null,
