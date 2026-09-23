@@ -1,5 +1,5 @@
-import { tabRegistry, fieldTabOverrides, booleanLikeFields, customFields, enumLikeFields } from './configFields'
-import { validationMap } from './validationService'
+import { tabRegistry, fieldTabOverrides, booleanLikeFields, customFields, enumLikeFields } from './configFields.js'
+import { validationMap } from './validationService.js'
 
 // Angabe der API-Sektionen, welche die konfigurierbaren Objekte beinhalten
 const editableObjectKeys = new Set([
