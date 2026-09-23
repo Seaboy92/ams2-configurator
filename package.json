@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test:logic": "node --test src/services/configService.test.js src/services/validationService.test.js src/services/fieldMapper.test.js src/services/fieldDisplay.test.js",
+    "test:logic:coverage": "node --test --experimental-test-coverage --test-coverage-include=src/services/configService.js --test-coverage-include=src/services/validationService.js --test-coverage-include=src/services/fieldMapper.js --test-coverage-include=src/services/fieldDisplay.js --test-coverage-lines=85 --test-coverage-branches=75 src/services/configService.test.js src/services/validationService.test.js src/services/fieldMapper.test.js src/services/fieldDisplay.test.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },
