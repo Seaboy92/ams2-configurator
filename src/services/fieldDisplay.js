@@ -1,21 +1,7 @@
-////////////////////////////////////////////////////////////
-// FieldDisplay.js
-//
-// Hier werden besondere Darstellungsregeln für Felder
-// definiert.
-//
-// Felder, die hier NICHT aufgeführt sind, werden automatisch
-// angezeigt.
-//
-// Mögliche Einstellungen:
-//
-// visible  → bestimmt, ob das Feld angezeigt wird
-// order    → bestimmt die Reihenfolge
-////////////////////////////////////////////////////////////
-import { getConfigValue } from './configService'
-import { fieldRequiresControlGameSetup } from './configFields'
+import { getConfigValue } from './configService.js'
+import { fieldRequiresControlGameSetup } from './configFields.js'
 
-/*Felder die angezeigt werden sollen, werden auskommentiert*/
+// Felder die angezeigt werden sollen, werden auskommentiert
 const hiddenFields = [
     'ServerControlsSetup',
     //'ServerControlsTrack',
@@ -455,18 +441,7 @@ const fieldDisplay = {
     }
 }
 
-
-// ==========================================================
-// Hilfsfunktionen
-// ==========================================================
-
-
-/**
- * Gibt zurück, ob ein Feld angezeigt werden soll.
- *
- * Wenn für das Feld keine Regel existiert,
- * wird es automatisch angezeigt.
- */
+// prüft ob ein Feld angezeigt wird
 export function isFieldVisible(field, config) {
 
     const settings = fieldDisplay[field.name]
@@ -489,12 +464,7 @@ export function isFieldVisible(field, config) {
     return settings.visible
 }
 
-/**
- * Prüft ob ein Feld deaktiviert ist.
- *
- * Wenn für das Feld keine Regel existiert,
- * wird es automatisch aktiviert.
- */
+// prüft ob ein Feld deaktiviert ist
 export function isFieldDisabled(field, config) {
     if (fieldRequiresControlGameSetup.has(field.name) && getConfigValue(config, 'controlGameSetup') !== true ) {
         return true
@@ -509,18 +479,13 @@ export function isFieldDisabled(field, config) {
     return settings?.disabled === true
 }
 
-/**
- * Gibt die Reihenfolge eines Feldes zurück.
- *
- * Felder ohne spezielle Reihenfolge bekommen 999.
- * Dadurch werden sie nach den speziell sortierten Feldern
- * angezeigt.
- */
+// gibt die Feldpositionsnummer an
 export function getFieldOrder(field) {
 
     return fieldDisplay[field.name]?.order ?? 999
 }
 
+// sortiert die Felder anhand ihrer Positionsnummer 
 export const sortConfigSection = (section) => {
   return Object.fromEntries(
     Object.entries(section).sort(([nameA], [nameB]) => {
@@ -532,6 +497,7 @@ export const sortConfigSection = (section) => {
   )
 }
 
+// gibt die Werte der SessenAttribute wieder
 const getSessionValue = (config, fieldName) =>
     getConfigValue(config, {
         name: fieldName,
