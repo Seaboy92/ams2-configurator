@@ -118,7 +118,7 @@ function getApiFields(apiIds = {}){
     // Wenn es leer ist, überspringe dieses Feld.
     if (!objectData || !Array.isArray(objectData.list)) return
     // Liste jedes gefundene Element auf 
-    objectData.list.forEach((field, index) => {
+    objectData.list.forEach((field) => {
       // Wenn Feld nicht existiert oder kein Objekt ist, überspringe dieses Feld.
       if (!field || typeof field !== 'object') return
       // Wenn das Feld ReadOnly ist, überspringe dieses Feld.
