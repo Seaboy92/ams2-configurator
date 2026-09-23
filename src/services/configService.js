@@ -1,4 +1,4 @@
-import { sortConfigSection } from "./fieldDisplay"
+import { sortConfigSection } from './fieldDisplay.js'
 
 // Hilfsfunktionen
 const hasUsableNumber = (value) =>
@@ -23,7 +23,7 @@ const syncFillSessionWithAi = (sessionAttributes) => {
 // Abhängigkeit des Passwort-Flags zum Passwort
 const PASSWORD_PROTECTED = 4194304
 const syncPasswordProtected = (config) => {
-    const password = String(config.server?.password ?? '').trim()
+    const password = String(config.password ?? '').trim()
     const flags = Number(config.sessionAttributes?.Flags ?? 0)
 
     config.sessionAttributes.Flags = setSessionFlag(flags, PASSWORD_PROTECTED, password.length > 0)
@@ -135,10 +135,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         }
 
         if (field.name === 'PASSWORD_PROTECTED' && wasEnabled && newValue === false) {
-            newConfig.server = {
-                ...newConfig.server,
-                password: ''
-            }
+            newConfig.password = ''
         }
 
         if (field.name === 'TIMED_RACE' && wasEnabled && newValue === false) {
