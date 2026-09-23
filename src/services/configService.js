@@ -415,7 +415,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             
     }
 
-    // HIER sortieren
+    // sortieren
     newConfig.sessionAttributes = sortConfigSection(newConfig.sessionAttributes)
 
     return newConfig
