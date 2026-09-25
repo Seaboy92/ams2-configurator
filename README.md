@@ -3,9 +3,10 @@
 2. [Technologie](#2-technologie)
 3. [Voraussetzungen](#3-voraussetzungen)
 4. [Projektstruktur](#4-projektstruktur)
-5. [Programmablauf](#programmablauf)
-6. [API-Endpunkte](#5-api-endpunkte)
-7. [Tests](#6-tests)
+5. [Programmablauf](#5-programmablauf)
+6. [API-Endpunkte](#6-api-endpunkte)
+7. [Tests](#7-tests)
+8. [Bereitstellung mit Docker](#8-bereitstellung-mit-docker)
 
 ## 1. Projektbeschreibung
 Diese Single Page Application (SPA) dient der Erstellung einer gültigen und lauffähigen Konfigurationsdatei (server.cfg) für einen Multiplayerserver der Renn-Simulation Automobilista 2. Es soll eine einfache Möglichkeit sein, einen Server für eine Session vorzukonfigurieren, ohne sich mit den Abhängigkeiten der Einstellungen oder den API-Werten selbst beschäftigen zu müssen.
@@ -72,7 +73,7 @@ Vite zeigt die lokale Frontend-Adresse im Terminal an. API-Aufrufe unter `/api` 
         app.js          Express-App für Server und Tests
         server.js       Startet den HTTP-Server
 
-## Programmablauf
+## 5. Programmablauf
 
 1. Das Backend stellt Felddefinitionen, Optionen, Strecken und Fahrzeuge über die API bereit.
 2. Das Frontend ordnet die Felddefinitionen den Eingabetypen und Tabs zu.
@@ -80,7 +81,7 @@ Vite zeigt die lokale Frontend-Adresse im Terminal an. API-Aufrufe unter `/api` 
 4. `configTemplateService.js` setzt die Konfigurationswerte in `src/data/server.template.cfg` ein.
 5. Die fertige `server.cfg` wird in der Vorschau angezeigt und kann heruntergeladen werden.
 
-## 5. API-Endpunkte
+## 6. API-Endpunkte
 
 | Methode | Pfad | Beschreibung |
 |---|---|---|
@@ -98,7 +99,7 @@ Unbekannte Optionsquellen antworten mit HTTP 400.
 
 Hinweis: Bisher ist keine Suchfunktion Bestandteil der Benutzeroberfläche.
 
-## 6. Tests
+## 7. Tests
 
 ### Frontend-Logiktests
 
@@ -137,3 +138,17 @@ Frontend-Lint ausführen:
     npm run lint
 
 Hinweis: Die automatische Prüfung der erzeugten `server.cfg` ist noch nicht Teil der vorhandenen Testsuite.
+
+## 8. Bereitstellung mit Docker
+
+Um ein Image mit Back- und Frontend zu erstellen wird z.B. Docker Desktop benötigt. Dann kann ein Image erstellt werden:
+
+    docker build -t ams2-configurator:latest .
+
+Anschließend kann der Container direkt gestartet werden (auf Port 8080:3001 ist zu achten):
+
+    docker run -p 8080:3001 ams2-configurator
+
+Möchte man das Image auf einen anderen Rechner oder Server starten, kann das Image als Tar-Datei gespeichert und anschließend kopiert werden:
+
+    docker save -o ams2-configurator.tar ams2-configurator:latest
