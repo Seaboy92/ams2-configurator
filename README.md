@@ -8,7 +8,7 @@
 7. [Tests](#6-tests)
 
 ## 1. Projektbeschreibung
-Diese Single Page Application (SPA) dient der Erstellung einer gültigen und lauffähigen Konfigurationsdatei (server.cfg) für einen Multiplayerserver der Renn-Simulation Automobilista 2. Es soll eine einfache möglichkeit sein, einen Server für eine Session vorzukonfigurieren, ohne sich mit den Abhängfigkeiten der Einstellungen oder den API-Werten selbst beschäftigen zu müssen.
+Diese Single Page Application (SPA) dient der Erstellung einer gültigen und lauffähigen Konfigurationsdatei (server.cfg) für einen Multiplayerserver der Renn-Simulation Automobilista 2. Es soll eine einfache Möglichkeit sein, einen Server für eine Session vorzukonfigurieren, ohne sich mit den Abhängigkeiten der Einstellungen oder den API-Werten selbst beschäftigen zu müssen.
 
 ### Funktionen
 - Server-, Sitzungs-, Strecken-, Fahrzeug- und Regeleinstellungen bearbeiten
@@ -18,7 +18,7 @@ Diese Single Page Application (SPA) dient der Erstellung einer gültigen und lau
 - Die Konfiguration als `server.cfg` herunterladen
 
 ## 2. Technologie
-Die foilgenden Technologien werden im Projekt genutzt:
+Die folgenden Technologien werden im Projekt genutzt:
 - React für die Oberfläche
 - Vite für lokale Entwicklung und Frontend-Build
 - Express für die Backend-API
@@ -26,7 +26,7 @@ Die foilgenden Technologien werden im Projekt genutzt:
 - CSV- und JSON-Dateien als Datenquellen für Strecken, Fahrzeuge, Felddefinitionen und Optionen
 
 ## 3. Voraussetzungen
-Um das Projekt zu bearbeiten, sind Node.js (22 oder neuer) und npm erforderlich. zusätzlich kann Docker Desktop genutzt werden, um ein Dockerimage zu erstellen, welches Front und Backend gemeinsam nutzt.
+Um das Projekt zu bearbeiten, sind Node.js (22 oder neuer) und npm erforderlich. Zusätzlich kann Docker Desktop genutzt werden, um ein Dockerimage zu erstellen, welches Front und Backend gemeinsam nutzt.
 
 ### Installation
 
@@ -96,7 +96,7 @@ Vite zeigt die lokale Frontend-Adresse im Terminal an. API-Aufrufe unter `/api` 
 
 Unbekannte Optionsquellen antworten mit HTTP 400.
 
-Hinweis: Bisher ist keine Suchfunktion Bestandteil der Der BEnutzeroberfläche.
+Hinweis: Bisher ist keine Suchfunktion Bestandteil der Benutzeroberfläche.
 
 ## 6. Tests
 
