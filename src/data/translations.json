@@ -77,32 +77,32 @@
       "en": "Server name"
     },
     "cfg.name.description": {
-      "de": "Name des Servers, dieser wird im Serverbrowser angezeigt (wenn implementiert) und ist auch der Standardname von Sitzungen, die auf dem Server gehostet werden.",
-      "en": "The server's name, this will appear in server browser (when implemented) and will be also the default name of sessions hosted on the server."
+      "de": "Name des Servers, dieser wird im Serverbrowser angezeigt und ist auch der Standardname von Sitzungen, die auf dem Server gehostet werden. Ein leeres Eingabefeld führt zum Standardwert „Servername“.",
+      "en": "The server's name, this will appear in server browser and will be also the default name of sessions hosted on the server. An empty input field results in the default value “Servername”."
     },
     "cfg.secure.label": {
       "de": "Steam Authentifizierung",
       "en": "Steam Authentication"
     },
     "cfg.secure.description": {
-      "de": "Wenn diese Option auf „true“ gesetzt ist, werden Benutzer über Steam authentifiziert, um zu prüfen, ob eine VAC-Sperre vorliegt.",
-      "en": "Authenticate users with Steam to check VAC ban when set to true."
+      "de": "Wenn diese Option auf aktiviert wird, werden Benutzer über Steam authentifiziert, um zu prüfen, ob eine VAC-Sperre (Cheat-Sperre) vorliegt.",
+      "en": "If this option is enabled, users will be authenticated via Steam to check for a VAC ban (cheat ban)."
     },
     "cfg.password.label": {
       "de": "Serverpasswort",
       "en": "Server password"
     },
     "cfg.password.description": {
-      "de": "Zum Erstellen von Sitzungen auf dem Server sowie zum Beitreten zu diesen Sitzungen ist ein Passwort erforderlich; das in den Erstellungsoptionen festgelegte Passwort wird auf DS ignoriert.",
-      "en": "Password required to create sessions on the server as well as to join the sessions, password set in Create options is ignored on DS."
+      "de": "Passwort zum Beitreten der Sitzung.",
+      "en": "Password to join the session."
     },
     "cfg.maxPlayerCount.label": {
-      "de": "Max. Sitzungsgröße",
-      "en": "Max. size of session"
+      "de": "Max. Sitzungs- & Startfeldgröße",
+      "en": "Max. session- and gridsize"
     },
     "cfg.maxPlayerCount.description": {
-      "de": "Maximale Sitzungsgröße (Anzahl von Fahrzeugen ink. KI), die auf dem Server erstellt werden kann. Dieser Wert wird auch für die Startfeldgröße verwendet. Beachten Sie, dass bei einer Einstellung von über 16 Teilnehmern, 32-Bit-Clients nicht beitreten können. Das Spiel unterstützt derzeit zudem keine Sitzungen mit mehr als 32 Teilnehmern, auch wenn der Server für bis zu 64 Spieler konfiguriert werden kann.",
-      "en": "Maximum size of sessions that can be created on this server. This value is also used to determine the grid size. Note that setting this above 16 will allow sessions unjoinable by 32-bit clients to be created on the server.  The game also currently does not support sessions larger than 32, even if the server can be configured for up to 64 players."
+      "de": "Maximale Sitzungsgröße (Anzahl von Fahrzeugen ink. KI), die auf dem Server erstellt werden kann. Dieser Wert wird auch für die Startfeldgröße verwendet. Beachten Sie, dass bei einer Einstellung von über 16 Teilnehmern, 32-Bit-Clients nicht beitreten können. Das Spiel unterstützt derzeit zudem keine Sitzungen mit mehr als 32 Teilnehmern.",
+      "en": "Maximum session size (number of vehicles, including AI) that can be created on the server. This value is also used to determine the starting grid size. Please note that if the setting is set to more than 16 participants, 32-bit clients will not be able to join. The game also does not currently support sessions with more than 32 participants."
     },
      "cfg.bindIP.label": {
       "de": "Server Socket-IP-Adresse",
@@ -290,7 +290,7 @@
     },
     "cfg.controlGameSetup.description": {
       "de": "Setzen Sie diesen Wert auf „true“, um die API zu aktivieren, mit der der Server die Spielkonfiguration steuern kann. Der Host kann die Konfiguration nicht steuern, wenn dieser Wert gesetzt ist. Dieser Wert muss auf „true“ gesetzt sein, damit die detaillierte Konfiguration anwendung finden kann.",
-      "en": "Set to true to enable API that allows the server to control the game's setup. The host will not be able to control the setup if this is set. This must be set to \"true\" so that the detailed configuration can be implemented."
+      "en": "Set to true to enable API that allows the server to control the game's setup. The host will not be able to control the setup if this is set. This must be set to ”true“ so that the detailed configuration can be implemented."
     },
     "cfg.sessionAttributes.label": {
       "de": "Startwerte",
@@ -305,24 +305,24 @@
       "en": "Server controls Track"
     },
     "cfg.sessionAttributes.ServerControlsTrack.description": {
-      "de": "Der Host-Spieler kann die Titelauswahl steuern, wenn der Wert auf 0 gesetzt ist. Setze den Wert auf 1, um die Titelauswahl im Spiel zu deaktivieren.",
-      "en": "The host player can control track selection if set to 0. Set to 1 to disable track selection in the game."
+      "de": "Wenn es aktiviert wird, kann der Host-Spieler (erster beigetretener Spieler) die Konfiguration der Sitzung nicht ändern. Wenn es deaktiviert wird, sind keine Einstellungen für KI und Fahrzeugwahl möglich. Die maximale Spielerzahl wird dann nur über die Sitzungs- & Startfeldgröße gesteuert.",
+      "en": "If this option is enabled, the host player (the first player to join) cannot change the session settings. If it is disabled, no settings for AI or vehicle selection are available. The maximum number of players is then determined solely by the session and grid size."
     },
     "cfg.sessionAttributes.ServerControlsVehicleClass.label": {
       "de": "Server steuert Fahrzeugklasse",
       "en": "Server controls vehicle class"
     },
     "cfg.sessionAttributes.ServerControlsVehicleClass.description": {
-      "de": "Der Host-Spieler kann die Fahrzeugklasse über die Garage ändern, wenn der Wert auf 0 gesetzt ist. Setze den Wert auf 1, um den Spielern das Ändern der Klasse zu untersagen. Damit dies Sinn ergibt, sollte zusätzlich das Flag FORCE_SAME_VEHICLE_CLASS (1024) gesetzt werden, da die Spieler andernfalls Fahrzeuge aus beliebigen Klassen auswählen können.",
-      "en": "The host player can change the vehicle class by going through the garage if set to 0. Set to 1 to disallow players changing the class. Flag FORCE_SAME_VEHICLE_CLASS (1024) should be also set for this to make sense, otherwise players are able to choose cars from any class."
+      "de": "Wenn es aktiviert wird, legt der Server die Fahrzeugklasse fest. Diese kann im Spiel nicht geändert werden. Wenn es deaktiviert wird, kann der Host-Spieler (erster beigetretener Spieler) die Fahrzeugklasse im Spiel auswählen.",
+      "en": "When enabled, the server sets the vehicle class. This cannot be changed in-game. When disabled, the host player (the first player to join) can select the vehicle class in-game."
     },
     "cfg.sessionAttributes.ServerControlsVehicle.label": {
       "de": "Server steuert Fahrzeug",
       "en": "server controls vehicle"
     },
     "cfg.sessionAttributes.ServerControlsVehicle.description": {
-      "de": "Spieler können ihr Fahrzeug wechseln, wenn dieser Wert auf 0 gesetzt ist. Setzen Sie den Wert auf 1, um den Fahrzeugwechsel zu unterbinden. Damit dies Sinn ergibt, sollte zusätzlich das Flag FORCE_IDENTICAL_VEHICLES (2) gesetzt werden.",
-      "en": "Players can change their vehicle if set to 0. Set to 1 to disallow players changing the vehicle. Flag FORCE_IDENTICAL_VEHICLES (2) should be also set for this to make sense."
+      "de": "Wenn es aktiviert wird, legt der Server das Fahrzeug fest. Diese kann im Spiel nicht geändert werden. Wenn es deaktiviert wird, können die Spieler das Fahrzeug im Spiel auswählen.",
+      "en": "When enabled, the server assigns the vehicle. This cannot be changed in-game. When disabled, players can select the vehicle in-game."
     },
     "cfg.sessionAttributes.GridSize.label": {
       "de": "Startfeldgröße",
@@ -340,13 +340,13 @@
       "de": "Renneinstellungen – Bitfeld, das aus vielen Flaggen besteht; die Standardeinstellung lautet wie folgt: ALLOW_CUSTOM_VEHICLE_SETUP (8) + ABS_ALLOWED (32) + SC_ALLOWED (64) + TCS_ALLOWED (128) + „FORCE_SAME_VEHICLE_CLASS“ (512) + FILL_SESSION_WITH_AI (131072) + AUTO_START_ENGINE (524288) = 656106“ Die vollständige Liste findest du unter /api/list/flags/session in der HTTP-API oder in den globalen Variablen „lists.flags.session“ bzw. „SessionFlags“ in der Lua-API.",
       "en": "Race flags - bitfield consisting of many flags, the default is set like this: ALLOW_CUSTOM_VEHICLE_SETUP (8) + ABS_ALLOWED (32) + SC_ALLOWED (64) + TCS_ALLOWED (128) + \"FORCE_SAME_VEHICLE_CLASS (512) + FILL_SESSION_WITH_AI (131072) + AUTO_START_ENGINE (524288) = 656106\" See /api/list/flags/session in HTTP API, or globals \"lists.flags.session\" or \"SessionFlags\" in Lua API for the full list."
     },
-    "cfg.sessionAttributes.OpponentDifficulty.label": {
+    "attributes.session.OpponentDifficulty.label": {
       "de": "KI-Schwierigkeitsgrad",
       "en": "AI opponent difficulty"
     },
-    "cfg.sessionAttributes.OpponentDifficulty.description": {
-      "de": "Schwierigkeitsgrad der KI-Gegner, von 70 (Anfänger) bis 120 (Profi). Gilt nur beim Laden, wenn „GridSize“ größer als „MaxPlayers“ ist und das Flag „FILL_SESSION_WITH_AI“ aktiviert ist.",
-      "en": "AI opponent difficulty, from 70 (Beginner) to 120 (Expert). Applies only on loading if GridSize is larger than MaxPlayers, and the FILL_SESSION_WITH_AI flag is enabled."
+    "attributes.session.OpponentDifficulty.description": {
+      "de": "Schwierigkeitsgrad der KI-Gegner, von 70 (Anfänger) bis 120 (Profi). Gilt nur beim Laden, wenn „Startfeldgröße“ größer als „Maximale Spieleranzahl“ ist und das Flag „Sitzung mit KI füllen“ aktiviert ist.",
+      "en": "AI opponent difficulty level, ranging from 70 (Beginner) to 120 (Pro). Applies only when loading if ”Starting Board Size“ is greater than ”Maximum Number of Players“ and the ”Fill Session with AI“ flag is enabled.."
     },
     "attributes.session.title": {
       "de": "Sitzungseinstellungen",
@@ -369,24 +369,24 @@
       "en": "Server controls track"
     },
     "attributes.session.ServerControlsTrack.description": {
-      "de": "Steuert der Server die Streckenauswahl? Falls ja, wird die Streckenauswahl aller Spieler deaktiviert.",
-      "en": "Does the server control the track selection? If yes, everyone's track selection will be disabled."
+      "de": "Wenn es aktiviert wird, steuert der Server die Streckenauswahl und in der Lobby kann keine Änderungen vorgenommen werden. Wenn es deaktiviert wird, kann der Host-Spieler (erster beigetretener Spieler) die Strecke im Spiel auswählen.",
+      "en": "When enabled, the server controls track selection, and no changes can be made in the lobby. When disabled, the host (the first player to join) can select the track during the game."
     },
     "attributes.session.ServerControlsVehicleClass.label": {
       "de": "Server steuert Fahrzeugklasse",
       "en": "Server controls vehicle class"
     },
     "attributes.session.ServerControlsVehicleClass.description": {
-      "de": "Steuert der Server die Fahrzeugklasse? Falls ja, wird die Fahrzeugauswahl aller Spieler auf Fahrzeuge der Klasse VehicleClassId beschränkt. Versuche, über die Garage zu einer anderen Klasse zu wechseln, werden nicht funktionieren. Sollte immer in Kombination mit dem FORCE_SAME_VEHICLE_CLASS-Sitzungsflag verwendet werden.",
-      "en": "Does the server control the vehicle class selection? If yes, everyone's vehicle selection will be restricted to vehicles from class VehicleClassId, any attempts to change to another class via the garage will not work. Should be always combined with the FORCE_SAME_VEHICLE_CLASS session flag."
+      "de": "Wenn es aktiviert wird, steuert der Server die Fahrzeugklasse, aus welcher die Spieler ihr Fahrzeug wählen können. Wenn es deaktiviert wird, ist die Fahrzeugwahl nicht auf eine Fahrzeugklasse beschränkt.",
+      "en": "When enabled, the server controls the vehicle class from which players can choose their vehicle. When disabled, vehicle selection is not limited to a single vehicle class."
     },
     "attributes.session.ServerControlsVehicle.label": {
       "de": "Server steuert Fahrzeug",
       "en": "Server controls vehicle"
     },
     "attributes.session.ServerControlsVehicle.description": {
-      "de": "Steuert der Server die Fahrzeugauswahl? Falls ja, wird die Fahrzeugauswahl aller Spieler auf das Fahrzeug VehicleModelId beschränkt. Sollte immer in Kombination mit dem FORCE_IDENTICAL_VEHICLE-Sitzungsflag verwendet werden.",
-      "en": "Does the server control the vehicle selection? If yes, everyone's vehicle selection will be restricted to vehicle VehicleModelId. Should be always combined with the FORCE_IDENTICAL_VEHICLE session flag."
+      "de": "Wenn es aktiviert wird, steuert der Server das Fahrzeug. Dieses kann im Spiel nicht geändert werden. Wenn es deaktiviert wird, ist die Fahrzeugwahl im Spiel möglich.",
+      "en": "When enabled, the server controls the vehicle. This cannot be changed in the game. When disabled, you can choose your vehicle in the game."
     },
     "attributes.session.GridSize.label": {
       "de": "Startfeldgröße",
@@ -409,16 +409,8 @@
       "en": "Max players"
     },
     "attributes.session.MaxPlayers.description": {
-      "de": "Maximale Anzahl der Spieler. Kann nicht höher als GridSize sein, kann aber niedriger sein und dann werden die zusätzlichen Slots für KI-Fahrzeuge reserviert. Kann nur für die 'nächste Sitzung' geändert werden.",
-      "en": "Maximum number of players. Can't be higher than GridSize, but can be lower and then the extra slots will be reserved for AI vehicles. Can be modified only for the 'next session'."
-    },
-    "attributes.session.OpponentDifficulty.label": {
-      "de": "Schwierigkeitsgrad der Gegner",
-      "en": "Opponent difficulty"
-    },
-    "attributes.session.OpponentDifficulty.description": {
-      "de": "Schwierigkeitsgrad der KI-Teilnehmer. Gültige Werte im Bereich 0-100.",
-      "en": "Difficulty of AI participants. Valid values in range 0-100."
+      "de": "Maximale Anzahl der Spieler. Kann nicht höher als GridSize sein, kann aber niedriger sein und dann werden die zusätzlichen Slots für KI-Fahrzeuge reserviert. (min. 2 - max. Startfeldgröße (GridSize))",
+      "en": "Maximum number of players. Can't be higher than GridSize, but can be lower and then the extra slots will be reserved for AI vehicles. (min. 2 - max. GridSize)"
     },
     "attributes.session.Flags.label": {
       "de": "Schalter",
@@ -441,16 +433,16 @@
       "en": "Damage type"
     },
     "attributes.session.DamageType.description": {
-      "de": "Schadensart. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/damage oder in den globalen Lua-Tabellen lists.enums.damage, Damage und value_to_damage verfügbar.",
-      "en": "Damage type. The enum values are available also via HTTP API at /api/list/enums/damage or in Lua global tables lists.enums.damage, Damage and value_to_damage."
+      "de": "Gibt an ob Schaden Aktiviert ist und welche Auswirkungen dieser haben kann.",
+      "en": "Indicates whether damage is active and what effects it may have."
     },
     "attributes.session.DamageScale.label": {
       "de": "Schadensskalierung",
       "en": "Damage scale"
     },
     "attributes.session.DamageScale.description": {
-      "de": "Skaliert die Kräfte, die zum Schaden/Abtrennung von Teilen benötigt werden, wenn Fahrzeugschaden aktiviert ist. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/damage_scale oder in den globalen Lua-Tabellen lists.enums.damage_scale, DamageScale und value_to_damage_scale verfügbar.",
-      "en": "Scales the forces required to damage/detach parts when vehicle damage is enabled. The enum values are available also via HTTP API at /api/list/enums/damage_scale or in Lua global tables lists.enums.damage_scale, DamageScale and value_to_damage_scale."
+      "de": "Skaliert die Kräfte, die zum Schaden/Abtrennung von Teilen benötigt werden, wenn Fahrzeugschaden aktiviert ist. Je höher die Einstellung ist, umso größer sind die Asuwirkungen eines Unfalls.",
+      "en": "Scales the forces required to damage/detach parts when vehicle damage is enabled. The higher the setting, the greater the consequences of an accident."
     },
     "attributes.session.DamageRandomFailures.label": {
       "de": "Zufällige Fehler",
@@ -461,44 +453,44 @@
       "en": "Enables/disables/timescales random mechanical failures. The enum values are available also via HTTP API at /api/list/enums/random_failures or in Lua global tables lists.enums.random_failures, Damage and value_to_random_failure"
     },
     "attributes.session.TireWearType.label": {
-      "de": "Reifenverschleißtyp",
-      "en": "Tire wear type"
+      "de": "Reifenverschleiß",
+      "en": "Tire wear"
     },
     "attributes.session.TireWearType.description": {
-      "de": "Typ des Reifenverschleißes. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/tire_wear oder in den globalen Lua-Tabellen lists.enums.tire_wear, TireWear und value_to_tire_wear verfügbar.",
-      "en": "Tire wear type. The enum values are available also via HTTP API at /api/list/enums/tire_wear or in Lua global tables lists.enums.tire_wear, TireWear and value_to_tire_wear."
+      "de": "Aktiviert, deaktiviert und skaliert den Reifenverschleiß.",
+      "en": "Enables, disables, and adjusts tire wear."
     },
     "attributes.session.FuelUsageType.label": {
-      "de": "Kraftstoffverbrauchstyp",
-      "en": "Fuel usage type"
+      "de": "Kraftstoffverbrauch",
+      "en": "Fuel usage"
     },
     "attributes.session.FuelUsageType.description": {
-      "de": "Typ des Kraftstoffverbrauchs. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/fuel_usage oder in den globalen Lua-Tabellen lists.enums.fuel_usage, FuelUsage und value_to_fuel_usage verfügbar.",
-      "en": "Fuel usage type. The enum values are available also via HTTP API at /api/list/enums/fuel_usage or in Lua global tables lists.enums.fuel_usage, FuelUsage and value_to_fuel_usage."
+      "de": "Aktiviert, deaktiviert und skaliert den Kraftstoffverbrauch",
+      "en": "Enables, disables, and adjusts Fuel usage."
     },
     "attributes.session.PenaltiesType.label": {
       "de": "Strafen",
       "en": "Penalties"
     },
     "attributes.session.PenaltiesType.description": {
-      "de": "Wenn aktiviert sind Strafen aktiv. Die Enum-Werte sind auch über die HTTP-API unter /api/list/enums/penalties oder in den globalen Lua-Tabellen lists.enums.penalties, Penalties und value_to_penalties verfügbar.",
-      "en": "When enabled, penalties are in effect. The enum values are available also via HTTP API at /api/list/enums/penalties or in Lua global tables lists.enums.penalties, Penalties and value_to_penalties."
+      "de": "Wenn aktiviert sind Strafen aktiv.",
+      "en": "When enabled, penalties are in effect."
     },
     "attributes.session.PitWhiteLinePenalty.label": {
       "de": "Strafe wegen Überfahren der weißen Linie in der Boxengasse",
       "en": "Pit white line penalty"
     },
     "attributes.session.PitWhiteLinePenalty.description": {
-      "de": "Strafe wegen Überfahren der weißen Linie in der Boxengasse. Setzen Sie 1, um sie zu aktivieren.",
-      "en": "White line penalty on pit exit. Set 1 to enable."
+      "de": "Wenn es aktiviert wird, wird das Überfahren der weißen Linie in der Boxengasse bestraft.",
+      "en": "When this rule is in effect, crossing the white line in the pit lane is penalized."
     },
     "attributes.session.DriveThroughPenalty.label": {
       "de": "Durchfahrtsstrafe",
       "en": "Drive through penalty"
     },
     "attributes.session.DriveThroughPenalty.description": {
-      "de": "Durchfahrtsstrafe. Setzen Sie 1, um sie zu aktivieren.",
-      "en": "Drive through penalty. Set 1 to enable."
+      "de": "Wenn es aktiviert wird, kann eine Durchfahrtsstrafe verhängt werden. Wenn Es deaktiviert wird, werden nur Zeitstrafe verhängt.",
+      "en": "If it is enabled, a drive-through penalty may be imposed. If it is disabled, only time penalties will be imposed."
     },
     "attributes.session.AllowedCutsBeforePenalty.label": {
       "de": "Erlaubte Schnitte vor Strafe",
@@ -549,52 +541,52 @@
       "en": "Full Course Yellows. (0) disabled (1) enabled"
     },
     "attributes.session.TrackId.label": {
-      "de": "Streckennummer",
-      "en": "Track id"
+      "de": "Strecke",
+      "en": "Track"
     },
     "attributes.session.TrackId.description": {
-      "de": "Streckennummer. Spieler können dies ändern, es sei denn, ServerControlsTrack ist auf ungleich null gesetzt. Die Liste aller gültigen Strecken ist auch über die HTTP-API unter /api/list/tracks oder in den globalen Lua-Tabellen lists.tracks, id_to_track und name_to_track verfügbar.",
-      "en": "Track id. Players will be able to change this unless ServerControlsTrack is set to non-zero. The list of all valid tracks is available also via HTTP API at /api/list/tracks or in Lua global tables lists.tracks, id_to_track and name_to_track."
+      "de": "Auswahl der vor eingestellten Strecke.",
+      "en": "Select the preset route."
     },
     "attributes.session.VehicleClassId.label": {
       "de": "Fahrzeugklasse-ID",
       "en": "Vehicle class id"
     },
     "attributes.session.VehicleClassId.description": {
-      "de": "Fahrzeugklasse-ID, die verwendet wird, wenn die Fahrzeugklasse erzwungen wird (Sitzungsflag FORCE_SAME_VEHICLE_CLASS ist gesetzt). Wenn sie vom Server gesteuert wird, setzen Sie auch das Attribut ServerControlsVehicleClass. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
-      "en": "Vehicle class id, used when forcing vehicle class (session flag FORCE_SAME_VEHICLE_CLASS is set). If controlled from the server also set attribute ServerControlsVehicleClass. Latest class list is available also via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+      "de": "Auswahl des vorgegebenen Fahrzeugs.",
+      "en": "Selecting the specified vehicle."
     },
     "attributes.session.MultiClassSlots.label": {
       "de": "Mehrfach-Klassen-Slots",
       "en": "Multi class slots"
     },
     "attributes.session.MultiClassSlots.description": {
-      "de": "Anzahl zusätzlicher Fahrzeugklassen (bis zu 3), die verwendet werden, wenn Multi-class erzwungen wird (Sitzungsflag FORCE_MULTI_VEHICLE_CLASS ist gesetzt). Wenn sie vom Server gesteuert wird, setzen Sie auch das Attribut ServerControlsVehicleClass. Eine Zahl zwischen 1 und 3, um IDs aus vordefinierten Vorlagen in MultiClassSlotN anzugeben.",
-      "en": "Number of additional vehicle classes (up to 3), used when Multi-class is forced (session flag FORCE_MULTI_VEHICLE_CLASS is set). If controlled from the server also set attribute ServerControlsVehicleClass. Number between 1 and 3 to specify ids from predefined templates in MultiClassSlotN."
+      "de": "Anzahl der Fahrzeugklassen (bis zu 3), aus denen Fahrzeuge gewählt werden können.",
+      "en": "Number of vehicle classes (up to 3) from which vehicles can be selected."
     },
     "attributes.session.MultiClassSlot1.label": {
       "de": "Mehrfach-Klassen-Slot 1",
       "en": "Multi class slot1"
     },
     "attributes.session.MultiClassSlot1.description": {
-      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 1. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
-      "en": "Additional vehicle class id, slot 1. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+      "de": "Zusätzliche Fahrzeugklasse, Slot 1.",
+      "en": "Additional vehicle class, slot 1."
     },
     "attributes.session.MultiClassSlot2.label": {
       "de": "Mehrfach-Klassen-Slot 2",
       "en": "Multi class slot2"
     },
     "attributes.session.MultiClassSlot2.description": {
-      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 2. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
-      "en": "Additional vehicle class id, slot 2. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+      "de": "Zusätzliche Fahrzeugklasse, Slot 2.",
+      "en": "Additional vehicle class, slot 2."
     },
     "attributes.session.MultiClassSlot3.label": {
       "de": "Mehrfach-Klassen-Slot 3",
       "en": "Multi class slot3"
     },
     "attributes.session.MultiClassSlot3.description": {
-      "de": "Zusätzliche Fahrzeugklasse-ID, Slot 3. Die aktuelle Klassenliste ist auch über die HTTP-API unter /api/list/vehicle_classes und in den globalen Lua-Tabellen lists.vehicle_classes, id_to_vehicle_class und name_to_vehicle_class verfügbar.",
-      "en": "Additional vehicle class id, slot 3. Latest class list is available via HTTP API at /api/list/vehicle_classes and in Lua global tables lists.vehicle_classes, id_to_vehicle_class and name_to_vehicle_class."
+      "de": "Zusätzliche Fahrzeugklasse, Slot 3.",
+      "en": "Additional vehicle class, slot 3."
     },
     "attributes.session.MultiClassSlot4.label": {
       "de": "Mehrfach-Klassen-Slot 4",
@@ -705,7 +697,7 @@
       "en": "Practice weather slots"
     },
     "attributes.session.PracticeWeatherSlots.description": {
-      "de": "Anzahl der verwendeten Trainingswetter-Slots. Auf 0 setzen, um echtes Wetter zu verwenden, und auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen in WeatherSlotN zu interpolieren.",
+      "de": "Anzahl der verwendeten Trainingswetter-Slots. Auf 0 setzen, um echtes Wetter zu verwenden, und auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen zu wählen.",
       "en": "Number of practice session weather slots in use. Set to 0 to use real weather, and to a number between 1 and 4 to interpolate between predefined templates in WeatherSlotN."
     },
     "attributes.session.PracticeWeatherSlot1.label": {
@@ -713,39 +705,39 @@
       "en": "Practice weather slot1"
     },
     "attributes.session.PracticeWeatherSlot1.description": {
-      "de": "Fester Wetterstatus für die Trainings session, Slot 1. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed practice session weather, slot 1. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterstatus für die Trainings session, Slot 1.",
+      "en": "Fixed practice session weather, slot 1."
     },
     "attributes.session.PracticeWeatherSlot2.label": {
       "de": "Trainingswetter-Slot 2",
       "en": "Practice weather slot2"
     },
     "attributes.session.PracticeWeatherSlot2.description": {
-      "de": "Fester Wetterstatus für die Trainings session, Slot 2. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed practice session weather, slot 2. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterstatus für die Trainings session, Slot 2.",
+      "en": "Fixed practice session weather, slot 2."
     },
     "attributes.session.PracticeWeatherSlot3.label": {
       "de": "Trainingswetter-Slot 3 ",
       "en": "Practice weather slot3"
     },
     "attributes.session.PracticeWeatherSlot3.description": {
-      "de": "Fester Wetterstatus für die Trainings session, Slot 3. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed practice session weather, slot 3. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterstatus für die Trainings session, Slot 3.",
+      "en": "Fixed practice session weather, slot 3."
     },
     "attributes.session.PracticeWeatherSlot4.label": {
       "de": "Trainingswetter-Slot 4 ",
       "en": "Practice weather slot4"
     },
     "attributes.session.PracticeWeatherSlot4.description": {
-      "de": "Fester Wetterstatus für die Trainings session, Slot 4. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in Lua-Globaltabellen wie lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed practice session weather, slot 4. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterstatus für die Trainings session, Slot 4.",
+      "en": "Fixed practice session weather, slot 4."
     },
     "attributes.session.PracticeLiveTrackPreset.label": {
       "de": "Zustand der Streckenoberfläche - Voreinstellung für das Training",
       "en": "Practice live track preset"
     },
     "attributes.session.PracticeLiveTrackPreset.description": {
-      "de": "Anfänglicher Streckenzustand für das Training. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "de": "Anfänglicher Streckenzustand für das Training.",
       "en": "Starting Live Track preset for the practice session. The enum values are available via HTTP API at /api/list/enums/weather"
     },
     "attributes.session.QualifyLength.label": {
@@ -785,7 +777,7 @@
       "en": "Qualify weather slots"
     },
     "attributes.session.QualifyWeatherSlots.description": {
-      "de": "Anzahl der verwendeten Wetter-Slots in der Qualifying-Sitzung. Auf 0 setzen, um echtes Wetter zu verwenden, oder auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen in WeatherSlotN zu interpolieren.",
+      "de": "Anzahl der verwendeten Wetter-Slots in der Qualifying-Sitzung. Auf 0 setzen, um echtes Wetter zu verwenden, oder auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen zu wählen.",
       "en": "Number of qualifying session weather slots in use. Set to 0 to use real weather, and to a number between 1 and 4 to interpolate between predefined templates in WeatherSlotN."
     },
     "attributes.session.QualifyWeatherSlot1.label": {
@@ -793,39 +785,39 @@
       "en": "Qualify weather slot1"
     },
     "attributes.session.QualifyWeatherSlot1.description": {
-      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 1. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
-      "en": "Fixed qualifying session weather, slot 1. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 1",
+      "en": "Fixed qualifying session weather, slot 1."
     },
     "attributes.session.QualifyWeatherSlot2.label": {
       "de": "Qualifying-Wetter-Slot 2",
       "en": "Qualify weather slot2"
     },
     "attributes.session.QualifyWeatherSlot2.description": {
-      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 2. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
-      "en": "Fixed qualifying session weather, slot 2. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 2",
+      "en": "Fixed qualifying session weather, slot 2."
     },
     "attributes.session.QualifyWeatherSlot3.label": {
       "de": "Qualifying-Wetter-Slot 3",
       "en": "Qualify weather slot3"
     },
     "attributes.session.QualifyWeatherSlot3.description": {
-      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 3. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
-      "en": "Fixed qualifying session weather, slot 3. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 3",
+      "en": "Fixed qualifying session weather, slot 3."
     },
     "attributes.session.QualifyWeatherSlot4.label": {
       "de": "Qualifying-Wetter-Slot 4",
       "en": "Qualify weather slot4"
     },
     "attributes.session.QualifyWeatherSlot4.description": {
-      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 4. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
-      "en": "Fixed qualifying session weather, slot 4. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Fester Wetterzustand für die Qualifying-Sitzung, Slot 4",
+      "en": "Fixed qualifying session weather, slot 4."
     },
     "attributes.session.QualifyLiveTrackPreset.label": {
       "de": "Zustand der Streckenoberfläche - Voreinstellung für das Qualifying",
       "en": "Qualify live track preset"
     },
     "attributes.session.QualifyLiveTrackPreset.description": {
-      "de": "Anfänglicher Streckenzustand für das Qualifying. Die Enum-Werte sind über die HTTP-API unter /api/list/enums/weather verfügbar.",
+      "de": "Anfänglicher Streckenzustand für das Qualifying",
       "en": "Starting Live Track preset for the qualifying session."
     },
     "attributes.session.QualifyPrivateSession.label": {
@@ -849,8 +841,8 @@
       "en": "Race extra lap"
     },
     "attributes.session.RaceExtraLap.description": {
-      "de": "Wenn aktiv, wird eine zusätzliche volle Runde zur Rennstrecke bei zeitgesteuerten Rennen hinzugefügt. Auf 0/1 setzen, um zu deaktivieren/aktivieren.",
-      "en": "When enabled an extra full lap will be added to the race distance of timed races. Set to 0/1 to disable/enable."
+      "de": "Wenn es aktiviert wird, wird eine zusätzliche volle Runde zur Rennstrecke bei zeitgesteuerten Rennen hinzugefügt.",
+      "en": "When enabled, an additional full lap is added to the track in time-based races."
     },
     "attributes.session.RaceDateYear.label": {
       "de": "Renndatum - Jahr",
@@ -905,7 +897,7 @@
       "en": "Race weather slots"
     },
     "attributes.session.RaceWeatherSlots.description": {
-      "de": "Anzahl der verwendeten Wetter-Slots im Rennen. Auf 0 setzen, um echtes Wetter zu verwenden, oder auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen in WeatherSlotN zu interpolieren.",
+      "de": "Anzahl der verwendeten Wetter-Slots im Rennen. Auf 0 setzen, um echtes Wetter zu verwenden, oder auf eine Zahl zwischen 1 und 4, um zwischen vordefinierten Vorlagen zu wählen.",
       "en": "Number of race weather slots in use. Set to 0 to use real weather, and to a number between 1 and 4 to interpolate between predefined templates in WeatherSlotN."
     },
     "attributes.session.RaceWeatherSlot1.label": {
@@ -913,40 +905,40 @@
       "en": "Race weather slot1"
     },
     "attributes.session.RaceWeatherSlot1.description": {
-      "de": "Festgelegtes Rennwetter, Slot 1. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed race weather, slot 1. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Festgelegtes Rennwetter, Slot 1.",
+      "en": "Fixed race weather, slot 1."
     },
     "attributes.session.RaceWeatherSlot2.label": {
       "de": "Rennen - Wetter-Slot 2",
       "en": "Race weather slot2"
     },
     "attributes.session.RaceWeatherSlot2.description": {
-      "de": "Festgelegtes Rennwetter, Slot 2. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed race weather, slot 2. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Festgelegtes Rennwetter, Slot 2.",
+      "en": "Fixed race weather, slot 2."
     },
     "attributes.session.RaceWeatherSlot3.label": {
       "de": "Rennen - Wetter-Slot 3",
       "en": "Race weather slot3"
     },
     "attributes.session.RaceWeatherSlot3.description": {
-      "de": "Festgelegtes Rennwetter, Slot 3. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed race weather, slot 3. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Festgelegtes Rennwetter, Slot 3.",
+      "en": "Fixed race weather, slot 3."
     },
     "attributes.session.RaceWeatherSlot4.label": {
       "de": "Rennen - Wetter-Slot 4",
       "en": "Race weather slot4"
     },
     "attributes.session.RaceWeatherSlot4.description": {
-      "de": "Festgelegtes Rennwetter, Slot 4. Die Enum-Werte sind über die HTTP API unter /api/list/enums/weather oder in den Lua-Global-Tabellen lists.enums.weather, Weather und value_to_weather verfügbar.",
-      "en": "Fixed race weather, slot 4. The enum values are available via HTTP API at /api/list/enums/weather or in Lua global tables lists.enums.weather, Weather and value_to_weather."
+      "de": "Festgelegtes Rennwetter, Slot 4.",
+      "en": "Fixed race weather, slot 4."
     },
     "attributes.session.RaceRollingStart.label": {
       "de": "Rennen - rollender Start",
       "en": "Race rolling start"
     },
     "attributes.session.RaceRollingStart.description": {
-      "de": "Wert für den rollenden Start des Rennens. Setze den Wert auf 1, um diese Funktion zu aktivieren.",
-      "en": "Race rolling start value. Set 1 to enable."
+      "de": "Wenn es aktiviert wird, startet das Rennen im fahren. Wenn es deaktiviert wird, startet das rennen stehend.",
+      "en": "If it is enabled, the race starts with the cars already moving. If it is disabled, the race starts with the cars at a standstill."
     },
     "attributes.session.RaceMandatoryPitStops.label": {
       "de": "Rennen - Pflicht-Boxenstopps",
@@ -969,8 +961,8 @@
       "en": "Race formation lap"
     },
     "attributes.session.RaceFormationLap.description": {
-      "de": "Formationsrunde in der Rennsession. Setze den Wert auf 1, um diese Funktion zu aktivieren. Nur gültig, wenn der rollende Start aktiviert ist.",
-      "en": "Race session formation lap. Set 1 to enable. Only valid if Race Rolling Start is enabled."
+      "de": "Wenn es aktiviert wird, wird eine Einführungsrunde vor dem fliegenden Start hinzugefügt.",
+      "en": "When enabled, an introductory round is added before the rolling start."
     },
     "attributes.session.RaceLiveTrackPreset.label": {
       "de": "Zustand der Streckenoberfläche - Voreinstellung für das Rennen",
@@ -4761,8 +4753,8 @@
       "en": "Fill session with ai"
     },
     "flags.session.FILL_SESSION_WITH_AI.description": {
-      "de": "Wenn aktiviert, wird die Differenz von 'GridSize' und 'MaxPlayers' mit KI-Fahrern gefüllt.",
-      "en": "When enabled, the difference between 'GridSize' and 'MaxPlayers' is filled with AI drivers."
+      "de": "Wenn aktiviert, wird die Differenz von Max. Sitzungs- & Startfeldgröße (GridSize) und Maximale Spieleranzahl (MaxPlayers) mit KI-Fahrern gefüllt. Wenn es daktiviert wird, wird die KI deaktiviert und Maximale Spieleranzahl (MaxPlayers) auf den Wert von Max. Sitzungs- & Startfeldgröße (GridSize) gesetzt.",
+      "en": "When enabled, the difference between Max. session- and gridsize (GridSize) and Max players (MaxPlayers) is filled with AI drivers. When it is deactivated, the AI is turned off and  Max players (MaxPlayers) is set to the value of Max. session- and gridsize (GridSize)."
     },
     "flags.session.MECHANICAL_FAILURES.label": {
       "de": "Mechanische Ausfälle",

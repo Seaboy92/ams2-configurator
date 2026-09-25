@@ -2,7 +2,9 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=src/**/*.js --test-coverage-exclude=src/**/*.test.js --test-coverage-exclude=src/server.js --test-coverage-exclude=src/testHelpers.js --test-coverage-lines=85 --test-coverage-functions=85"
   },
   "name": "backend",
   "version": "1.0.0",

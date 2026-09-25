@@ -45,7 +45,7 @@ export function searchCars(cars, { search, dlc }) {
 
     result = result.filter((car) => {
       const searchableText =
-        `${car.key} ${car.class} ${car.dlc}`
+        `${car.cars} ${car.class} ${car.dlc}`
           .toLowerCase()
 
       return searchableText.includes(normalizedSearch)

@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Docker-Files
+.dockerignore
+Dockerfile
+ams2-configurator.tar

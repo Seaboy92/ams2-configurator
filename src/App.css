@@ -184,6 +184,32 @@ select {
   border: 1px solid var(--border);
 }
 
+.disabled-field-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.disabled-field-tooltip__message {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  z-index: 2;
+  display: none;
+  width: max-content;
+  max-width: 260px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--text-h);
+  color: var(--bg-page);
+  font-size: 0.8rem;
+  line-height: 1.3;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 25%);
+}
+
+.disabled-field-tooltip:hover .disabled-field-tooltip__message {
+  display: block;
+}
+
 .header-controls {
   display: flex;
   align-items: end;

@@ -1,4 +1,4 @@
-import { sortConfigSection } from "./fieldDisplay"
+import { sortConfigSection } from './fieldDisplay.js'
 
 // Hilfsfunktionen
 const hasUsableNumber = (value) =>
@@ -23,7 +23,7 @@ const syncFillSessionWithAi = (sessionAttributes) => {
 // Abhängigkeit des Passwort-Flags zum Passwort
 const PASSWORD_PROTECTED = 4194304
 const syncPasswordProtected = (config) => {
-    const password = String(config.server?.password ?? '').trim()
+    const password = String(config.password ?? '').trim()
     const flags = Number(config.sessionAttributes?.Flags ?? 0)
 
     config.sessionAttributes.Flags = setSessionFlag(flags, PASSWORD_PROTECTED, password.length > 0)
@@ -93,12 +93,6 @@ const getDefaultVehicleValue = (optionsBySource) => {
   return optionsBySource['vehicles']?.[0]?.id
 }
 
-const getDefaultTireWearValue = (optionsBySource) => {
-    return optionsBySource['enums.tire_wear']
-        ?.find(option => option.name === 'OFF')
-        ?.value
-}
-
 export const getDefaultRules = (optionsBySource) => {
     return optionsBySource['enums.penalties']
         ?.find(option => option.name === 'NONE')
@@ -135,10 +129,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
         }
 
         if (field.name === 'PASSWORD_PROTECTED' && wasEnabled && newValue === false) {
-            newConfig.server = {
-                ...newConfig.server,
-                password: ''
-            }
+            newConfig.password = ''
         }
 
         if (field.name === 'TIMED_RACE' && wasEnabled && newValue === false) {
@@ -389,6 +380,18 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             newConfig.sessionAttributes.ServerControlsTrack = true
         }
         if (newValue === false) {
+            const flags = Number(newConfig.sessionAttributes.Flags ?? 0)
+            const fillSessionWithAi = (flags & FILL_SESSION_WITH_AI) !== 0
+            const { GridSize, MaxPlayers } = newConfig.sessionAttributes
+
+            // Ohne Serverkontrolle darf eine zuvor durch KI aufgefüllte
+            // Sitzung keine abweichende Spielerzahl behalten.
+            if (fillSessionWithAi && hasUsableNumber(GridSize) && hasUsableNumber(MaxPlayers) && Number(GridSize) !== Number(MaxPlayers)) {
+                newConfig.sessionAttributes.MaxPlayers = GridSize
+                delete newConfig.sessionAttributes.OpponentDifficulty
+                syncFillSessionWithAi(newConfig.sessionAttributes)
+            }
+
             delete newConfig.sessionAttributes.ServerControlsTrack
             delete newConfig.sessionAttributes.MultiClassSlots
             delete newConfig.sessionAttributes.MultiClassSlot1
@@ -406,7 +409,7 @@ export const updateConfigValue = (config, field, newValue, optionsBySource) => {
             
     }
 
-    // HIER sortieren
+    // sortieren
     newConfig.sessionAttributes = sortConfigSection(newConfig.sessionAttributes)
 
     return newConfig

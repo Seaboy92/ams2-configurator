@@ -1,21 +1,6 @@
-function toUiBoolean(fieldName, value) {
-  if (!booleanLikeFields.has(fieldName)) {
-    return value
-  }
-
-  return value === 1 || value === true
-}
-
-function toApiNumber(fieldName, value) {
-  if (!booleanLikeFields.has(fieldName)) {
-    return value
-  }
-
-  return value ? 1 : 0
-}
-
 export const validationMap = {
-    name: { required: true },
+    // Der Servername darf im Eingabefeld leer sein. Beim Erzeugen der Konfiguration wird ein leerer Name ausgelassen.
+    name: null,
     maxPlayerCount: {min:2, max: 32, integer: true},
     MaxPlayers: {min:2, max: (config) => config.sessionAttributes?.GridSize, integer: true},
     MultiClassSlots: {min:0, max: 3, integer: true},
